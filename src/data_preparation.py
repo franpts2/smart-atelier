@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 
 # === load dataset ===
@@ -25,6 +26,16 @@ df['purchase_date'] = pd.to_datetime(df['purchase_date'])
 df['purchase_month'] = df['purchase_date'].dt.month
 df['purchase_quarter'] = df['purchase_date'].dt.quarter
 
+# === stocking priority ===
+
+# logical conditions for inventory tiers
+conditions = [
+    (df['customer_rating'] > 4.0) & (df['is_returned'] == False),   # high priority
+    (df['customer_rating'] < 2.0) | (df['is_returned'] == True)     # low priority
+]
+
+choices = ['High Stock', 'Low Stock']
+df['stocking_priority'] = np.select(conditions, choices, default='Maintain')
 
 # === final data preparation ===
 
@@ -36,4 +47,4 @@ df_cleaned = df.drop(columns=['product_id', 'return_reason'])
 # === export processed data ===
 processed_path = os.path.join('data', 'processed', 'cleaned_fashion_boutique.csv')
 df_cleaned.to_csv(processed_path, index=False)
-print(f"Cleaned data saved to {processed_path}")
+print(f"Final data saved to {processed_path}")
