@@ -1,0 +1,16 @@
+# --- Python & Machine Learning ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+*.ipynb_checkpoints
+
+# --- System & IDEs ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
