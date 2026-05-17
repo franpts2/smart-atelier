@@ -24,7 +24,6 @@ df['size'] = df['size'].fillna('Unknown')
 
 # convert string dates into datetime objects
 df['purchase_date'] = pd.to_datetime(df['purchase_date'])
-
 df['purchase_month'] = df['purchase_date'].dt.month
 df['purchase_quarter'] = df['purchase_date'].dt.quarter
 
@@ -38,17 +37,6 @@ conditions = [
 
 choices = ['High Stock', 'Low Stock']
 df['stocking_priority'] = np.select(conditions, choices, default='Maintain')
-
-# === calculate Net_Margin ===
-
-# Assuming theoretical cost is 40% of original price
-if 'original_price' in df.columns:
-    theoretical_cost = df['original_price'] * 0.40
-else:
-    theoretical_cost = df['current_price'] * 0.50 
-
-df['Net_Margin'] = df['current_price'] - theoretical_cost
-
 
 # === final data preparation ===
 
@@ -69,6 +57,16 @@ train_df, test_df = train_test_split(df_cleaned, stratify=stratify_col, **split_
 train_df = train_df.copy()
 test_df = test_df.copy()
 
+
+# === calculate Net_Margin ===
+
+# Assuming theoretical cost is 40% of original price
+for data in [train_df, test_df]:
+    theoretical_cost = data['original_price'] * 0.40 if 'original_price' in data.columns else data['current_price'] * 0.50
+    data['Net_Margin'] = data['current_price'] - theoretical_cost
+
+
+
 # === Encode Brands & Categories (no sklearn required) ===
 
 # Use pandas factorize to create integer codes without sklearn
@@ -80,22 +78,17 @@ for data in [train_df, test_df]:
 
 # === scale price columns ===
 # apply StandardScaler to price columns so distance-based models aren't biased
-price_cols = [c for c in ['original_price', 'current_price'] if c in train_df.columns]
-if price_cols:
-    scaler = StandardScaler()
-    train_df[price_cols] = scaler.fit_transform(train_df[price_cols])
-    test_df[price_cols] = scaler.transform(test_df[price_cols])
-
-    # round the price columns to 3 decimal places
-    train_df[price_cols] = train_df[price_cols].round(3)
-    test_df[price_cols] = test_df[price_cols].round(3)
+scale_cols = ['original_price', 'current_price', 'Net_Margin']
     
-    #print(f"Scaled columns: {price_cols}")
+scaler = StandardScaler()
 
-# === export processed data ===
-#processed_path = os.path.join('data', 'processed', 'cleaned_fashion_boutique.csv')
-#df_cleaned.to_csv(processed_path, index=False)
-#print(f"Final data saved to {processed_path}")
+train_df[scale_cols] = scaler.fit_transform(train_df[scale_cols])
+test_df[scale_cols] = scaler.transform(test_df[scale_cols])
+
+# round the price columns to 3 decimal places
+train_df[scale_cols] = train_df[scale_cols].round(3)
+test_df[scale_cols] = test_df[scale_cols].round(3)
+    
 
 
 train_path = os.path.join('data', 'processed', 'train.csv')
