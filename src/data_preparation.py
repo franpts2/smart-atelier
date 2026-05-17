@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
+from sklearn.preprocessing import StandardScaler
 
 # === load dataset ===
 raw_data_path = os.path.join('data','raw','fashion_boutique_dataset.csv')
@@ -43,6 +44,14 @@ df['stocking_priority'] = np.select(conditions, choices, default='Maintain')
 # return_reason is removed because it happens after a return
 # so it cannot be used to predict stocking priority
 df_cleaned = df.drop(columns=['product_id', 'return_reason'])
+
+# === scale price columns ===
+# apply StandardScaler to price columns so distance-based models aren't biased
+price_cols = [c for c in ['original_price', 'current_price'] if c in df_cleaned.columns]
+if price_cols:
+    scaler = StandardScaler()
+    df_cleaned[price_cols] = scaler.fit_transform(df_cleaned[price_cols])
+    print(f"Scaled columns: {price_cols}")
 
 # === export processed data ===
 processed_path = os.path.join('data', 'processed', 'cleaned_fashion_boutique.csv')

@@ -6,6 +6,7 @@ __pycache__/
 venv/
 ENV/
 env/
+ia_ass2/
 *.ipynb_checkpoints
 
 # --- System & IDEs ---
