@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
 # === load dataset ===
 raw_data_path = os.path.join('data','raw','fashion_boutique_dataset.csv')
@@ -48,14 +49,6 @@ else:
 
 df['Net_Margin'] = df['current_price'] - theoretical_cost
 
-# === Encode Brands & Categories (no sklearn required) ===
-
-# Use pandas factorize to create integer codes without sklearn
-if 'brand' in df.columns:
-    df['brand_encoded'] = pd.factorize(df['brand'].astype(str))[0]
-
-if 'category' in df.columns:
-    df['category_encoded'] = pd.factorize(df['category'].astype(str))[0]
 
 # === final data preparation ===
 
@@ -64,19 +57,51 @@ if 'category' in df.columns:
 # so it cannot be used to predict stocking priority
 df_cleaned = df.drop(columns=['product_id', 'return_reason'])
 
+# === create reproducible train/test split ===
+# use stratified split on `stocking_priority` if present to keep class balance
+split_kwargs = dict(test_size=0.2, random_state=42, shuffle=True)
+stratify_col = None
+if 'stocking_priority' in df_cleaned.columns and df_cleaned['stocking_priority'].nunique() > 1:
+    stratify_col = df_cleaned['stocking_priority']
+
+train_df, test_df = train_test_split(df_cleaned, stratify=stratify_col, **split_kwargs)
+
+train_df = train_df.copy()
+test_df = test_df.copy()
+
+# === Encode Brands & Categories (no sklearn required) ===
+
+# Use pandas factorize to create integer codes without sklearn
+for data in [train_df, test_df]:
+    if 'brand' in data.columns:
+        data['brand_encoded'] = pd.factorize(data['brand'].astype(str))[0]
+    if 'category' in data.columns:
+        data['category_encoded'] = pd.factorize(data['category'].astype(str))[0]
+
 # === scale price columns ===
 # apply StandardScaler to price columns so distance-based models aren't biased
-price_cols = [c for c in ['original_price', 'current_price'] if c in df_cleaned.columns]
+price_cols = [c for c in ['original_price', 'current_price'] if c in train_df.columns]
 if price_cols:
     scaler = StandardScaler()
-    df_cleaned[price_cols] = scaler.fit_transform(df_cleaned[price_cols])
-    
+    train_df[price_cols] = scaler.fit_transform(train_df[price_cols])
+    test_df[price_cols] = scaler.transform(test_df[price_cols])
+
     # round the price columns to 3 decimal places
-    df_cleaned[price_cols] = df_cleaned[price_cols].round(3)
+    train_df[price_cols] = train_df[price_cols].round(3)
+    test_df[price_cols] = test_df[price_cols].round(3)
     
-    print(f"Scaled columns: {price_cols}")
+    #print(f"Scaled columns: {price_cols}")
 
 # === export processed data ===
-processed_path = os.path.join('data', 'processed', 'cleaned_fashion_boutique.csv')
-df_cleaned.to_csv(processed_path, index=False)
-print(f"Final data saved to {processed_path}")
+#processed_path = os.path.join('data', 'processed', 'cleaned_fashion_boutique.csv')
+#df_cleaned.to_csv(processed_path, index=False)
+#print(f"Final data saved to {processed_path}")
+
+
+train_path = os.path.join('data', 'processed', 'train.csv')
+test_path = os.path.join('data', 'processed', 'test.csv')
+
+train_df.to_csv(train_path, index=False)
+test_df.to_csv(test_path, index=False)
+
+print(f"Saved train/test split to {train_path} and {test_path} (test_size=0.2, random_state=42)")

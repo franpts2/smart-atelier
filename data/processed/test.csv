@@ -1,0 +1,437 @@
+category,brand,season,size,color,original_price,markdown_percentage,current_price,purchase_date,stock_quantity,customer_rating,is_returned,purchase_month,purchase_quarter,stocking_priority,Net_Margin,brand_encoded,category_encoded
+Outerwear,Mango,Fall,L,Purple,2.178,0.0,2.479,2025-08-06,30,2.1,False,8,3,Maintain,125.79599999999999,3,0
+Shoes,H&M,Winter,XS,White,1.44,0.0,1.718,2025-08-06,12,4.8,False,8,3,High Stock,102.91799999999999,4,3
+Dresses,Banana Republic,Winter,XL,Green,0.937,5.1,1.051,2025-08-06,8,4.4,False,8,3,High Stock,79.922,2,5
+Tops,Mango,Spring,L,Black,0.38,0.0,0.626,2025-04-25,3,4.4,False,4,2,High Stock,70.104,3,1
+Accessories,Uniqlo,Fall,N/A,Navy,-1.244,0.0,-1.048,2025-08-06,50,4.0,False,8,3,Maintain,19.799999999999997,1,2
+Shoes,Mango,Summer,M,White,1.811,6.3,1.861,2025-08-06,1,2.0,False,8,3,Maintain,102.41599999999998,3,3
+Shoes,Mango,Winter,XS,Brown,1.259,5.7,1.347,2025-08-06,39,1.4,False,8,3,Low Stock,88.07399999999998,3,3
+Accessories,Ann Taylor,Summer,N/A,Gray,-1.293,0.0,-1.099,2025-08-06,34,4.2,False,8,3,High Stock,18.281999999999996,5,2
+Accessories,Mango,Spring,N/A,Pink,-1.496,0.0,-1.309,2025-06-19,16,1.4,False,6,2,Low Stock,11.975999999999999,3,2
+Shoes,Gap,Spring,S,Pink,-0.099,54.9,-0.878,2025-01-19,44,2.2,False,1,1,Maintain,4.6939999999999955,6,3
+Outerwear,Uniqlo,Summer,XXL,Red,2.869,44.1,1.031,2025-08-06,44,3.0,False,8,3,Maintain,39.005999999999986,1,0
+Outerwear,H&M,Spring,XS,Black,1.194,0.0,1.464,2025-04-16,30,4.6,False,4,2,High Stock,95.304,4,0
+Outerwear,Zara,Winter,M,White,0.954,0.0,1.217,2025-08-06,45,3.4,False,8,3,Maintain,87.86999999999999,0,0
+Tops,Banana Republic,Summer,XXL,Brown,-0.967,40.4,-1.145,2025-08-06,26,4.4,False,8,3,High Stock,9.264,2,1
+Tops,Ann Taylor,Summer,S,Black,-0.001,0.0,0.233,2025-08-06,35,3.0,False,8,3,Maintain,58.302,5,1
+Shoes,H&M,Summer,M,Blue,-0.521,0.0,-0.304,2025-08-06,27,4.7,False,8,3,High Stock,42.168,4,3
+Tops,Uniqlo,Winter,XL,Black,-0.236,0.0,-0.01,2025-08-06,39,4.3,False,8,3,High Stock,51.006,1,1
+Shoes,H&M,Spring,L,Beige,1.028,8.3,1.045,2025-01-22,48,2.9,False,1,1,Maintain,77.69800000000001,4,3
+Tops,Banana Republic,Winter,S,Red,-0.022,0.0,0.211,2025-08-06,7,2.5,False,8,3,Maintain,57.647999999999996,2,1
+Bottoms,Zara,Winter,L,Beige,-1.38,59.4,-1.497,2025-08-06,40,3.0,False,8,3,Maintain,0.15799999999999947,0,4
+Accessories,Gap,Summer,N/A,Purple,-1.459,29.2,-1.398,2025-08-06,35,2.0,False,8,3,Maintain,6.75,6,2
+Dresses,Gap,Spring,Unknown,Purple,0.283,0.0,0.525,2024-08-21,45,1.1,False,8,3,Low Stock,67.086,6,5
+Dresses,Uniqlo,Summer,Unknown,Navy,1.246,5.3,1.347,2025-08-06,33,3.7,False,8,3,Maintain,88.35799999999999,1,5
+Tops,Ann Taylor,Winter,XXL,Beige,-1.2,0.0,-1.003,2025-08-06,47,2.3,False,8,3,Maintain,21.156,5,1
+Accessories,Banana Republic,Summer,N/A,Beige,-1.034,0.0,-0.832,2025-08-06,31,2.5,False,8,3,Maintain,26.298,2,2
+Accessories,Mango,Spring,N/A,Green,-0.482,0.4,-0.269,2024-12-29,38,3.0,True,12,4,Low Stock,43.09,3,2
+Shoes,Ann Taylor,Winter,XS,Purple,0.787,0.0,1.045,2025-08-06,32,3.4,True,8,3,Low Stock,82.69800000000001,5,3
+Accessories,Banana Republic,Summer,N/A,Red,-1.166,12.2,-1.059,2025-08-06,14,4.8,False,8,3,High Stock,17.677999999999997,2,2
+Outerwear,Gap,Winter,S,Green,2.082,0.0,2.38,2025-08-06,33,3.1,False,8,3,Maintain,122.80799999999999,6,0
+Tops,Banana Republic,Winter,XXL,Purple,0.362,26.8,-0.013,2025-08-06,26,4.6,False,8,3,High Stock,38.474,2,1
+Shoes,Forever21,Summer,M,Brown,1.087,55.5,-0.345,2025-08-06,46,4.2,True,8,3,Low Stock,6.903999999999989,7,3
+Shoes,H&M,Summer,S,Navy,0.807,15.0,0.649,2025-08-06,17,3.0,False,8,3,Maintain,62.48,4,3
+Tops,Forever21,Winter,M,Pink,0.353,0.0,0.598,2025-08-06,21,1.2,False,8,3,Low Stock,69.264,7,1
+Tops,Uniqlo,Fall,M,Navy,-0.151,0.0,0.078,2025-08-06,33,4.2,False,8,3,High Stock,53.634,1,1
+Tops,H&M,Winter,L,White,0.265,6.0,0.374,2025-08-06,15,3.0,False,8,3,Maintain,59.87199999999999,4,1
+Tops,Forever21,Winter,XS,Brown,-1.243,39.2,-1.307,2025-08-06,16,3.7,False,8,3,Maintain,6.866,7,1
+Tops,Forever21,Spring,XS,Green,-0.067,0.0,0.165,2024-12-27,39,4.0,False,12,4,Maintain,56.24399999999999,7,1
+Dresses,Zara,Fall,L,Navy,1.515,0.0,1.796,2025-08-06,3,1.8,True,8,3,Low Stock,105.258,0,5
+Outerwear,Mango,Spring,XXL,Gray,1.248,10.2,1.191,2025-03-30,42,3.0,False,3,1,Maintain,80.49999999999999,3,0
+Bottoms,H&M,Spring,S,White,-0.642,0.0,-0.428,2025-03-18,10,3.0,False,3,1,Maintain,38.44199999999999,4,4
+Outerwear,Uniqlo,Summer,L,Beige,2.085,14.0,1.81,2025-08-06,27,3.8,False,8,3,Maintain,94.22200000000001,1,0
+Tops,Uniqlo,Spring,XL,Red,-1.379,0.0,-1.188,2025-02-23,9,4.0,False,2,1,Maintain,15.606,1,1
+Tops,Mango,Spring,M,Navy,0.133,0.0,0.371,2024-12-21,29,3.0,False,12,4,Maintain,62.454,3,1
+Bottoms,Uniqlo,Spring,XL,Gray,0.244,0.0,0.485,2025-07-24,17,1.9,False,7,3,Low Stock,65.886,1,4
+Bottoms,Zara,Summer,S,Pink,-0.364,20.7,-0.466,2025-08-06,9,4.4,False,8,3,High Stock,30.816,0,4
+Outerwear,Banana Republic,Spring,L,Navy,1.967,48.8,0.325,2025-04-26,36,3.0,False,4,2,Maintain,22.26599999999999,2,0
+Outerwear,Gap,Summer,S,Navy,0.866,0.0,1.127,2025-08-06,37,1.7,False,8,3,Low Stock,85.15199999999999,6,0
+Shoes,Zara,Spring,S,White,-0.272,0.0,-0.047,2024-09-03,48,3.2,False,9,3,Maintain,49.902,0,3
+Accessories,Uniqlo,Summer,N/A,Blue,-0.738,0.0,-0.527,2025-08-06,29,1.3,False,8,3,Low Stock,35.46,1,2
+Bottoms,Mango,Summer,XL,Black,0.109,0.0,0.346,2025-08-06,50,3.6,False,8,3,Maintain,61.69199999999999,3,4
+Tops,Zara,Summer,XXL,Blue,-1.096,20.1,-1.059,2025-08-06,7,3.0,False,8,3,Maintain,16.212,0,1
+Tops,H&M,Winter,XXL,Black,-0.343,0.0,-0.12,2025-08-06,31,3.7,False,8,3,Maintain,47.682,4,1
+Shoes,H&M,Spring,XS,Blue,-0.305,32.0,-0.601,2024-09-01,2,1.1,False,9,3,Low Stock,22.811999999999998,4,3
+Bottoms,Banana Republic,Spring,L,Green,-1.249,0.0,-1.054,2024-08-12,23,4.0,True,8,3,Low Stock,19.644,2,4
+Shoes,Ann Taylor,Winter,L,Black,0.572,0.0,0.823,2025-08-06,2,2.9,False,8,3,Maintain,76.044,5,3
+Outerwear,Mango,Fall,XS,Purple,1.636,56.4,-0.126,2025-08-06,43,1.2,False,8,3,Low Stock,6.536000000000001,3,0
+Outerwear,H&M,Winter,S,Purple,2.301,38.1,0.962,2025-08-06,14,3.9,False,8,3,Maintain,47.303999999999974,4,0
+Tops,Banana Republic,Spring,XL,Blue,-1.325,0.0,-1.133,2024-10-03,21,3.0,False,10,4,Maintain,17.268,2,1
+Dresses,Mango,Spring,XS,Pink,1.003,0.0,1.268,2024-10-26,11,2.2,True,10,4,Low Stock,89.38799999999999,3,5
+Bottoms,Ann Taylor,Spring,XS,Red,-0.557,50.0,-1.024,2025-01-26,24,1.9,False,1,1,Low Stock,6.8459999999999965,5,4
+Dresses,H&M,Fall,XXL,Beige,-0.505,0.0,-0.287,2025-08-06,33,3.1,False,8,3,Maintain,42.684,4,5
+Tops,Uniqlo,Fall,M,Beige,-0.42,0.0,-0.199,2025-08-06,7,3.3,False,8,3,Maintain,45.324,1,1
+Bottoms,Forever21,Summer,XS,Gray,-0.112,11.0,-0.083,2025-08-06,18,1.6,False,8,3,Low Stock,44.78999999999999,7,4
+Shoes,Zara,Winter,XL,Blue,0.342,0.0,0.586,2025-08-06,38,2.6,True,8,3,Low Stock,68.904,0,3
+Dresses,Gap,Spring,XXL,Black,-0.856,45.9,-1.135,2025-01-14,37,3.7,False,1,1,Maintain,7.475999999999999,6,5
+Shoes,Zara,Summer,Unknown,White,1.561,10.7,1.463,2025-08-06,37,3.0,False,8,3,Maintain,87.65400000000001,0,3
+Shoes,Ann Taylor,Winter,XL,White,1.233,53.7,-0.22,2025-08-06,18,3.0,False,8,3,Maintain,10.132000000000005,5,3
+Tops,Uniqlo,Fall,XXL,Purple,-0.314,0.0,-0.09,2025-08-06,13,3.0,False,8,3,Maintain,48.582,1,1
+Shoes,Banana Republic,Winter,L,Purple,-0.149,0.0,0.08,2025-08-06,5,4.5,False,8,3,High Stock,53.699999999999996,2,3
+Shoes,Ann Taylor,Summer,XXL,Navy,1.813,0.0,2.102,2025-08-06,39,3.7,False,8,3,Maintain,114.468,5,3
+Accessories,Uniqlo,Fall,N/A,Green,-1.379,0.0,-1.187,2025-08-06,15,3.8,False,8,3,Maintain,15.618,1,2
+Tops,Zara,Spring,XXL,Pink,-1.109,35.2,-1.19,2025-01-22,15,2.3,False,1,1,Maintain,9.911999999999999,0,1
+Outerwear,Ann Taylor,Summer,S,Gray,2.846,0.0,3.168,2025-08-06,2,3.5,True,8,3,Low Stock,146.478,5,0
+Shoes,Gap,Summer,L,Beige,0.399,0.0,0.645,2025-08-06,7,4.9,False,8,3,High Stock,70.692,6,3
+Bottoms,Forever21,Summer,L,Red,-0.393,9.6,-0.319,2025-08-06,20,2.0,False,8,3,Maintain,38.772000000000006,7,4
+Accessories,Uniqlo,Spring,N/A,Purple,-0.654,0.0,-0.441,2024-11-12,19,2.9,True,11,4,Low Stock,38.052,1,2
+Shoes,Forever21,Summer,XXL,Green,-0.637,34.5,-0.866,2025-08-06,48,4.5,False,8,3,High Stock,16.395999999999994,7,3
+Dresses,H&M,Summer,M,Gray,-0.329,0.0,-0.106,2025-08-06,43,3.8,False,8,3,Maintain,48.114,4,5
+Bottoms,Mango,Fall,XXL,Red,0.208,22.2,-0.031,2025-08-06,35,3.7,False,8,3,Maintain,40.79199999999999,3,4
+Shoes,Zara,Winter,L,Gray,0.603,0.0,0.855,2025-08-06,36,4.0,True,8,3,Low Stock,76.98599999999999,0,3
+Tops,Mango,Spring,M,Green,-0.586,36.4,-0.857,2024-09-28,44,1.9,True,9,3,Low Stock,15.799999999999997,3,1
+Shoes,Mango,Spring,S,Brown,0.231,0.0,0.472,2024-11-11,11,3.0,False,11,4,Maintain,65.49000000000001,3,3
+Dresses,Zara,Spring,XL,Navy,-0.133,0.0,0.096,2025-03-26,41,2.8,False,3,1,Maintain,54.19199999999999,0,5
+Outerwear,Banana Republic,Fall,S,White,2.341,0.0,2.647,2025-08-06,32,4.0,False,8,3,Maintain,130.836,2,0
+Outerwear,Uniqlo,Fall,XL,Pink,0.252,0.0,0.494,2025-08-06,4,1.6,False,8,3,Low Stock,66.132,1,0
+Outerwear,Banana Republic,Summer,M,White,2.419,55.2,0.28,2025-08-06,21,4.5,False,8,3,High Stock,10.663999999999987,2,0
+Shoes,Gap,Spring,XL,Red,-0.379,0.0,-0.157,2024-10-24,1,3.0,False,10,4,Maintain,46.577999999999996,6,3
+Outerwear,Zara,Spring,L,Beige,-0.182,45.3,-0.748,2025-02-17,34,1.8,False,2,1,Low Stock,12.908000000000001,0,0
+Bottoms,Zara,Winter,M,Purple,-0.941,0.0,-0.736,2025-08-06,3,3.0,True,8,3,Low Stock,29.171999999999997,0,4
+Outerwear,Gap,Spring,XL,Green,2.835,48.0,0.822,2024-10-14,22,4.4,True,10,4,Low Stock,29.226,6,0
+Accessories,Gap,Fall,N/A,Black,-0.341,0.0,-0.118,2025-08-06,22,3.0,False,8,3,Maintain,47.75999999999999,6,2
+Bottoms,Zara,Fall,XXL,Brown,-0.006,44.8,-0.639,2025-08-06,15,1.3,False,8,3,Low Stock,14.727999999999994,0,4
+Dresses,Mango,Winter,M,Navy,-0.556,0.0,-0.339,2025-08-06,1,2.6,False,8,3,Maintain,41.106,3,5
+Outerwear,Ann Taylor,Spring,Unknown,White,2.171,14.2,1.879,2025-03-05,29,3.0,False,3,1,Maintain,95.86,5,0
+Accessories,Banana Republic,Winter,N/A,Green,-0.989,24.4,-1.011,2025-08-06,31,4.4,True,8,3,Low Stock,16.43,2,2
+Outerwear,Banana Republic,Winter,XL,Beige,1.519,3.2,1.687,2025-08-06,46,3.0,False,8,3,Maintain,99.752,2,0
+Dresses,Mango,Fall,S,Green,1.144,0.0,1.413,2025-08-06,43,3.0,False,8,3,Maintain,93.762,3,5
+Bottoms,Uniqlo,Winter,XXL,Blue,-1.133,0.0,-0.934,2025-08-06,11,4.0,False,8,3,Maintain,23.22,1,4
+Outerwear,Forever21,Summer,XL,Navy,0.243,0.0,0.484,2025-08-06,45,1.9,False,8,3,Low Stock,65.844,7,0
+Dresses,H&M,Summer,L,Black,1.101,0.0,1.368,2025-08-06,21,3.3,False,8,3,Maintain,92.412,4,5
+Tops,Banana Republic,Fall,M,Gray,-0.382,57.5,-1.05,2025-08-06,23,4.0,False,8,3,Maintain,1.9360000000000035,2,1
+Tops,Ann Taylor,Summer,XS,Green,-1.129,0.0,-0.931,2025-08-06,1,5.0,False,8,3,High Stock,23.339999999999996,5,1
+Tops,Forever21,Winter,XL,Black,0.28,0.0,0.522,2025-08-06,13,4.8,False,8,3,High Stock,66.984,7,1
+Dresses,Banana Republic,Winter,XL,Blue,-0.166,0.0,0.063,2025-08-06,11,3.3,False,8,3,Maintain,53.190000000000005,2,5
+Outerwear,Ann Taylor,Winter,XS,Black,2.565,0.3,2.864,2025-08-06,30,3.4,False,8,3,Maintain,137.088,5,0
+Accessories,Forever21,Spring,N/A,Red,-1.251,29.1,-1.245,2025-07-27,9,1.4,False,7,3,Low Stock,10.081999999999999,7,2
+Shoes,Mango,Fall,XS,Red,-0.346,33.7,-0.657,2025-08-06,38,3.0,True,8,3,Low Stock,20.862000000000005,3,3
+Shoes,Banana Republic,Spring,XS,Green,-0.046,0.0,0.186,2024-09-08,23,2.9,False,9,3,Maintain,56.897999999999996,2,3
+Dresses,Ann Taylor,Spring,L,Gray,0.562,29.2,0.077,2024-08-15,25,1.1,False,8,3,Low Stock,38.876,5,5
+Tops,Banana Republic,Spring,XXL,Red,-1.043,45.9,-1.239,2024-12-03,47,3.7,True,12,4,Low Stock,6.1179999999999986,2,1
+Bottoms,Uniqlo,Summer,L,Purple,-1.284,0.0,-1.09,2025-08-06,45,1.8,False,8,3,Low Stock,18.546,1,4
+Outerwear,H&M,Spring,M,Red,0.814,42.5,-0.109,2024-10-02,27,2.9,False,10,4,Maintain,24.360000000000007,4,0
+Shoes,Banana Republic,Winter,M,Navy,-0.607,11.4,-0.542,2025-08-06,15,3.9,False,8,3,Maintain,32.012,2,3
+Tops,Zara,Summer,M,Navy,-1.229,0.0,-1.033,2025-08-06,12,3.8,False,8,3,Maintain,20.262,0,1
+Shoes,Banana Republic,Winter,S,Black,0.622,0.0,0.875,2025-08-06,15,3.1,False,8,3,Maintain,77.59800000000001,2,3
+Bottoms,Banana Republic,Spring,XL,Beige,0.073,0.0,0.309,2025-06-17,21,2.8,False,6,2,Maintain,60.588,2,4
+Tops,Mango,Fall,L,White,0.065,17.3,-0.047,2025-08-06,21,3.6,False,8,3,Maintain,42.93599999999999,3,1
+Shoes,Uniqlo,Spring,S,Green,0.437,0.0,0.685,2025-06-10,40,3.0,False,6,2,Maintain,71.868,1,3
+Outerwear,Mango,Winter,S,Brown,2.759,0.0,3.078,2025-08-06,27,2.9,False,8,3,Maintain,143.79,3,0
+Bottoms,Mango,Summer,XL,Purple,-1.087,0.0,-0.887,2025-08-06,10,4.8,False,8,3,High Stock,24.642,3,4
+Shoes,Ann Taylor,Spring,S,Red,0.69,0.0,0.945,2025-03-17,40,3.0,True,3,1,Low Stock,79.692,5,3
+Dresses,Forever21,Summer,S,Black,0.565,0.0,0.816,2025-08-06,42,2.0,False,8,3,Maintain,75.822,7,5
+Outerwear,Banana Republic,Spring,XXL,Brown,2.381,9.2,2.284,2025-06-27,23,4.8,False,6,2,High Stock,111.83399999999999,2,0
+Dresses,Forever21,Summer,XL,Brown,-0.439,0.0,-0.219,2025-08-06,9,3.0,False,8,3,Maintain,44.718,7,5
+Accessories,Gap,Summer,N/A,Blue,-1.193,0.0,-0.996,2025-08-06,24,3.1,False,8,3,Maintain,21.36,6,2
+Shoes,H&M,Fall,XS,Navy,1.665,0.0,1.95,2025-08-06,23,4.1,False,8,3,High Stock,109.89,4,3
+Dresses,Zara,Winter,S,Pink,0.686,7.4,0.745,2025-08-06,0,4.2,False,8,3,High Stock,69.75599999999999,0,5
+Tops,Zara,Summer,S,Pink,-0.772,57.4,-1.22,2025-08-06,46,3.1,False,8,3,Maintain,1.4920000000000009,0,1
+Tops,Zara,Fall,XS,Black,-0.293,26.1,-0.496,2025-08-06,32,1.5,False,8,3,Low Stock,27.815999999999995,0,1
+Shoes,H&M,Summer,XL,Green,-0.16,0.0,0.069,2025-08-06,29,3.9,False,8,3,Maintain,53.364,4,3
+Outerwear,Banana Republic,Spring,S,Brown,2.05,0.0,2.347,2025-05-17,23,3.5,True,5,2,Low Stock,121.812,2,0
+Shoes,Banana Republic,Summer,S,Green,0.904,0.0,1.166,2025-08-06,1,3.1,False,8,3,Maintain,86.328,2,3
+Bottoms,Ann Taylor,Summer,XXL,Navy,-0.762,0.0,-0.552,2025-08-06,36,3.5,False,8,3,Maintain,34.71,5,4
+Tops,Forever21,Summer,L,Beige,-0.236,39.9,-0.687,2025-08-06,44,3.0,False,8,3,Maintain,17.090000000000003,7,1
+Shoes,H&M,Summer,M,Green,0.135,0.0,0.373,2025-08-06,4,4.7,False,8,3,High Stock,62.513999999999996,4,3
+Shoes,Ann Taylor,Spring,XL,Blue,-0.293,40.6,-0.734,2025-05-23,43,2.5,True,5,2,Low Stock,15.927999999999997,5,3
+Accessories,Banana Republic,Spring,N/A,Blue,-0.961,39.8,-1.135,2024-12-03,18,1.3,False,12,4,Low Stock,9.616,2,2
+Dresses,Mango,Fall,L,Pink,0.094,0.0,0.33,2025-08-06,34,3.4,False,8,3,Maintain,61.224000000000004,3,5
+Outerwear,Uniqlo,Spring,XS,Brown,1.374,0.0,1.65,2025-04-18,42,2.5,False,4,2,Maintain,100.878,1,0
+Bottoms,Uniqlo,Fall,XXL,Blue,-0.48,7.1,-0.363,2025-08-06,10,1.8,False,8,3,Low Stock,38.324,1,4
+Accessories,Zara,Summer,N/A,White,-1.024,29.2,-1.08,2025-08-06,20,4.9,False,8,3,High Stock,13.659999999999997,0,2
+Dresses,Zara,Summer,M,Red,0.922,33.3,0.221,2025-08-06,33,2.8,False,8,3,Maintain,38.666,0,5
+Tops,Gap,Fall,Unknown,Beige,-0.17,0.0,0.058,2025-08-06,24,4.4,False,8,3,High Stock,53.046,6,1
+Outerwear,Mango,Summer,S,Blue,0.074,0.0,0.31,2025-08-06,35,3.5,False,8,3,Maintain,60.624,3,0
+Bottoms,Ann Taylor,Spring,Unknown,Gray,-1.201,14.7,-1.108,2024-12-23,15,3.1,True,12,4,Low Stock,15.946,5,4
+Outerwear,Banana Republic,Fall,XXL,Navy,1.387,0.0,1.663,2025-08-06,1,1.0,False,8,3,Low Stock,101.28,2,0
+Dresses,Zara,Summer,XL,Beige,-0.878,39.0,-1.076,2025-08-06,40,2.4,False,8,3,Maintain,10.886,0,5
+Shoes,Banana Republic,Winter,M,Brown,0.367,16.5,0.229,2025-08-06,11,3.0,False,8,3,Maintain,50.52999999999999,2,3
+Dresses,H&M,Winter,L,Beige,1.217,0.0,1.489,2025-08-06,23,4.0,False,8,3,Maintain,96.03,4,5
+Outerwear,Ann Taylor,Fall,S,White,1.613,0.0,1.897,2025-08-06,18,2.5,True,8,3,Low Stock,108.294,5,0
+Outerwear,Ann Taylor,Fall,L,Blue,-0.156,0.0,0.072,2025-08-06,17,4.1,False,8,3,High Stock,53.477999999999994,5,0
+Accessories,Forever21,Fall,N/A,Gray,-0.622,49.8,-1.055,2025-08-06,32,4.9,False,8,3,High Stock,6.643999999999998,7,2
+Tops,Zara,Spring,XXL,Brown,-0.921,0.0,-0.715,2024-09-06,37,2.3,False,9,3,Maintain,29.802,0,1
+Dresses,Banana Republic,Winter,XL,White,0.055,0.0,0.29,2025-08-06,36,1.9,True,8,3,Low Stock,60.018,2,5
+Dresses,Gap,Fall,M,Navy,-0.059,0.0,0.173,2025-08-06,2,3.0,False,8,3,Maintain,56.502,6,5
+Outerwear,Ann Taylor,Summer,M,Black,2.676,0.0,2.992,2025-08-06,11,4.7,True,8,3,Low Stock,141.198,5,0
+Shoes,Gap,Spring,XS,Gray,-0.622,5.1,-0.474,2025-01-17,16,4.3,False,1,1,High Stock,35.722,6,3
+Accessories,Forever21,Winter,N/A,Blue,-1.276,0.0,-1.082,2025-08-06,28,2.7,False,8,3,Maintain,18.792,7,2
+Tops,Gap,Winter,L,Navy,-1.197,0.0,-1.0,2025-08-06,48,4.3,True,8,3,Low Stock,21.245999999999995,6,1
+Tops,Mango,Fall,XS,Pink,-0.791,0.0,-0.582,2025-08-06,31,1.5,False,8,3,Low Stock,33.81,3,1
+Bottoms,Uniqlo,Winter,L,White,-0.718,0.0,-0.507,2025-08-06,27,3.0,False,8,3,Maintain,36.078,1,4
+Accessories,Zara,Winter,N/A,Pink,-1.137,0.0,-0.939,2025-08-06,46,1.2,False,8,3,Low Stock,23.087999999999997,0,2
+Outerwear,Uniqlo,Spring,L,Purple,2.338,49.4,0.494,2024-11-27,42,2.9,False,11,4,Maintain,23.093999999999994,1,0
+Accessories,Banana Republic,Winter,N/A,Beige,-1.399,44.7,-1.432,2025-08-06,44,3.0,False,8,3,Maintain,3.815999999999999,2,2
+Outerwear,Uniqlo,Fall,M,Purple,2.745,0.5,3.039,2025-08-06,28,2.7,False,8,3,Maintain,142.144,1,0
+Outerwear,Ann Taylor,Spring,XS,Brown,1.074,0.0,1.341,2025-04-05,19,4.1,False,4,2,High Stock,91.58399999999999,5,0
+Tops,Gap,Summer,XL,Black,-1.231,0.0,-1.036,2025-08-06,13,4.7,False,8,3,High Stock,20.178,6,1
+Tops,Uniqlo,Summer,XXL,Gray,0.338,0.0,0.582,2025-08-06,47,3.8,True,8,3,Low Stock,68.77799999999999,1,1
+Tops,Zara,Winter,L,Black,0.046,0.0,0.281,2025-08-06,17,1.0,False,8,3,Low Stock,59.74199999999999,0,1
+Bottoms,Ann Taylor,Fall,M,Beige,-0.702,0.0,-0.49,2025-08-06,29,4.5,False,8,3,High Stock,36.581999999999994,5,4
+Bottoms,Mango,Winter,L,Pink,0.356,16.1,0.229,2025-08-06,32,3.1,True,8,3,Low Stock,50.73199999999999,3,4
+Outerwear,Mango,Fall,M,Purple,0.801,0.0,1.059,2025-08-06,25,2.0,False,8,3,Maintain,83.13,3,0
+Tops,H&M,Spring,S,Beige,-0.455,0.0,-0.235,2025-07-10,35,3.9,True,7,3,Low Stock,44.226,4,1
+Bottoms,H&M,Fall,S,Purple,-0.96,0.0,-0.756,2025-08-06,0,4.8,True,8,3,Low Stock,28.595999999999997,4,4
+Bottoms,Ann Taylor,Winter,XS,Black,-0.432,9.7,-0.357,2025-08-06,23,2.6,False,8,3,Maintain,37.668000000000006,5,4
+Shoes,H&M,Winter,L,Blue,0.806,0.0,1.064,2025-08-06,16,3.0,True,8,3,Low Stock,83.274,4,3
+Shoes,Mango,Fall,M,Brown,-0.325,0.0,-0.102,2025-08-06,46,2.8,False,8,3,Maintain,48.245999999999995,3,3
+Shoes,Uniqlo,Winter,S,Blue,0.964,0.0,1.228,2025-08-06,2,3.4,False,8,3,Maintain,88.18799999999999,1,3
+Bottoms,H&M,Spring,S,Purple,-0.936,0.0,-0.731,2024-12-10,9,3.1,False,12,4,Maintain,29.334,4,4
+Outerwear,Forever21,Fall,XXL,Purple,0.062,16.5,-0.033,2025-08-06,17,4.6,False,8,3,High Stock,43.67399999999999,7,0
+Dresses,Zara,Summer,M,Green,0.656,0.0,0.91,2025-08-06,23,4.9,False,8,3,High Stock,78.63,0,5
+Dresses,Forever21,Summer,M,Gray,-0.332,50.9,-0.923,2025-08-06,45,3.0,False,8,3,Maintain,7.283999999999992,7,5
+Outerwear,Forever21,Spring,XS,Blue,0.455,0.0,0.702,2024-12-21,6,1.9,False,12,4,Low Stock,72.408,7,0
+Shoes,Uniqlo,Summer,XS,Black,-0.499,0.0,-0.281,2025-08-06,45,4.0,False,8,3,Maintain,42.864,1,3
+Accessories,Ann Taylor,Winter,N/A,Black,-1.075,9.5,-0.953,2025-08-06,9,3.9,False,8,3,Maintain,21.072,5,2
+Dresses,Gap,Winter,XXL,Gray,1.433,0.0,1.71,2025-08-06,26,4.3,False,8,3,High Stock,102.696,6,5
+Dresses,Ann Taylor,Winter,XL,White,-0.299,10.0,-0.238,2025-08-06,24,1.2,False,8,3,Low Stock,40.88799999999999,5,5
+Tops,Uniqlo,Summer,S,White,0.4,0.0,0.646,2025-08-06,6,3.0,False,8,3,Maintain,70.716,1,1
+Bottoms,Forever21,Winter,XL,White,-0.776,0.0,-0.566,2025-08-06,39,1.4,False,8,3,Low Stock,34.284,7,4
+Outerwear,Mango,Winter,XL,Pink,1.391,0.0,1.668,2025-08-06,16,1.7,False,8,3,Low Stock,101.41799999999999,3,0
+Dresses,Banana Republic,Summer,XL,White,0.022,0.0,0.256,2025-08-06,46,3.7,False,8,3,Maintain,58.998,2,5
+Dresses,Zara,Fall,XL,Purple,1.142,5.0,1.255,2025-08-06,39,3.0,False,8,3,Maintain,85.87400000000002,0,5
+Accessories,Uniqlo,Fall,N/A,Brown,-0.487,0.0,-0.269,2025-08-06,48,3.0,True,8,3,Low Stock,43.224000000000004,1,2
+Outerwear,Forever21,Summer,M,Pink,0.059,0.0,0.294,2025-08-06,12,3.5,False,8,3,Maintain,60.138,7,0
+Shoes,H&M,Spring,XXL,Gray,0.491,11.2,0.466,2024-10-02,23,3.0,False,10,4,Maintain,59.79999999999999,4,3
+Accessories,Ann Taylor,Spring,N/A,Purple,-1.051,34.3,-1.144,2024-12-22,41,3.0,False,12,4,Maintain,11.034000000000002,5,2
+Dresses,Zara,Winter,S,Gray,-0.12,59.5,-0.971,2025-08-06,5,3.9,False,8,3,Maintain,0.46000000000000085,0,5
+Outerwear,Banana Republic,Spring,XL,Red,0.733,0.0,0.989,2025-07-30,25,3.4,True,7,3,Low Stock,81.012,2,0
+Bottoms,Gap,Winter,XXL,Blue,-0.751,0.0,-0.54,2025-08-06,3,2.6,True,8,3,Low Stock,35.06399999999999,6,4
+Tops,Ann Taylor,Winter,L,Navy,0.1,0.0,0.336,2025-08-06,14,3.5,False,8,3,Maintain,61.41,5,1
+Dresses,Zara,Winter,XS,Black,1.548,0.0,1.829,2025-08-06,49,1.6,False,8,3,Low Stock,106.25999999999999,0,5
+Shoes,Ann Taylor,Fall,XL,Beige,1.482,0.0,1.761,2025-08-06,25,3.6,False,8,3,Maintain,104.214,5,3
+Dresses,H&M,Winter,XS,Blue,-0.42,0.0,-0.199,2025-08-06,2,2.8,False,8,3,Maintain,45.312,4,5
+Tops,Zara,Spring,XL,Blue,-0.163,0.0,0.065,2025-05-16,40,4.8,False,5,2,High Stock,53.26199999999999,0,1
+Tops,Zara,Winter,XL,Black,-0.23,59.4,-1.015,2025-08-06,5,4.9,False,8,3,High Stock,0.5139999999999958,0,1
+Bottoms,Banana Republic,Spring,M,Gray,0.436,0.0,0.683,2025-01-18,18,3.7,False,1,1,Maintain,71.832,2,4
+Dresses,Gap,Spring,XL,Gray,-0.964,24.4,-0.991,2025-06-15,42,2.8,False,6,2,Maintain,16.889999999999997,6,5
+Dresses,Uniqlo,Spring,XL,Gray,0.794,3.0,0.969,2025-04-04,34,4.1,False,4,2,High Stock,78.75200000000001,1,5
+Accessories,Mango,Summer,N/A,Brown,-1.088,0.0,-0.888,2025-08-06,43,3.0,False,8,3,Maintain,24.624,3,2
+Outerwear,Forever21,Summer,XL,Beige,0.522,0.0,0.771,2025-08-06,33,5.0,False,8,3,High Stock,74.478,7,0
+Tops,Uniqlo,Winter,L,White,-0.218,0.0,0.009,2025-08-06,42,4.3,False,8,3,High Stock,51.564,1,1
+Shoes,Zara,Spring,XL,Pink,0.632,0.0,0.886,2025-04-25,36,3.3,False,4,2,Maintain,77.91,0,3
+Outerwear,Forever21,Winter,L,Gray,0.919,0.0,1.181,2025-08-06,0,4.5,False,8,3,High Stock,86.78399999999999,7,0
+Outerwear,Mango,Fall,S,Green,1.686,0.0,1.972,2025-08-06,49,4.0,False,8,3,Maintain,110.544,3,0
+Bottoms,Uniqlo,Spring,L,Red,-1.111,0.0,-0.912,2025-04-18,24,2.4,False,4,2,Maintain,23.904000000000003,1,4
+Bottoms,Banana Republic,Winter,XL,White,-0.102,0.0,0.128,2025-08-06,29,3.0,False,8,3,Maintain,55.152,2,4
+Outerwear,Zara,Spring,S,Brown,1.798,14.9,1.522,2025-07-24,35,4.1,False,7,3,High Stock,85.708,0,0
+Accessories,Forever21,Winter,N/A,Green,-1.385,0.0,-1.194,2025-08-06,38,3.2,True,8,3,Low Stock,15.419999999999998,7,2
+Tops,Forever21,Spring,M,Red,-0.931,0.0,-0.726,2025-06-28,47,3.0,False,6,2,Maintain,29.471999999999998,7,1
+Dresses,Banana Republic,Winter,XXL,Navy,-0.613,40.3,-0.926,2025-08-06,27,1.2,False,8,3,Low Stock,12.913999999999998,2,5
+Shoes,Mango,Winter,S,Red,-0.612,50.7,-1.061,2025-08-06,23,1.1,False,8,3,Low Stock,6.106000000000002,3,3
+Bottoms,Uniqlo,Winter,XS,Green,0.057,0.0,0.292,2025-08-06,48,4.2,False,8,3,High Stock,60.083999999999996,1,4
+Accessories,Banana Republic,Winter,N/A,Green,-1.14,0.0,-0.942,2025-08-06,14,1.4,False,8,3,Low Stock,23.004,2,2
+Tops,Gap,Spring,XS,Brown,-0.618,19.0,-0.652,2024-08-29,48,3.0,False,8,3,Maintain,26.761999999999997,6,1
+Outerwear,H&M,Summer,XS,Brown,2.621,56.8,0.298,2025-08-06,23,2.9,True,8,3,Low Stock,7.439999999999998,4,0
+Accessories,Mango,Fall,N/A,Beige,-0.595,0.0,-0.38,2025-08-06,38,1.4,False,8,3,Low Stock,39.888000000000005,3,2
+Accessories,Gap,Summer,N/A,Brown,-1.12,29.8,-1.155,2025-08-06,13,4.7,False,8,3,High Stock,11.893999999999998,6,2
+Accessories,Forever21,Fall,N/A,Navy,-0.748,0.0,-0.538,2025-08-06,38,1.5,False,8,3,Low Stock,35.141999999999996,7,2
+Outerwear,Forever21,Summer,XL,Red,2.476,0.0,2.786,2025-08-06,50,1.9,True,8,3,Low Stock,135.00599999999997,7,0
+Accessories,Forever21,Winter,N/A,Blue,-1.508,0.0,-1.321,2025-08-06,19,3.0,False,8,3,Maintain,11.604,7,2
+Shoes,Mango,Winter,L,Black,0.502,0.0,0.752,2025-08-06,15,1.8,True,8,3,Low Stock,73.884,3,3
+Outerwear,Banana Republic,Summer,XS,Green,0.157,0.0,0.395,2025-08-06,1,3.0,False,8,3,Maintain,63.17999999999999,2,0
+Shoes,Uniqlo,Fall,Unknown,Purple,0.724,11.6,0.669,2025-08-06,47,3.9,False,8,3,Maintain,65.14999999999999,1,3
+Shoes,H&M,Spring,XXL,Brown,0.413,55.0,-0.642,2025-04-25,2,4.9,False,4,2,High Stock,5.927999999999997,4,3
+Tops,Forever21,Spring,L,Beige,-0.881,0.0,-0.675,2025-02-14,50,3.0,False,2,1,Maintain,31.031999999999996,7,1
+Bottoms,Banana Republic,Summer,XL,Brown,-0.181,0.0,0.047,2025-08-06,29,1.3,False,8,3,Low Stock,52.704,2,4
+Dresses,Zara,Winter,XL,Green,1.504,0.0,1.784,2025-08-06,43,4.6,False,8,3,High Stock,104.91600000000001,0,5
+Tops,Banana Republic,Fall,XL,Black,0.026,18.9,-0.112,2025-08-06,37,4.1,True,8,3,Low Stock,40.492000000000004,2,1
+Outerwear,H&M,Spring,Unknown,White,1.054,0.0,1.32,2025-07-11,41,3.5,False,7,3,Maintain,90.97200000000001,4,0
+Dresses,Mango,Spring,S,White,0.941,0.0,1.204,2024-09-27,13,4.0,False,9,3,Maintain,87.48,3,5
+Outerwear,Mango,Spring,L,Navy,2.282,29.0,1.341,2024-09-06,32,2.8,True,9,3,Low Stock,66.64399999999998,3,0
+Accessories,Uniqlo,Summer,N/A,Pink,-0.626,35.3,-0.869,2025-08-06,12,4.2,True,8,3,Low Stock,16.021999999999995,1,2
+Accessories,Uniqlo,Spring,N/A,Green,-0.568,0.0,-0.351,2024-12-31,1,1.3,False,12,4,Low Stock,40.74,1,2
+Shoes,H&M,Winter,S,Pink,-0.178,0.0,0.05,2025-08-06,2,1.9,False,8,3,Low Stock,52.8,4,3
+Shoes,Banana Republic,Winter,XXL,White,-0.614,0.0,-0.4,2025-08-06,7,4.6,False,8,3,High Stock,39.288,2,3
+Bottoms,Uniqlo,Fall,L,Green,-0.676,19.2,-0.702,2025-08-06,9,2.5,False,8,3,Maintain,25.42,1,4
+Shoes,Gap,Fall,XS,Green,0.535,33.1,-0.04,2025-08-06,45,2.4,False,8,3,Maintain,33.57599999999999,6,3
+Dresses,Zara,Spring,M,Navy,0.709,0.0,0.965,2024-11-25,12,1.7,False,11,4,Low Stock,80.292,0,5
+Shoes,Forever21,Summer,XXL,Purple,-0.101,0.0,0.129,2025-08-06,48,3.9,False,8,3,Maintain,55.188,7,3
+Tops,Ann Taylor,Spring,Unknown,Beige,-0.882,33.4,-1.02,2024-08-07,36,3.4,False,8,3,Maintain,13.753999999999998,5,1
+Outerwear,Mango,Summer,S,Black,2.729,0.0,3.047,2025-08-06,49,3.0,False,8,3,Maintain,142.86599999999999,3,0
+Tops,Ann Taylor,Fall,Unknown,Red,-1.191,0.0,-0.994,2025-08-06,33,3.0,True,8,3,Low Stock,21.444000000000003,5,1
+Bottoms,Zara,Spring,XS,Blue,0.155,0.0,0.394,2024-11-02,41,4.9,False,11,4,High Stock,63.12599999999999,0,4
+Dresses,Ann Taylor,Fall,M,Black,0.696,0.0,0.951,2025-08-06,35,1.9,False,8,3,Low Stock,79.872,5,5
+Accessories,Mango,Fall,N/A,Purple,-1.206,5.2,-1.046,2025-08-06,18,3.0,False,8,3,Maintain,19.144,3,2
+Accessories,Zara,Winter,N/A,Brown,-1.104,0.0,-0.905,2025-08-06,27,4.7,False,8,3,High Stock,24.108,0,2
+Dresses,Ann Taylor,Fall,XXL,Navy,-0.654,0.0,-0.44,2025-08-06,36,1.2,False,8,3,Low Stock,38.076,5,5
+Tops,Mango,Spring,XL,Gray,-0.922,0.8,-0.724,2024-11-17,22,2.3,False,11,4,Maintain,29.372,3,1
+Bottoms,Forever21,Fall,XXL,Pink,-1.387,54.5,-1.475,2025-08-06,34,2.4,False,8,3,Maintain,1.4080000000000013,7,4
+Accessories,Ann Taylor,Spring,N/A,Black,-0.695,45.4,-1.039,2025-02-03,46,3.0,False,2,1,Maintain,8.954,5,2
+Dresses,H&M,Spring,XL,Navy,0.17,0.0,0.409,2024-10-02,32,2.5,True,10,4,Low Stock,63.588,4,5
+Tops,Uniqlo,Summer,XXL,Beige,-1.223,0.0,-1.027,2025-08-06,39,4.5,False,8,3,High Stock,20.436,1,1
+Bottoms,Banana Republic,Spring,L,Red,-0.14,0.0,0.09,2025-02-28,26,4.1,False,2,1,High Stock,53.99399999999999,2,4
+Shoes,Gap,Summer,XXL,Blue,1.11,58.5,-0.427,2025-08-06,19,3.2,False,8,3,Maintain,2.317999999999998,6,3
+Shoes,Mango,Fall,XXL,Black,1.292,5.9,1.372,2025-08-06,39,2.6,False,8,3,Maintain,88.658,3,3
+Outerwear,H&M,Spring,XXL,Beige,2.919,4.3,3.03,2024-12-25,25,4.6,False,12,4,High Stock,138.07999999999998,4,0
+Bottoms,H&M,Winter,L,Purple,-0.61,9.1,-0.514,2025-08-06,10,2.8,True,8,3,Low Stock,33.452,4,4
+Outerwear,Forever21,Fall,S,Gray,2.959,0.0,3.284,2025-08-06,46,3.6,False,8,3,Maintain,149.988,7,0
+Bottoms,H&M,Fall,XL,Blue,-0.646,0.0,-0.432,2025-08-06,41,3.0,False,8,3,Maintain,38.31,4,4
+Outerwear,Uniqlo,Summer,XL,Pink,1.972,0.0,2.267,2025-08-06,8,4.4,False,8,3,High Stock,119.40599999999999,1,0
+Tops,Gap,Summer,S,Pink,-0.125,0.0,0.104,2025-08-06,14,1.1,False,8,3,Low Stock,54.438,6,1
+Shoes,Mango,Fall,XS,Beige,0.208,52.9,-0.692,2025-08-06,2,4.9,False,8,3,High Stock,7.666000000000004,3,3
+Dresses,Banana Republic,Spring,XS,Black,1.28,0.0,1.553,2025-04-23,24,2.5,False,4,2,Maintain,97.962,2,5
+Tops,Forever21,Winter,XXL,Brown,-0.241,0.0,-0.015,2025-08-06,7,2.5,False,8,3,Maintain,50.85,7,1
+Shoes,Ann Taylor,Summer,L,Gray,-0.305,58.8,-1.037,2025-08-06,37,4.6,False,8,3,High Stock,0.9760000000000062,5,3
+Bottoms,Forever21,Fall,M,White,0.298,19.8,0.096,2025-08-06,2,1.0,False,8,3,Low Stock,45.27,7,4
+Shoes,Ann Taylor,Summer,XL,Red,-0.675,53.5,-1.128,2025-08-06,1,4.1,False,8,3,High Stock,4.049999999999997,5,3
+Accessories,Forever21,Winter,N/A,White,-0.988,1.1,-0.796,2025-08-06,30,1.9,False,8,3,Low Stock,27.191999999999997,7,2
+Tops,Banana Republic,Summer,S,Black,-0.027,39.4,-0.548,2025-08-06,6,3.0,True,8,3,Low Stock,19.742000000000004,2,1
+Shoes,Banana Republic,Summer,XS,Purple,0.868,12.3,0.779,2025-08-06,39,3.3,False,8,3,Maintain,67.72999999999999,2,3
+Outerwear,Banana Republic,Winter,XXL,Green,1.624,20.2,1.178,2025-08-06,17,3.0,True,8,3,Low Stock,72.054,2,0
+Dresses,Banana Republic,Winter,XXL,Blue,0.711,5.7,0.814,2025-08-06,17,3.4,True,8,3,Low Stock,72.70400000000001,2,5
+Accessories,Gap,Spring,N/A,White,-0.912,29.2,-0.998,2025-02-04,33,4.4,False,2,1,High Stock,15.443999999999999,6,2
+Outerwear,Banana Republic,Winter,XS,White,2.427,18.7,1.905,2025-08-06,47,3.0,False,8,3,Maintain,91.88999999999999,2,0
+Outerwear,Uniqlo,Fall,L,Brown,2.721,0.0,3.038,2025-08-06,3,3.4,False,8,3,Maintain,142.59,1,0
+Bottoms,Ann Taylor,Spring,M,White,-0.031,0.0,0.202,2025-06-10,47,4.7,True,6,2,Low Stock,57.366,5,4
+Shoes,H&M,Fall,Unknown,White,-0.608,0.0,-0.393,2025-08-06,46,3.2,False,8,3,Maintain,39.48,4,3
+Shoes,Zara,Summer,L,Green,0.494,0.0,0.743,2025-08-06,9,3.0,False,8,3,Maintain,73.62,0,3
+Dresses,Ann Taylor,Summer,S,Green,0.976,0.0,1.24,2025-08-06,10,4.3,False,8,3,High Stock,88.548,5,5
+Outerwear,Forever21,Spring,L,Purple,2.474,18.9,1.935,2024-09-19,50,3.0,False,9,3,Maintain,92.436,7,0
+Tops,Banana Republic,Summer,XL,Purple,-0.166,0.0,0.063,2025-08-06,33,3.0,False,8,3,Maintain,53.184,2,1
+Dresses,Forever21,Fall,XL,Green,0.364,0.0,0.609,2025-08-06,42,3.7,False,8,3,Maintain,69.588,7,5
+Tops,Mango,Fall,L,Green,0.257,6.6,0.353,2025-08-06,6,3.0,False,8,3,Maintain,58.97999999999999,3,1
+Dresses,Banana Republic,Spring,XS,Brown,0.746,3.0,0.921,2024-08-29,16,3.0,False,8,3,Maintain,77.344,2,5
+Dresses,Gap,Summer,L,Black,-0.684,0.0,-0.471,2025-08-06,29,4.4,False,8,3,High Stock,37.14,6,5
+Accessories,Banana Republic,Winter,N/A,Green,-0.796,8.1,-0.677,2025-08-06,12,3.8,False,8,3,Maintain,29.127999999999997,2,2
+Bottoms,Uniqlo,Summer,XS,White,-0.013,0.0,0.221,2025-08-06,17,4.4,False,8,3,High Stock,57.92999999999999,1,4
+Outerwear,H&M,Spring,XXL,White,0.239,29.3,-0.161,2024-11-02,35,1.3,False,11,4,Low Stock,33.62799999999999,4,0
+Shoes,Gap,Fall,XL,Green,0.04,0.0,0.275,2025-08-06,33,3.0,True,8,3,Low Stock,59.556,6,3
+Outerwear,Banana Republic,Fall,XL,Blue,1.523,23.0,0.996,2025-08-06,1,3.7,False,8,3,Maintain,65.05199999999999,2,0
+Shoes,Zara,Fall,L,Red,0.347,0.0,0.591,2025-08-06,10,2.5,False,8,3,Maintain,69.054,0,3
+Bottoms,Ann Taylor,Winter,S,Beige,-0.42,58.1,-1.075,2025-08-06,33,4.0,False,8,3,Maintain,1.4379999999999953,5,4
+Tops,Ann Taylor,Summer,L,Green,-0.495,49.7,-0.988,2025-08-06,33,3.0,True,8,3,Low Stock,7.375999999999998,5,1
+Shoes,Banana Republic,Summer,XS,Blue,-0.646,52.8,-1.105,2025-08-06,23,3.0,False,8,3,Maintain,4.596,2,3
+Dresses,Uniqlo,Fall,S,Pink,1.524,0.0,1.804,2025-08-06,0,4.6,False,8,3,High Stock,105.516,1,5
+Accessories,H&M,Fall,N/A,Pink,-1.54,0.0,-1.353,2025-08-06,9,1.2,False,8,3,Low Stock,10.631999999999998,4,2
+Bottoms,Gap,Spring,L,Beige,-0.427,0.0,-0.207,2025-01-27,41,3.0,True,1,1,Low Stock,45.084,6,4
+Bottoms,Mango,Fall,M,Brown,-1.249,50.5,-1.384,2025-08-06,46,1.3,False,8,3,Low Stock,3.1099999999999994,3,4
+Bottoms,Banana Republic,Winter,XS,Black,-0.966,25.7,-1.005,2025-08-06,2,3.2,False,8,3,Maintain,16.231999999999996,2,4
+Shoes,Ann Taylor,Spring,XS,Gray,0.36,0.0,0.604,2024-11-24,43,3.0,False,11,4,Maintain,69.46199999999999,5,3
+Bottoms,Forever21,Spring,XXL,Red,-0.37,48.7,-0.907,2025-05-06,0,3.0,False,5,2,Maintain,8.830000000000002,7,4
+Dresses,Ann Taylor,Spring,XXL,Pink,0.696,20.3,0.412,2025-06-03,9,3.2,False,6,2,Maintain,52.86,5,5
+Tops,Forever21,Fall,XL,Brown,-0.649,17.8,-0.661,2025-08-06,45,2.4,False,8,3,Maintain,26.892000000000003,7,1
+Shoes,Banana Republic,Winter,S,Navy,0.603,0.0,0.856,2025-08-06,20,2.5,False,8,3,Maintain,77.00999999999999,2,3
+Outerwear,H&M,Fall,XXL,Pink,2.929,10.9,2.712,2025-08-06,37,3.0,False,8,3,Maintain,121.96600000000001,4,0
+Shoes,Mango,Fall,S,Green,-0.058,30.8,-0.406,2025-08-06,31,1.4,False,8,3,Low Stock,27.504000000000005,3,3
+Accessories,Mango,Fall,N/A,Pink,-0.881,0.0,-0.675,2025-08-06,35,3.7,True,8,3,Low Stock,31.031999999999996,3,2
+Accessories,Banana Republic,Summer,N/A,Gray,-0.567,0.0,-0.351,2025-08-06,22,4.6,False,8,3,High Stock,40.758,2,2
+Outerwear,Zara,Fall,M,Green,2.398,0.0,2.705,2025-08-06,42,3.6,False,8,3,Maintain,132.594,0,0
+Outerwear,Uniqlo,Winter,XXL,Gray,0.724,33.6,0.077,2025-08-06,42,2.9,False,8,3,Maintain,35.534,1,0
+Outerwear,Banana Republic,Spring,L,White,-0.331,0.0,-0.108,2025-04-16,34,1.8,False,4,2,Low Stock,48.065999999999995,2,0
+Outerwear,Mango,Summer,XS,Green,1.733,30.9,0.868,2025-08-06,7,1.0,False,8,3,Low Stock,54.31599999999999,3,0
+Accessories,Zara,Summer,N/A,White,-1.216,0.0,-1.02,2025-08-06,43,3.0,True,8,3,Low Stock,20.64,0,2
+Bottoms,Banana Republic,Spring,S,Brown,-0.016,0.0,0.217,2024-12-12,34,3.7,False,12,4,Maintain,57.809999999999995,2,4
+Accessories,H&M,Winter,N/A,Green,-0.459,32.2,-0.712,2025-08-06,17,3.0,True,8,3,Low Stock,20.436,4,2
+Bottoms,Mango,Spring,XL,Red,-0.454,22.8,-0.57,2024-08-18,0,3.0,False,8,3,Maintain,27.442000000000004,3,4
+Tops,Ann Taylor,Winter,XL,Black,0.359,55.0,-0.668,2025-08-06,6,1.6,False,8,3,Low Stock,5.786000000000001,5,1
+Shoes,Zara,Winter,L,Black,0.425,7.8,0.486,2025-08-06,20,3.1,False,8,3,Maintain,62.19399999999999,0,3
+Accessories,Forever21,Winter,N/A,Navy,-0.531,0.0,-0.314,2025-08-06,30,3.0,True,8,3,Low Stock,41.861999999999995,7,2
+Shoes,Mango,Spring,XXL,Green,-0.094,23.6,-0.298,2024-11-28,32,2.2,False,11,4,Maintain,33.620000000000005,3,3
+Dresses,Mango,Summer,XL,Blue,-0.828,6.6,-0.691,2025-08-06,17,1.7,False,8,3,Low Stock,29.085999999999995,3,5
+Bottoms,Banana Republic,Summer,M,Beige,-1.146,0.0,-0.948,2025-08-06,44,4.7,False,8,3,High Stock,22.812,2,4
+Outerwear,Banana Republic,Fall,XL,Black,0.592,0.0,0.844,2025-08-06,32,3.6,False,8,3,Maintain,76.65,2,0
+Bottoms,Zara,Fall,XXL,Gray,0.015,11.1,0.032,2025-08-06,25,2.4,False,8,3,Maintain,47.89999999999999,0,4
+Accessories,Ann Taylor,Winter,N/A,Red,-0.533,0.0,-0.316,2025-08-06,35,3.0,False,8,3,Maintain,41.81399999999999,5,2
+Accessories,Ann Taylor,Summer,N/A,Gray,-0.532,18.0,-0.566,2025-08-06,34,4.2,True,8,3,Low Stock,29.275999999999996,5,2
+Bottoms,Forever21,Winter,XS,Red,-1.247,23.0,-1.202,2025-08-06,24,1.1,False,8,3,Low Stock,12.148000000000001,7,4
+Outerwear,Uniqlo,Fall,XXL,Pink,-0.179,13.3,-0.185,2025-08-06,4,4.5,False,8,3,High Stock,41.07,1,0
+Accessories,H&M,Spring,N/A,Green,-1.435,0.0,-1.246,2024-09-17,2,1.4,False,9,3,Low Stock,13.866,4,2
+Outerwear,H&M,Winter,XXL,Black,1.859,34.6,0.815,2025-08-06,26,3.0,False,8,3,Maintain,49.062,4,0
+Accessories,Mango,Spring,N/A,Black,-0.843,0.0,-0.636,2024-12-19,40,2.8,False,12,4,Maintain,32.196,3,2
+Bottoms,Zara,Fall,XXL,Red,0.23,0.0,0.47,2025-08-06,13,3.7,False,8,3,Maintain,65.42999999999999,0,4
+Shoes,Uniqlo,Fall,XL,Gray,0.151,25.8,-0.151,2025-08-06,17,3.2,False,8,3,Maintain,35.916,1,3
+Accessories,Ann Taylor,Winter,N/A,Green,-0.802,27.3,-0.897,2025-08-06,39,4.9,False,8,3,High Stock,18.244,5,2
+Accessories,Zara,Spring,N/A,Brown,-0.678,1.8,-0.487,2024-11-03,4,2.3,False,11,4,Maintain,36.206,0,2
+Tops,Ann Taylor,Spring,XS,Beige,-0.778,27.5,-0.881,2024-12-25,43,1.8,False,12,4,Low Stock,18.545999999999996,5,1
+Shoes,Uniqlo,Summer,S,Black,1.483,19.2,1.096,2025-08-06,38,3.0,False,8,3,Maintain,70.88999999999999,1,3
+Bottoms,Ann Taylor,Summer,XL,Pink,0.161,0.0,0.4,2025-08-06,20,4.9,True,8,3,Low Stock,63.312,5,4
+Shoes,Mango,Fall,XS,Beige,0.827,0.0,1.086,2025-08-06,9,3.7,False,8,3,Maintain,83.946,3,3
+Dresses,Ann Taylor,Spring,S,Gray,0.751,0.0,1.008,2024-09-10,30,1.1,False,9,3,Low Stock,81.582,5,5
+Accessories,Uniqlo,Fall,N/A,Brown,-0.367,47.3,-0.884,2025-08-06,20,4.0,False,8,3,Maintain,9.936,1,2
+Outerwear,Gap,Summer,S,Red,1.35,0.0,1.625,2025-08-06,10,1.6,False,8,3,Low Stock,100.128,6,0
+Accessories,Forever21,Fall,N/A,Black,-1.293,0.0,-1.099,2025-08-06,42,3.0,False,8,3,Maintain,18.264,7,2
+Shoes,Banana Republic,Winter,XL,Red,0.139,0.0,0.377,2025-08-06,41,3.4,False,8,3,Maintain,62.64,2,3
+Bottoms,H&M,Summer,L,Navy,-0.674,37.1,-0.923,2025-08-06,6,4.1,False,8,3,High Stock,14.296,4,4
+Bottoms,Gap,Summer,XS,Blue,0.085,26.9,-0.224,2025-08-06,38,3.4,True,8,3,Low Stock,33.635999999999996,6,4
+Outerwear,Zara,Winter,S,Gray,0.638,47.5,-0.343,2025-08-06,21,3.0,False,8,3,Maintain,16.266,0,0
+Tops,Mango,Fall,L,Pink,0.224,0.0,0.464,2025-08-06,38,3.8,False,8,3,Maintain,65.25,3,1
+Outerwear,Zara,Fall,XL,Beige,1.289,30.5,0.566,2025-08-06,10,3.0,False,8,3,Maintain,48.31199999999998,0,0
+Tops,Ann Taylor,Summer,XXL,Beige,-1.106,27.7,-1.128,2025-08-06,29,1.7,True,8,3,Low Stock,12.962000000000003,5,1
+Bottoms,Zara,Winter,S,Black,0.358,17.8,0.192,2025-08-06,32,1.7,False,8,3,Low Stock,48.83,0,4
+Shoes,Zara,Winter,Unknown,Gray,0.289,0.0,0.531,2025-08-06,5,2.0,True,8,3,Low Stock,67.25999999999999,0,3
+Dresses,Zara,Spring,XS,Blue,0.947,0.0,1.209,2025-07-09,33,3.7,False,7,3,Maintain,87.642,0,5
+Dresses,H&M,Spring,S,Navy,0.518,30.0,0.025,2025-07-31,39,1.9,False,7,3,Low Stock,37.178,4,5
+Shoes,Mango,Fall,XXL,Pink,1.812,20.0,1.34,2025-08-06,47,3.0,False,8,3,Maintain,76.3,3,3
+Dresses,Banana Republic,Winter,XL,Green,-0.808,0.0,-0.6,2025-08-06,18,3.0,False,8,3,Maintain,33.282,2,5
+Outerwear,Ann Taylor,Summer,XL,Red,1.89,0.0,2.182,2025-08-06,31,3.0,False,8,3,Maintain,116.868,5,0
+Accessories,Zara,Summer,N/A,Brown,-1.038,33.3,-1.126,2025-08-06,47,2.5,False,8,3,Maintain,11.646,0,2
+Tops,Banana Republic,Fall,M,Red,-0.878,16.8,-0.845,2025-08-06,30,1.5,False,8,3,Low Stock,22.407999999999994,2,1
+Accessories,Zara,Summer,N/A,Purple,-1.364,0.9,-1.177,2025-08-06,25,1.2,True,8,3,Low Stock,15.839999999999998,0,2
+Shoes,Ann Taylor,Fall,XXL,Green,0.673,27.3,0.208,2025-08-06,6,2.8,True,8,3,Low Stock,43.144,5,3
+Shoes,Mango,Summer,XS,Green,1.511,0.0,1.792,2025-08-06,8,4.9,False,8,3,High Stock,105.13199999999999,3,3
+Accessories,Zara,Winter,N/A,Pink,-1.278,0.0,-1.084,2025-08-06,25,2.8,False,8,3,Maintain,18.738,0,2
+Outerwear,Gap,Spring,S,Green,1.271,0.0,1.544,2025-01-10,40,2.1,False,1,1,Maintain,97.68599999999999,6,0
+Accessories,Gap,Winter,N/A,Black,-0.74,0.0,-0.529,2025-08-06,50,2.7,False,8,3,Maintain,35.394,6,2
+Dresses,H&M,Fall,XS,Beige,-0.21,0.0,0.018,2025-08-06,40,2.7,False,8,3,Maintain,51.827999999999996,4,5
+Accessories,Zara,Winter,N/A,Gray,-0.711,0.0,-0.499,2025-08-06,30,2.5,False,8,3,Maintain,36.294,0,2
+Bottoms,Mango,Winter,M,White,-0.529,57.4,-1.113,2025-08-06,30,4.2,False,8,3,High Stock,1.8180000000000014,3,4
+Dresses,Mango,Fall,S,Pink,1.403,0.0,1.68,2025-08-06,5,1.6,False,8,3,Low Stock,101.78399999999999,3,5
+Outerwear,Zara,Summer,S,Gray,2.532,0.0,2.844,2025-08-06,34,3.0,False,8,3,Maintain,136.75199999999998,0,0
+Dresses,Ann Taylor,Winter,L,Pink,0.114,0.0,0.352,2025-08-06,17,3.0,False,8,3,Maintain,61.866,5,5
+Bottoms,Gap,Fall,XL,Beige,-0.384,35.2,-0.706,2025-08-06,14,2.3,False,8,3,Maintain,19.191999999999997,6,4
+Tops,H&M,Summer,XXL,Red,-0.653,13.6,-0.612,2025-08-06,19,3.0,False,8,3,Maintain,29.465999999999998,4,1
+Outerwear,Forever21,Fall,S,Gray,0.122,0.0,0.359,2025-08-06,12,1.8,False,8,3,Low Stock,62.093999999999994,7,0
+Dresses,H&M,Summer,L,White,0.501,53.0,-0.552,2025-08-06,38,2.5,False,8,3,Maintain,8.618000000000002,4,5
+Tops,H&M,Spring,XL,Black,-0.688,46.4,-1.047,2025-07-15,50,2.7,False,7,3,Maintain,8.392,4,1
+Accessories,Zara,Fall,N/A,Gray,-0.446,0.0,-0.226,2025-08-06,24,1.7,False,8,3,Low Stock,44.501999999999995,0,2
+Dresses,Ann Taylor,Winter,XS,Green,1.144,0.0,1.413,2025-08-06,15,5.0,False,8,3,High Stock,93.744,5,5
+Dresses,H&M,Fall,L,Pink,-0.277,42.2,-0.75,2025-08-06,4,2.1,False,8,3,Maintain,14.759999999999998,4,5
+Shoes,Banana Republic,Spring,XXL,Red,-0.243,0.0,-0.017,2025-07-26,49,3.6,False,7,3,Maintain,50.79,2,3
+Shoes,Uniqlo,Fall,L,Pink,0.562,0.0,0.813,2025-08-06,48,2.1,False,8,3,Maintain,75.738,1,3
+Shoes,Banana Republic,Fall,XXL,Navy,1.876,0.0,2.168,2025-08-06,7,1.3,False,8,3,Low Stock,116.43,2,3
+Tops,Banana Republic,Winter,XL,Black,0.151,0.0,0.39,2025-08-06,10,3.0,False,8,3,Maintain,63.01199999999999,2,1
+Outerwear,Banana Republic,Spring,XXL,Black,-0.096,0.0,0.135,2025-05-28,22,3.3,True,5,2,Low Stock,55.35,2,0
+Accessories,Ann Taylor,Winter,N/A,Green,-1.067,0.0,-0.866,2025-08-06,26,4.0,False,8,3,Maintain,25.266,5,2
+Outerwear,Forever21,Fall,L,Pink,0.944,0.0,1.207,2025-08-06,19,1.5,False,8,3,Low Stock,87.55799999999999,7,0
+Bottoms,Forever21,Fall,S,Brown,-0.968,0.0,-0.764,2025-08-06,19,1.9,False,8,3,Low Stock,28.331999999999997,7,4
+Dresses,Forever21,Winter,XS,Pink,0.353,0.0,0.597,2025-08-06,7,4.5,False,8,3,High Stock,69.24000000000001,7,5
+Bottoms,H&M,Spring,L,White,-0.048,38.9,-0.552,2024-08-16,39,4.7,False,8,3,High Stock,19.985999999999997,4,4
+Shoes,Uniqlo,Summer,L,Green,0.178,0.0,0.417,2025-08-06,30,1.1,False,8,3,Low Stock,63.822,1,3
+Outerwear,Gap,Fall,L,Purple,1.573,0.0,1.855,2025-08-06,29,4.2,False,8,3,High Stock,107.03399999999999,6,0
+Shoes,Uniqlo,Winter,XL,Blue,-0.17,0.0,0.058,2025-08-06,44,3.4,True,8,3,Low Stock,53.052,1,3
+Tops,H&M,Summer,XXL,Red,-0.747,0.0,-0.536,2025-08-06,4,1.1,False,8,3,Low Stock,35.19,4,1
+Outerwear,Uniqlo,Summer,S,Brown,1.615,0.0,1.898,2025-08-06,28,3.0,False,8,3,Maintain,108.342,1,0
+Dresses,Ann Taylor,Winter,L,Black,1.182,0.0,1.452,2025-08-06,41,3.1,False,8,3,Maintain,94.944,5,5
+Shoes,Ann Taylor,Spring,XS,Purple,1.698,0.0,1.984,2024-09-28,32,1.8,False,9,3,Low Stock,110.922,5,3
+Accessories,H&M,Fall,N/A,Gray,-0.831,19.2,-0.831,2025-08-06,19,1.8,False,8,3,Low Stock,22.156,4,2
+Outerwear,Uniqlo,Spring,S,Brown,0.809,10.2,0.785,2025-07-22,36,1.4,False,7,3,Low Stock,69.208,1,0
+Outerwear,Zara,Spring,L,Red,2.932,0.0,3.256,2025-07-04,27,1.5,False,7,3,Low Stock,149.148,0,0
+Dresses,Zara,Winter,Unknown,Blue,-0.145,0.0,0.084,2025-08-06,50,4.3,False,8,3,High Stock,53.814,0,5
+Accessories,Banana Republic,Summer,N/A,Black,-1.167,0.0,-0.97,2025-08-06,18,3.0,False,8,3,Maintain,22.158,2,2
+Accessories,Zara,Summer,N/A,Purple,-0.403,53.9,-1.004,2025-08-06,15,1.5,False,8,3,Low Stock,4.663999999999998,0,2
+Tops,Zara,Summer,XS,Brown,-0.231,0.0,-0.005,2025-08-06,11,3.0,False,8,3,Maintain,51.15,0,1
+Dresses,Ann Taylor,Winter,XXL,Beige,-0.157,0.0,0.072,2025-08-06,8,2.2,False,8,3,Maintain,53.459999999999994,5,5
+Shoes,Mango,Summer,M,Black,0.797,31.7,0.18,2025-08-06,3,2.5,False,8,3,Maintain,39.14999999999999,3,3
+Bottoms,Banana Republic,Summer,XS,Black,-1.161,0.0,-0.963,2025-08-06,27,2.8,True,8,3,Low Stock,22.362000000000002,2,4
+Dresses,Mango,Summer,XXL,Beige,-0.182,0.0,0.046,2025-08-06,24,4.2,False,8,3,High Stock,52.69199999999999,3,5
+Tops,Zara,Fall,S,White,-0.219,0.0,0.008,2025-08-06,12,3.0,False,8,3,Maintain,51.552,0,1
+Dresses,Uniqlo,Summer,XL,Pink,0.751,0.0,1.008,2025-08-06,34,3.0,False,8,3,Maintain,81.594,1,5
+Dresses,Zara,Fall,M,Beige,0.467,0.0,0.715,2025-08-06,33,2.3,False,8,3,Maintain,72.78,0,5
+Bottoms,Mango,Fall,Unknown,Gray,-0.844,55.9,-1.235,2025-08-06,10,2.5,False,8,3,Maintain,2.203999999999997,3,4
+Accessories,Gap,Spring,N/A,Purple,-0.958,0.0,-0.754,2024-12-25,17,2.9,False,12,4,Maintain,28.644000000000002,6,2
+Bottoms,Mango,Spring,L,Pink,-0.402,0.0,-0.181,2025-06-10,16,1.0,True,6,2,Low Stock,45.870000000000005,3,4
+Dresses,Forever21,Winter,XXL,Brown,-0.085,0.0,0.146,2025-08-06,25,2.5,False,8,3,Maintain,55.68,7,5
+Bottoms,Ann Taylor,Winter,XXL,White,-0.813,33.6,-0.975,2025-08-06,9,3.0,False,8,3,Maintain,14.578000000000003,5,4
+Outerwear,Ann Taylor,Summer,M,Pink,-0.301,0.0,-0.076,2025-08-06,34,3.1,True,8,3,Low Stock,49.002,5,0
+Bottoms,Mango,Spring,Unknown,Gray,-0.377,38.8,-0.757,2025-07-11,23,4.3,False,7,3,High Stock,16.483999999999998,3,4
+Outerwear,H&M,Summer,M,Black,0.268,1.4,0.479,2025-08-06,7,2.8,False,8,3,Maintain,65.08,4,0
+Tops,Uniqlo,Fall,M,Purple,-1.21,0.0,-1.014,2025-08-06,7,3.0,False,8,3,Maintain,20.832,1,1
+Tops,Gap,Spring,L,Black,0.299,0.0,0.542,2024-10-14,50,3.6,True,10,4,Low Stock,67.578,6,1
+Dresses,Forever21,Winter,XS,White,1.131,0.0,1.399,2025-08-06,48,3.8,False,8,3,Maintain,93.34199999999998,7,5
+Accessories,Gap,Summer,N/A,Brown,-0.927,59.9,-1.312,2025-08-06,47,3.0,False,8,3,Maintain,0.04800000000000182,6,2
+Tops,Uniqlo,Summer,XL,Gray,-0.979,6.6,-0.837,2025-08-06,35,1.3,True,8,3,Low Stock,24.922,1,1
+Tops,H&M,Fall,S,Green,-0.107,23.7,-0.311,2025-08-06,3,3.7,False,8,3,Maintain,33.272,4,1
+Shoes,Mango,Winter,XXL,Blue,1.342,2.6,1.531,2025-08-06,27,3.0,False,8,3,Maintain,95.564,3,3
+Accessories,Forever21,Fall,N/A,Navy,-1.18,0.0,-0.983,2025-08-06,47,2.8,False,8,3,Maintain,21.774,7,2
