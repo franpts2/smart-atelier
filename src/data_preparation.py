@@ -51,6 +51,10 @@ price_cols = [c for c in ['original_price', 'current_price'] if c in df_cleaned.
 if price_cols:
     scaler = StandardScaler()
     df_cleaned[price_cols] = scaler.fit_transform(df_cleaned[price_cols])
+    
+    # round the price columns to 3 decimal places
+    df_cleaned[price_cols] = df_cleaned[price_cols].round(3)
+    
     print(f"Scaled columns: {price_cols}")
 
 # === export processed data ===
