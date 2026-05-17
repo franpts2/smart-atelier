@@ -37,6 +37,25 @@ conditions = [
 choices = ['High Stock', 'Low Stock']
 df['stocking_priority'] = np.select(conditions, choices, default='Maintain')
 
+# === calculate Net_Margin ===
+
+# Assuming theoretical cost is 40% of original price
+if 'original_price' in df.columns:
+    theoretical_cost = df['original_price'] * 0.40
+else:
+    theoretical_cost = df['current_price'] * 0.50 
+
+df['Net_Margin'] = df['current_price'] - theoretical_cost
+
+# === Encode Brands & Categories (no sklearn required) ===
+
+# Use pandas factorize to create integer codes without sklearn
+if 'brand' in df.columns:
+    df['brand_encoded'] = pd.factorize(df['brand'].astype(str))[0]
+
+if 'category' in df.columns:
+    df['category_encoded'] = pd.factorize(df['category'].astype(str))[0]
+
 # === final data preparation ===
 
 # remove product_id, return_reason
