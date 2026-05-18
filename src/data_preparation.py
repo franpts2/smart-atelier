@@ -1,11 +1,13 @@
 import pandas as pd
 import numpy as np
 import os
+import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
 # === load dataset ===
-raw_data_path = os.path.join("data", "raw", "fashion_boutique_dataset.csv")
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+raw_data_path = os.path.join(base_dir, "data", "raw", "fashion_boutique_dataset.csv")
 df = pd.read_csv(raw_data_path)
 
 # === process data ===
@@ -83,6 +85,12 @@ category_map = {
     cat: i for i, cat in enumerate(df_cleaned["category"].astype(str).unique())
 }
 
+# Save mappings for backend use
+artifacts_dir = os.path.join(base_dir, "models", "artifacts")
+os.makedirs(artifacts_dir, exist_ok=True)
+joblib.dump(brand_map, os.path.join(artifacts_dir, "brand_map.joblib"))
+joblib.dump(category_map, os.path.join(artifacts_dir, "category_map.joblib"))
+
 for data in [train_df, test_df]:
     if "brand" in data.columns:
         data["brand_encoded"] = data["brand"].astype(str).map(brand_map)
@@ -98,13 +106,16 @@ scaler = StandardScaler()
 train_df[scale_cols] = scaler.fit_transform(train_df[scale_cols])
 test_df[scale_cols] = scaler.transform(test_df[scale_cols])
 
+# Save scaler for backend use
+joblib.dump(scaler, os.path.join(artifacts_dir, "scaler.joblib"))
+
 # round the price columns to 3 decimal places
 train_df[scale_cols] = train_df[scale_cols].round(3)
 test_df[scale_cols] = test_df[scale_cols].round(3)
 
 
-train_path = os.path.join("data", "processed", "train.csv")
-test_path = os.path.join("data", "processed", "test.csv")
+train_path = os.path.join(base_dir, "data", "processed", "train.csv")
+test_path = os.path.join(base_dir, "data", "processed", "test.csv")
 
 train_df.to_csv(train_path, index=False)
 test_df.to_csv(test_path, index=False)
@@ -112,3 +123,4 @@ test_df.to_csv(test_path, index=False)
 print(
     f"Saved train/test split to {train_path} and {test_path} (test_size=0.2, random_state=42)"
 )
+print(f"Saved artifacts to {artifacts_dir}")
