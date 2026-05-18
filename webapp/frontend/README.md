@@ -1,1 +1,1 @@
-# Smart Atelier - Frontend
+# Smart Atelier Web App - Frontend
