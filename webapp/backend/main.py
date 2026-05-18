@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from contextlib import asynccontextmanager
 import pandas as pd
 import numpy as np
 import sys
@@ -13,17 +14,6 @@ import joblib
 root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(root_dir)
 
-app = FastAPI()
-
-# Enable CORS for the Svelte frontend
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # In production, specify the actual origin
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 # Global instances
 model = None
 scaler = None
@@ -31,8 +21,8 @@ brand_map = None
 category_map = None
 
 
-@app.on_event("startup")
-async def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     global model, scaler, brand_map, category_map
     artifacts_dir = os.path.join(root_dir, "models", "artifacts")
 
@@ -58,6 +48,19 @@ async def startup_event():
             scaler = joblib.load(os.path.join(artifacts_dir, "scaler.joblib"))
         except:
             pass
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
+
+# Enable CORS for the Svelte frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, specify the actual origin
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class PredictionRequest(BaseModel):
