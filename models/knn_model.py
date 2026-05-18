@@ -52,8 +52,9 @@ def run_knn_inventory(k=15):
     print(f"Overall Accuracy: {accuracy:.4f}\n")
     print("Classification Report:")
     print(classification_report(y_test, y_pred))
-    
+
     return knn
+
 
 if __name__ == "__main__":
     run_knn_inventory()
