@@ -1,7 +1,7 @@
 # Smart Atelier Web App - Backend
 Welcome! This is the backend for the Smart Atelier project
 
-## 🛠 What are we using?
+## What are we using?
 
 We use several modern Python libraries to make this work:
 
