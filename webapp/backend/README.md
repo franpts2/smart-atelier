@@ -1,5 +1,4 @@
-# Smart Atelier Web App - Backend Guide 🚀
-
+# Smart Atelier Web App - Backend
 Welcome! This is the backend for the Smart Atelier project
 
 ## 🛠 What are we using?
@@ -14,7 +13,7 @@ We use several modern Python libraries to make this work:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 -   `main.py`: The **entry point**. This is where we define our routes (URLs like `/predict`) and start the server.
 -   `schemas.py`: Where we define the **shape of the data**. It's like a contract between the frontend and the backend.
@@ -22,7 +21,7 @@ We use several modern Python libraries to make this work:
 
 ---
 
-## 🚀 How to run it?
+## How to run it?
 
 1.  **Install dependencies**:
     Make sure you have Python installed, then run:
@@ -43,7 +42,7 @@ We use several modern Python libraries to make this work:
 
 ---
 
-## 🧠 How does it work? (The Flow)
+## How does it work? (The Flow)
 
 1.  **Startup**: When you run `main.py`, the `lifespan` function runs. It tells the `MLService` in `services.py` to load the pre-trained model files (the `.joblib` files).
 2.  **Request**: When a user on the website clicks "Predict", the frontend sends a **POST request** to `http://localhost:8000/predict` with the product information in JSON format.
@@ -57,7 +56,7 @@ We use several modern Python libraries to make this work:
 
 ---
 <!-- TODO: remove this section? -->
-## 💡 Tips
+## Tips
 
 -   **Documentation**: FastAPI automatically generates interactive documentation for you! Go to `http://localhost:8000/docs` while the server is running to try out the API.
 
