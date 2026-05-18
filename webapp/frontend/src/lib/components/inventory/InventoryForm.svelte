@@ -1,5 +1,9 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/Button.svelte';
+	import Card from '$lib/components/ui/Card.svelte';
+	import FormField from '$lib/components/ui/FormField.svelte';
+	import Input from '$lib/components/ui/Input.svelte';
+	import Select from '$lib/components/ui/Select.svelte';
 	import type { InventoryItem } from '$lib/types/inventory';
 
 	interface Props {
@@ -37,70 +41,46 @@
 	}
 </script>
 
-<div class="bg-surface-0 p-8 rounded-lg border border-border shadow-sm">
-	<h2 class="text-xl mb-6">Item Details</h2>
-	
+<Card title="Item Details">
 	<div class="space-y-4">
-		<div class="flex flex-col gap-1">
-			<label for="category" class="text-sm font-semibold text-text-main">Category</label>
-			<select 
+		<FormField label="Category" id="category">
+			<Select 
 				id="category" 
 				bind:value={category}
-				class="p-2 rounded border border-border bg-surface-1 focus:ring-2 focus:ring-accent outline-none"
 				disabled={isLoadingMeta}
+				placeholder="Select Category"
 			>
-				<option value="">Select Category</option>
 				{#each categories as cat}
 					<option value={cat}>{cat}</option>
 				{/each}
-			</select>
-		</div>
+			</Select>
+		</FormField>
 
-		<div class="flex flex-col gap-1">
-			<label for="brand" class="text-sm font-semibold text-text-main">Brand</label>
-			<select 
+		<FormField label="Brand" id="brand">
+			<Select 
 				id="brand" 
 				bind:value={brand}
-				class="p-2 rounded border border-border bg-surface-1 focus:ring-2 focus:ring-accent outline-none"
 				disabled={isLoadingMeta}
+				placeholder="Select Brand"
 			>
-				<option value="">Select Brand</option>
 				{#each brands as b}
 					<option value={b}>{b}</option>
 				{/each}
-			</select>
-		</div>
+			</Select>
+		</FormField>
 
 		<div class="grid grid-cols-2 gap-4">
-			<div class="flex flex-col gap-1">
-				<label for="orig-price" class="text-sm font-semibold text-text-main">Original Price ($)</label>
-				<input 
-					id="orig-price" 
-					type="number" 
-					bind:value={originalPrice}
-					class="p-2 rounded border border-border bg-surface-1"
-				/>
-			</div>
-			<div class="flex flex-col gap-1">
-				<label for="curr-price" class="text-sm font-semibold text-text-main">Current Price ($)</label>
-				<input 
-					id="curr-price" 
-					type="number" 
-					bind:value={currentPrice}
-					class="p-2 rounded border border-border bg-surface-1"
-				/>
-			</div>
+			<FormField label="Original Price ($)" id="orig-price">
+				<Input id="orig-price" type="number" bind:value={originalPrice} />
+			</FormField>
+			<FormField label="Current Price ($)" id="curr-price">
+				<Input id="curr-price" type="number" bind:value={currentPrice} />
+			</FormField>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<label for="stock" class="text-sm font-semibold text-text-main">Current Stock Level</label>
-			<input 
-				id="stock" 
-				type="number" 
-				bind:value={stockQuantity}
-				class="p-2 rounded border border-border bg-surface-1"
-			/>
-		</div>
+		<FormField label="Current Stock Level" id="stock">
+			<Input id="stock" type="number" bind:value={stockQuantity} />
+		</FormField>
 
 		{#if error}
 			<p class="text-red-600 text-sm mt-2">{error}</p>
@@ -112,15 +92,4 @@
 			</Button>
 		</div>
 	</div>
-</div>
-
-<style>
-	select {
-		appearance: none;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-		background-repeat: no-repeat;
-		background-position: right 0.5rem center;
-		background-size: 1.5em;
-		padding-right: 2.5rem;
-	}
-</style>
+</Card>

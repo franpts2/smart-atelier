@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/components/ui/Card.svelte';
 	import type { PredictionResult } from '$lib/types/inventory';
 
 	interface Props {
@@ -19,9 +20,7 @@
 <div class="flex flex-col h-full">
 	{#if prediction}
 		{@const label = getPriorityLabel(prediction.priority)}
-		<div class="bg-surface-0 p-8 rounded-lg border border-border shadow-sm flex-1 animate-in fade-in slide-in-from-bottom-4 duration-500">
-			<h2 class="text-xl mb-6">AI Recommendation</h2>
-			
+		<Card title="AI Recommendation" class="flex-1 animate-in fade-in slide-in-from-bottom-4 duration-500">
 			<div class="flex flex-col items-center text-center space-y-6">
 				<div class="py-3 px-6 rounded-full border {label.class} text-lg font-bold">
 					{label.text}
@@ -49,7 +48,7 @@
 					{/if}
 				</div>
 			</div>
-		</div>
+		</Card>
 	{:else}
 		<div class="bg-surface-2 p-8 rounded-lg border-2 border-dashed border-border flex-1 flex flex-col items-center justify-center text-center text-text-muted min-h-[400px]">
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
