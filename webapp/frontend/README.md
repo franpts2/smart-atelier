@@ -1,8 +1,8 @@
-# Smart Atelier - Frontend Guide ✨
+# Smart Atelier Web App - Frontend
 
 Welcome to the frontend of Smart Atelier! We use **SvelteKit**, a modern framework that makes building websites fast and fun.
 
-## 🛠 What are we using?
+## What are we using?
 
 1.  **Svelte**: The core "language" we use. It looks like HTML but with superpowers (like automatically updating the screen when data changes).
 2.  **SvelteKit**: The "engine" that handles things like moving between pages (routing) and making the site feel like a single-page app.
@@ -11,7 +11,7 @@ Welcome to the frontend of Smart Atelier! We use **SvelteKit**, a modern framewo
 
 ---
 
-## 📂 Project Structure (Where is everything?)
+## Project Structure (Where is everything?)
 
 SvelteKit has a specific way of organizing files. Here’s the breakdown:
 
@@ -29,7 +29,7 @@ SvelteKit has a specific way of organizing files. Here’s the breakdown:
 
 ---
 
-## 🧱 What is a `.svelte` file?
+## What is a `.svelte` file?
 
 In Svelte, we keep everything related to a component in **one file**. It usually has three parts:
 
@@ -50,7 +50,7 @@ In Svelte, we keep everything related to a component in **one file**. It usually
 
 ---
 
-## 🚀 How to run it?
+# How to run it?
 
 1.  **Install dependencies**:
     Make sure you have [Node.js](https://nodejs.org/) installed, then run:
@@ -66,7 +66,7 @@ In Svelte, we keep everything related to a component in **one file**. It usually
 
 ---
 
-## 🔗 Connecting to the Backend
+## Connecting to the Backend
 
 The frontend talks to the backend using the `src/lib/services/api.ts` file. 
 - When you fill out the form in the `inventory` page, it sends that data to our Python server (`http://localhost:8000/predict`).
@@ -74,7 +74,7 @@ The frontend talks to the backend using the `src/lib/services/api.ts` file.
 
 ---
 <!-- TODO: remove this section -->
-## 💡 Tips
+## Tips
 
 -   **The Console is your friend**: Right-click the website, choose "Inspect", and go to the "Console" tab. Any errors or `console.log` messages will show up there.
 -   **Reusable Components**: If you find yourself writing the same HTML twice, turn it into a component in `src/lib/ui/`!
