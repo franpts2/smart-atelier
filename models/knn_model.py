@@ -4,7 +4,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, accuracy_score
 
 
-def run_knn_inventory(k=5):
+def run_knn_inventory(k=15):
 
     # load processed data
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
