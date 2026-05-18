@@ -78,9 +78,9 @@
 
 	function getPriorityLabel(priority: string) {
 		switch (priority) {
-			case 'High Stock': return { text: '🌟 Top Performer', class: 'bg-green-100 text-green-800 border-green-200' };
-			case 'Low Stock': return { text: '⚠️ Risk / Clearance', class: 'bg-orange-100 text-orange-800 border-orange-200' };
-			default: return { text: '✅ Stable Asset', class: 'bg-blue-100 text-blue-800 border-blue-200' };
+			case 'High Stock': return { text: '🌟 Top Performer', class: 'bg-primary text-surface-0 border-primary' };
+			case 'Low Stock': return { text: '⚠️ Risk / Clearance', class: 'bg-surface-2 text-text-muted border-border' };
+			default: return { text: '✅ Stable Asset', class: 'border-primary text-primary bg-surface-0' };
 		}
 	}
 </script>
@@ -103,7 +103,7 @@
 					<select 
 						id="category" 
 						bind:value={category}
-						class="p-2 rounded border border-border bg-surface-1 focus:ring-2 focus:ring-accent-gold outline-none"
+						class="p-2 rounded border border-border bg-surface-1 focus:ring-2 focus:ring-accent outline-none"
 						disabled={isLoadingMeta}
 					>
 						<option value="">Select Category</option>
@@ -118,7 +118,7 @@
 					<select 
 						id="brand" 
 						bind:value={brand}
-						class="p-2 rounded border border-border bg-surface-1 focus:ring-2 focus:ring-accent-gold outline-none"
+						class="p-2 rounded border border-border bg-surface-1 focus:ring-2 focus:ring-accent outline-none"
 						disabled={isLoadingMeta}
 					>
 						<option value="">Select Brand</option>

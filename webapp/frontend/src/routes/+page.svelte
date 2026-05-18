@@ -10,7 +10,7 @@
 		subtitle="Optimize your stock levels, pricing strategies, and seasonal collections with Smart Atelier's sophisticated AI insights."
 	>
 		{#snippet title()}
-			Inventory Intelligence for <span class="text-accent-gold block">Modern Brands</span>
+			Inventory Intelligence for <span class="text-accent block">Modern Brands</span>
 		{/snippet}
 
 		<Button href="/inventory" variant="primary">
