@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Button from '../ui/Button.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
+	import type { InventoryItem } from '$lib/types/inventory';
 
 	interface Props {
 		brands: string[];
@@ -7,13 +8,7 @@
 		isLoadingMeta: boolean;
 		isPredicting: boolean;
 		error?: string;
-		onPredict: (data: {
-			brand: string;
-			category: string;
-			originalPrice: number;
-			currentPrice: number;
-			stockQuantity: number;
-		}) => void;
+		onPredict: (data: InventoryItem) => void;
 	}
 
 	let { 

@@ -3,6 +3,8 @@
 	import InventoryHeader from '$lib/components/inventory/InventoryHeader.svelte';
 	import InventoryForm from '$lib/components/inventory/InventoryForm.svelte';
 	import RecommendationDisplay from '$lib/components/inventory/RecommendationDisplay.svelte';
+	import { fetchInventoryMeta, predictStock } from '$lib/services/api';
+	import type { InventoryItem, PredictionResult } from '$lib/types/inventory';
 
 	// Metadata from backend
 	let brands = $state<string[]>([]);
@@ -10,37 +12,24 @@
 	let isLoadingMeta = $state(true);
 
 	// Prediction result
-	let prediction = $state<{
-		priority: string;
-		net_margin: number;
-	} | null>(null);
+	let prediction = $state<PredictionResult | null>(null);
 	let isPredicting = $state(false);
 	let error = $state('');
 
-	const API_URL = 'http://localhost:8000';
-
 	onMount(async () => {
 		try {
-			const res = await fetch(`${API_URL}/meta`);
-			if (!res.ok) throw new Error('Failed to fetch metadata');
-			const data = await res.json();
+			const data = await fetchInventoryMeta();
 			brands = data.brands;
 			categories = data.categories;
-		} catch (e) {
+		} catch (e: any) {
 			console.error(e);
-			error = 'Could not connect to the backend. Please ensure the server is running.';
+			error = e.message || 'Could not connect to the backend.';
 		} finally {
 			isLoadingMeta = false;
 		}
 	});
 
-	async function handlePredict(formData: {
-		brand: string;
-		category: string;
-		originalPrice: number;
-		currentPrice: number;
-		stockQuantity: number;
-	}) {
+	async function handlePredict(formData: InventoryItem) {
 		if (!formData.brand || !formData.category) {
 			error = 'Please select both brand and category.';
 			return;
@@ -51,24 +40,7 @@
 		prediction = null;
 
 		try {
-			const res = await fetch(`${API_URL}/predict`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					brand: formData.brand,
-					category: formData.category,
-					original_price: formData.originalPrice,
-					current_price: formData.currentPrice,
-					stock_quantity: formData.stockQuantity
-				})
-			});
-
-			if (!res.ok) {
-				const errData = await res.json();
-				throw new Error(errData.detail || 'Prediction failed');
-			}
-
-			prediction = await res.json();
+			prediction = await predictStock(formData);
 		} catch (e: any) {
 			error = e.message;
 		} finally {

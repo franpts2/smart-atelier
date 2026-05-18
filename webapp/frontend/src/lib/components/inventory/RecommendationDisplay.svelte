@@ -1,11 +1,8 @@
 <script lang="ts">
-	interface Prediction {
-		priority: string;
-		net_margin: number;
-	}
+	import type { PredictionResult } from '$lib/types/inventory';
 
 	interface Props {
-		prediction: Prediction | null;
+		prediction: PredictionResult | null;
 	}
 
 	let { prediction }: Props = $props();
