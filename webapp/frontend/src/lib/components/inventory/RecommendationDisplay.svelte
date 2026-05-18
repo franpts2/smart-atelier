@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/components/ui/Card.svelte';
+	import Stat from '$lib/components/ui/Stat.svelte';
 	import type { PredictionResult } from '$lib/types/inventory';
 
 	interface Props {
@@ -27,14 +28,16 @@
 				</div>
 
 				<div class="grid grid-cols-2 gap-8 w-full">
-					<div class="p-4 bg-surface-1 rounded border border-border">
-						<p class="text-xs text-text-muted uppercase tracking-wider font-bold mb-1">Net Margin</p>
-						<p class="text-2xl font-heading text-primary">${prediction.net_margin}</p>
-					</div>
-					<div class="p-4 bg-surface-1 rounded border border-border">
-						<p class="text-xs text-text-muted uppercase tracking-wider font-bold mb-1">Status</p>
-						<p class="text-xl font-semibold">{prediction.priority}</p>
-					</div>
+					<Stat 
+						label="Net Margin" 
+						value="${prediction.net_margin}" 
+						valueClass="text-2xl text-primary" 
+					/>
+					<Stat 
+						label="Status" 
+						value={prediction.priority} 
+						valueClass="font-semibold" 
+					/>
 				</div>
 
 				<div class="text-left w-full space-y-4 pt-4 border-t border-border">
