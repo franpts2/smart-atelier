@@ -1,7 +1,6 @@
-import { PUBLIC_API_URL } from '$env/static/public';
 import type { InventoryItem, PredictionResult, InventoryMeta } from '../types/inventory';
 
-const API_BASE_URL = PUBLIC_API_URL;
+const API_BASE_URL = 'http://localhost:8000';
 
 export async function fetchInventoryMeta(): Promise<InventoryMeta> {
 	const res = await fetch(`${API_BASE_URL}/meta`);
