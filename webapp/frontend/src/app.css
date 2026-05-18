@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@100..900&display=swap');
 
 @theme {
-  --color-primary: #42273B; /* Specific Primary Purple */
-  --color-primary-light: #5a3551;
-  --color-accent: #42273B; 
+  --color-primary: #0F172A;
+  --color-primary-light: #1E293B;
+  --color-accent: #6C4060;
   
   /* Neutral Palette */
   --color-surface-0: #ffffff;
-  --color-surface-1: #fcfcfc;
-  --color-surface-2: #f1f1f1;
-  --color-text-main: #1a1a1a; /* Neutral Dark for main text */
-  --color-text-muted: #666666;
-  --color-border: #e5e5e5;
+  --color-surface-1: #F8FAFC;
+  --color-surface-2: #F1F5F9;
+  --color-text-main: #0F172A;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
 
   --font-main: "Inter", system-ui, -apple-system, sans-serif;
   --font-heading: "Plus Jakarta Sans", sans-serif;

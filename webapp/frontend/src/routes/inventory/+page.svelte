@@ -78,9 +78,9 @@
 
 	function getPriorityLabel(priority: string) {
 		switch (priority) {
-			case 'High Stock': return { text: '🌟 Top Performer', class: 'bg-primary text-surface-0 border-primary' };
+			case 'High Stock': return { text: '🌟 Top Performer', class: 'bg-accent text-surface-0 border-accent' };
 			case 'Low Stock': return { text: '⚠️ Risk / Clearance', class: 'bg-surface-2 text-text-muted border-border' };
-			default: return { text: '✅ Stable Asset', class: 'border-primary text-primary bg-surface-0' };
+			default: return { text: '✅ Stable Asset', class: 'border-accent text-accent bg-surface-0' };
 		}
 	}
 </script>
