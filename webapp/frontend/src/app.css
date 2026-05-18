@@ -27,7 +27,6 @@
     @apply font-main bg-surface-1 text-text-main antialiased leading-relaxed;
   }
 
-  /* Headings now use Neutral Dark to allow Purple accents to stand out */
   h1, h2, h3, h4 {
     @apply font-heading text-text-main font-extrabold tracking-tight;
   }
