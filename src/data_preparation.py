@@ -67,14 +67,17 @@ for data in [train_df, test_df]:
 
 
 
-# === Encode Brands & Categories (no sklearn required) ===
+# === Encode Brands & Categories ===
 
-# Use pandas factorize to create integer codes without sklearn
+# Create consistent mappings from the full cleaned dataset
+brand_map = {brand: i for i, brand in enumerate(df_cleaned['brand'].astype(str).unique())}
+category_map = {cat: i for i, cat in enumerate(df_cleaned['category'].astype(str).unique())}
+
 for data in [train_df, test_df]:
     if 'brand' in data.columns:
-        data['brand_encoded'] = pd.factorize(data['brand'].astype(str))[0]
+        data['brand_encoded'] = data['brand'].astype(str).map(brand_map)
     if 'category' in data.columns:
-        data['category_encoded'] = pd.factorize(data['category'].astype(str))[0]
+        data['category_encoded'] = data['category'].astype(str).map(category_map)
 
 # === scale price columns ===
 # apply StandardScaler to price columns so distance-based models aren't biased
