@@ -1,10 +1,11 @@
 import pandas as pd
 import os
+import joblib
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, accuracy_score
 
 
-def run_knn_inventory(k=15):
+def run_knn_inventory(k=15, save_model=True):
 
     # load processed data
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,16 +35,12 @@ def run_knn_inventory(k=15):
     y_test = test_df[target]
 
     # k-NN
-    # for any item in the test set, algo calculates the distance (Euclidian)
-    # to all items in the training set.
-    # it then finds the 'k' closest neighbors
-    # the predicted priority is the majority priority among these neighbors
     knn = KNeighborsClassifier(n_neighbors=k)
 
     # train model
     knn.fit(X_train, y_train)
 
-    # predict priotities
+    # predict priorities
     y_pred = knn.predict(X_test)
 
     # evaluation
@@ -52,6 +49,13 @@ def run_knn_inventory(k=15):
     print(f"Overall Accuracy: {accuracy:.4f}\n")
     print("Classification Report:")
     print(classification_report(y_test, y_pred))
+
+    if save_model:
+        artifacts_dir = os.path.join(base_dir, "models", "artifacts")
+        os.makedirs(artifacts_dir, exist_ok=True)
+        model_path = os.path.join(artifacts_dir, "knn_model.joblib")
+        joblib.dump(knn, model_path)
+        print(f"Model saved to: {model_path}")
 
     return knn
 
