@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/Button.svelte';
-	import Card from '$lib/components/ui/Card.svelte';
-	import FormField from '$lib/components/ui/FormField.svelte';
-	import Input from '$lib/components/ui/Input.svelte';
-	import Select from '$lib/components/ui/Select.svelte';
-	import type { InventoryItem } from '$lib/types/inventory';
+	import Button from "$lib/components/ui/Button.svelte";
+	import Card from "$lib/components/ui/Card.svelte";
+	import FormField from "$lib/components/ui/FormField.svelte";
+	import Input from "$lib/components/ui/Input.svelte";
+	import Select from "$lib/components/ui/Select.svelte";
+	import type { InventoryItem } from "$lib/types/inventory";
 
 	interface Props {
 		brands: string[];
@@ -15,17 +15,17 @@
 		onPredict: (data: InventoryItem) => void;
 	}
 
-	let { 
-		brands, 
-		categories, 
-		isLoadingMeta, 
-		isPredicting, 
+	let {
+		brands,
+		categories,
+		isLoadingMeta,
+		isPredicting,
 		error,
-		onPredict 
+		onPredict,
 	}: Props = $props();
 
-	let brand = $state('');
-	let category = $state('');
+	let brand = $state("");
+	let category = $state("");
 	let originalPrice = $state(0);
 	let currentPrice = $state(0);
 	let stockQuantity = $state(0);
@@ -36,7 +36,7 @@
 			category,
 			originalPrice,
 			currentPrice,
-			stockQuantity
+			stockQuantity,
 		});
 	}
 </script>
@@ -44,8 +44,8 @@
 <Card title="Item Details">
 	<div class="space-y-4">
 		<FormField label="Category" id="category">
-			<Select 
-				id="category" 
+			<Select
+				id="category"
 				bind:value={category}
 				disabled={isLoadingMeta}
 				placeholder="Select Category"
@@ -57,8 +57,8 @@
 		</FormField>
 
 		<FormField label="Brand" id="brand">
-			<Select 
-				id="brand" 
+			<Select
+				id="brand"
 				bind:value={brand}
 				disabled={isLoadingMeta}
 				placeholder="Select Brand"
@@ -71,10 +71,18 @@
 
 		<div class="grid grid-cols-2 gap-4">
 			<FormField label="Original Price ($)" id="orig-price">
-				<Input id="orig-price" type="number" bind:value={originalPrice} />
+				<Input
+					id="orig-price"
+					type="number"
+					bind:value={originalPrice}
+				/>
 			</FormField>
 			<FormField label="Current Price ($)" id="curr-price">
-				<Input id="curr-price" type="number" bind:value={currentPrice} />
+				<Input
+					id="curr-price"
+					type="number"
+					bind:value={currentPrice}
+				/>
 			</FormField>
 		</div>
 
@@ -87,8 +95,12 @@
 		{/if}
 
 		<div class="pt-4">
-			<Button onclick={handleSubmit} variant="primary" class="w-full justify-center py-3">
-				{isPredicting ? 'Analyzing...' : 'Get AI Recommendation'}
+			<Button
+				onclick={handleSubmit}
+				variant="primary"
+				class="w-full justify-center py-3"
+			>
+				{isPredicting ? "Analyzing..." : "Get AI Recommendation"}
 			</Button>
 		</div>
 	</div>
