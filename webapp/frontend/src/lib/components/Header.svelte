@@ -1,5 +1,5 @@
 <script lang="ts">
-	import NavLink from './NavLink.svelte';
+	import NavLink from './ui/NavLink.svelte';
 	import Logo from './Logo.svelte';
 </script>
 

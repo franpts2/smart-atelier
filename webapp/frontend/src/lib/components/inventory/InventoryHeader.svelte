@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Badge from '../Badge.svelte';
+	import Badge from '../ui/Badge.svelte';
 </script>
 
 <div class="mb-12 text-center">
