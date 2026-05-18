@@ -1,10 +1,10 @@
-# Smart Atelier 👗✨
+# Smart Atelier
 
 **Smart Atelier** is an AI-powered consulting tool designed for modern fashion boutiques. It uses Machine Learning (K-Nearest Neighbors) to analyze inventory data and provide strategic recommendations on stock levels, pricing, and product priority.
 
 ---
 
-## 🚀 The Big Picture
+## The Big Picture
 
 This project is a complete "Data to App" pipeline. Here is how it flows:
 
@@ -14,7 +14,7 @@ This project is a complete "Data to App" pipeline. Here is how it flows:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 -   **`data/`**: The library of our project. Contains `raw/` data and the `processed/` files used for training.
 -   **`models/`**: The brain factory. Contains the scripts to train the AI (`knn_model.py`) and the saved `artifacts/` (the actual "brains" our web app uses).
@@ -25,7 +25,7 @@ This project is a complete "Data to App" pipeline. Here is how it flows:
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -48,7 +48,7 @@ These will be installed automatically when you run `npm install` inside the `web
 
 ---
 
-## 🚦 Quick Start
+## Quick Start
 
 ### 1. (Optional) Train the Model
 If you want to re-run the AI training:
