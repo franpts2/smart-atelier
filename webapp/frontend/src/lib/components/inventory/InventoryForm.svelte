@@ -11,6 +11,7 @@
 	interface Props {
 		brands: string[];
 		categories: string[];
+		models: string[];
 		isLoadingMeta: boolean;
 		isPredicting: boolean;
 		error?: string;
@@ -21,6 +22,7 @@
 	let {
 		brands,
 		categories,
+		models,
 		isLoadingMeta,
 		isPredicting,
 		error,
@@ -36,6 +38,11 @@
 	let stockQuantity = $state(0);
 	let selectedModel = $state("knn");
 
+	// Format model names for display
+	function formatModelName(name: string) {
+		return name.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+	}
+
 	/**
 	 * When the user clicks the button, we bundle all the form data 
 	 * and send it back to the parent component (the Inventory Page).
@@ -47,6 +54,7 @@
 			originalPrice,
 			currentPrice,
 			stockQuantity,
+			model_type: selectedModel
 		});
 	}
 </script>
@@ -106,11 +114,14 @@
 
 		<!-- Advanced Section -->
 		<Accordion title="Advanced Options">
-			<FormField label="AI Model" id="model-select" class='px-2'>
-				<Select id="model-select" bind:value={selectedModel}>
-					<option value="knn">K-Nearest Neighbors (Default)</option>
-					<option value="random-forest" disabled>Random Forest (Coming Soon)</option>
-					<option value="neural-network" disabled>Neural Network (Coming Soon)</option>
+			<FormField label="AI Model" id="model-select" class="px-2">
+				<Select id="model-select" bind:value={selectedModel} disabled={isLoadingMeta}>
+					{#each models as model}
+						<option value={model}>{formatModelName(model)}</option>
+					{/each}
+					{#if models.length === 0}
+						<option value="knn">K-Nearest Neighbors (Default)</option>
+					{/if}
 				</Select>
 			</FormField>
 		</Accordion>

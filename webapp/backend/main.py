@@ -38,7 +38,8 @@ async def get_meta():
         raise HTTPException(status_code=500, detail="Metadata not loaded")
     return {
         "brands": list(ml_service.brand_map.keys()),
-        "categories": list(ml_service.category_map.keys())
+        "categories": list(ml_service.category_map.keys()),
+        "models": list(ml_service.models.keys())
     }
 
 # This is a 'POST' route. It's used when we want to send data to the server.
@@ -46,7 +47,7 @@ async def get_meta():
 @app.post("/predict")
 async def predict(request: PredictionRequest):
     # First, we check if everything is loaded correctly
-    if any(v is None for v in [ml_service.model, ml_service.scaler, ml_service.brand_map, ml_service.category_map]):
+    if not ml_service.models or any(v is None for v in [ml_service.scaler, ml_service.brand_map, ml_service.category_map]):
         raise HTTPException(status_code=500, detail="Model or artifacts not initialized")
 
     # We call our ML service to get the prediction
