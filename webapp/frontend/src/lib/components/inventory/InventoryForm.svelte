@@ -4,6 +4,7 @@
 	import FormField from "$lib/components/ui/FormField.svelte";
 	import Input from "$lib/components/ui/Input.svelte";
 	import Select from "$lib/components/ui/Select.svelte";
+	import Accordion from "$lib/components/ui/Accordion.svelte";
 	import type { InventoryItem } from "$lib/types/inventory";
 
 	// In Svelte 5, we use 'Props' to define what data this component expects from its parent.
@@ -33,6 +34,7 @@
 	let originalPrice = $state(0);
 	let currentPrice = $state(0);
 	let stockQuantity = $state(0);
+	let selectedModel = $state("knn");
 
 	/**
 	 * When the user clicks the button, we bundle all the form data 
@@ -101,6 +103,17 @@
 		<FormField label="Current Stock Level" id="stock">
 			<Input id="stock" type="number" bind:value={stockQuantity} />
 		</FormField>
+
+		<!-- Advanced Section -->
+		<Accordion title="Advanced Options">
+			<FormField label="AI Model" id="model-select" class='px-2'>
+				<Select id="model-select" bind:value={selectedModel}>
+					<option value="knn">K-Nearest Neighbors (Default)</option>
+					<option value="random-forest" disabled>Random Forest (Coming Soon)</option>
+					<option value="neural-network" disabled>Neural Network (Coming Soon)</option>
+				</Select>
+			</FormField>
+		</Accordion>
 
 		<!-- Show an error message if something goes wrong -->
 		{#if error}
