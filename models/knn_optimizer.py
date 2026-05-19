@@ -1,38 +1,17 @@
-import pandas as pd
-import numpy as np
 import os
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
-
+from utils import load_processed_data, prepare_features, get_project_paths
 
 def find_optimal_k(max_k=20):
-    # load data
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    train_path = os.path.join(base_dir, "data", "processed", "train.csv")
-    test_path = os.path.join(base_dir, "data", "processed", "test.csv")
-
-    if not os.path.exists(train_path) or not os.path.exists(test_path):
-        print("Processed data not found. Please run src/data_preparation.py first.")
+    try:
+        train_df, test_df = load_processed_data()
+    except FileNotFoundError as e:
+        print(e)
         return
 
-    train_df = pd.read_csv(train_path)
-    test_df = pd.read_csv(test_path)
-
-    features = [
-        "original_price",
-        "current_price",
-        "Net_Margin",
-        "brand_encoded",
-        "category_encoded",
-        "stock_quantity",
-    ]
-    target = "stocking_priority"
-
-    X_train = train_df[features]
-    y_train = train_df[target]
-    X_test = test_df[features]
-    y_test = test_df[target]
+    X_train, y_train, X_test, y_test = prepare_features(train_df, test_df)
 
     error_rates = []
 
@@ -65,11 +44,11 @@ def find_optimal_k(max_k=20):
     plt.grid(True)
 
     # Save the plot
-    plot_path = os.path.join(base_dir, "models", "knn_elbow_plot.png")
+    paths = get_project_paths()
+    plot_path = os.path.join(paths["base"], "models", "knn_elbow_plot.png")
     plt.savefig(plot_path)
     print(f"\nPlot saved to: {plot_path}")
     print("Look for the 'elbow' where the error rate starts to stabilize or increases.")
-
 
 if __name__ == "__main__":
     find_optimal_k()
