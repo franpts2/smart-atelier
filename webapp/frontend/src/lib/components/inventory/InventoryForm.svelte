@@ -69,11 +69,8 @@
 				bind:value={category}
 				disabled={isLoadingMeta}
 				placeholder="Select Category"
-			>
-				{#each categories as cat}
-					<option value={cat}>{cat}</option>
-				{/each}
-			</Select>
+				options={categories}
+			/>
 		</FormField>
 
 		<!-- Dropdown for Brand -->
@@ -83,11 +80,8 @@
 				bind:value={brand}
 				disabled={isLoadingMeta}
 				placeholder="Select Brand"
-			>
-				{#each brands as b}
-					<option value={b}>{b}</option>
-				{/each}
-			</Select>
+				options={brands}
+			/>
 		</FormField>
 
 		<!-- Numerical Inputs -->
@@ -115,14 +109,15 @@
 		<!-- Advanced Section -->
 		<Accordion title="Advanced Options">
 			<FormField label="AI Model" id="model-select" class="px-2">
-				<Select id="model-select" bind:value={selectedModel} disabled={isLoadingMeta}>
-					{#each models as model}
-						<option value={model}>{formatModelName(model)}</option>
-					{/each}
-					{#if models.length === 0}
-						<option value="knn">K-Nearest Neighbors (Default)</option>
-					{/if}
-				</Select>
+				<Select 
+					id="model-select" 
+					bind:value={selectedModel} 
+					disabled={isLoadingMeta}
+					options={models.length > 0 
+						? models.map(m => ({ value: m, label: formatModelName(m) }))
+						: [{ value: 'knn', label: 'K-Nearest Neighbors (Default)' }]
+					}
+				/>
 			</FormField>
 		</Accordion>
 

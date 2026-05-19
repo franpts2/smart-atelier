@@ -25,7 +25,7 @@
 		<ChevronDownIcon class="h-4 w-4 shrink-0 transition-transform duration-200" />
 	</button>
 	{#if isOpen}
-		<div class="overflow-hidden text-sm transition-all pb-4">
+		<div class="text-sm transition-all pb-4">
 			{@render children?.()}
 		</div>
 	{/if}
