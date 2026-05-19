@@ -1,6 +1,6 @@
 # Smart Atelier
 
-**Smart Atelier** is an AI-powered consulting tool designed for modern fashion boutiques. It uses Machine Learning (K-Nearest Neighbors, Decision Trees, Naive Bayes, Support Vector Machines, and AdaBoost) to analyze inventory data and provide strategic recommendations on stock levels, pricing, and product priority.
+**Smart Atelier** is an AI-powered consulting tool designed for modern fashion boutiques. It uses Machine Learning (K-Nearest Neighbors, Decision Trees, Naive Bayes, Support Vector Machines, AdaBoost, and Neural Networks) to analyze inventory data and provide strategic recommendations on stock levels, pricing, and product priority.
 
 ---
 
@@ -17,7 +17,7 @@ This project is a complete "Data to App" pipeline. Here is how it flows:
 ## Project Structure
 
 -   **`data/`**: The library of our project. Contains `raw/` data and the `processed/` files used for training.
--   **`models/`**: The brain factory. Contains the scripts to train the AI (e.g., `knn_model.py`, `decision_tree_model.py`, `naive_bayes_model.py`, `svm_model.py`, `adaboost_model.py`) and the saved `artifacts/` (the actual "brains" our web app uses).
+-   **`models/`**: The brain factory. Contains the scripts to train the AI (e.g., `knn_model.py`, `decision_tree_model.py`, `neural_network_model.py`) and the saved `artifacts/` (the actual "brains" our web app uses).
 -   **`src/`**: The workshop. Contains utility scripts for data preparation and scaling metrics.
 -   **`webapp/`**: The storefront.
     -   `backend/`: A FastAPI server that handles the AI logic.
@@ -55,6 +55,7 @@ python3 models/decision_tree_model.py
 python3 models/naive_bayes_model.py
 python3 models/svm_model.py
 python3 models/adaboost_model.py
+python3 models/neural_network_model.py
 ```
 
 ### 2. Run the Full Application
