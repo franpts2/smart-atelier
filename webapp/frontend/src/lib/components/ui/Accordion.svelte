@@ -7,8 +7,7 @@
 		isOpen?: boolean;
 	}
 
-	let { title, children, isOpen: initialOpen = false }: Props = $props();
-	let isOpen = $state(initialOpen);
+	let { title, children, isOpen = $bindable(false) }: Props = $props();
 
 	function toggle() {
 		isOpen = !isOpen;
