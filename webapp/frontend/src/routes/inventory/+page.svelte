@@ -9,6 +9,7 @@
 	// Metadata from backend
 	let brands = $state<string[]>([]);
 	let categories = $state<string[]>([]);
+	let models = $state<string[]>([]);
 	let isLoadingMeta = $state(true);
 
 	// Prediction result
@@ -21,6 +22,7 @@
 			const data = await fetchInventoryMeta();
 			brands = data.brands;
 			categories = data.categories;
+			models = data.models;
 		} catch (e: any) {
 			console.error(e);
 			error = e.message || "Could not connect to the backend.";
@@ -56,6 +58,7 @@
 		<InventoryForm
 			{brands}
 			{categories}
+			{models}
 			{isLoadingMeta}
 			{isPredicting}
 			{error}

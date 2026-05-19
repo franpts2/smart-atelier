@@ -2,6 +2,7 @@ import os
 import sys
 import joblib
 import pandas as pd
+import glob
 
 # This is the path to the root of our project.
 # We use it to find the 'models' folder no matter where we run this script from.
@@ -10,13 +11,13 @@ root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 class MLService:
     """
-    This service handles everything related to our Machine Learning model.
-    It loads the pre-trained model and uses it to make predictions.
+    This service handles everything related to our Machine Learning models.
+    It loads pre-trained models and uses the selected one to make predictions.
     """
 
     def __init__(self):
         # We initialize these as None and load them later in load_artifacts()
-        self.model = None  # The trained KNN model
+        self.models = {}  # Dictionary to store multiple models {model_id: model_object}
         self.scaler = None  # Used to scale numerical data (normalization)
         self.brand_map = None  # Dictionary to convert brand names to numbers
         self.category_map = None  # Dictionary to convert category names to numbers
@@ -30,8 +31,8 @@ class MLService:
         artifacts_dir = os.path.join(root_dir, "models", "artifacts")
         try:
             print("Loading model artifacts...")
-            # Load the main model and its supporting tools
-            self.model = joblib.load(os.path.join(artifacts_dir, "knn_model.joblib"))
+            
+            # Load common artifacts
             self.scaler = joblib.load(os.path.join(artifacts_dir, "scaler.joblib"))
             self.brand_map = joblib.load(
                 os.path.join(artifacts_dir, "brand_map.joblib")
@@ -39,7 +40,19 @@ class MLService:
             self.category_map = joblib.load(
                 os.path.join(artifacts_dir, "category_map.joblib")
             )
-            print("All artifacts loaded successfully!")
+
+            # Discover and load all model artifacts
+            model_files = glob.glob(os.path.join(artifacts_dir, "*_model.joblib"))
+            for model_path in model_files:
+                model_name = os.path.basename(model_path).replace("_model.joblib", "")
+                self.models[model_name] = joblib.load(model_path)
+                print(f"Loaded model: {model_name}")
+
+            if not self.models:
+                 print("No models found in artifacts directory.")
+                 self.train_fallback(artifacts_dir)
+            else:
+                print("All artifacts loaded successfully!")
         except Exception as e:
             # If the files are missing, we try to train the model on the fly
             print(f"Error loading artifacts: {e}")
@@ -55,7 +68,10 @@ class MLService:
         sys.path.append(root_dir)
         from models.knn_model import run_knn_inventory
 
-        self.model = run_knn_inventory(k=15)
+        knn_model = run_knn_inventory(k=15)
+        if knn_model:
+            self.models["knn"] = knn_model
+
         try:
             # Even if we retrain the model, we still need these mappings
             self.brand_map = joblib.load(
@@ -71,7 +87,7 @@ class MLService:
 
     def predict(self, request):
         """
-        Takes a PredictionRequest, processes the data, and returns a prediction.
+        Takes a PredictionRequest, processes the data, and returns a prediction using the specified model.
         """
         # 1. Calculate Net_Margin (Profit)
         # We assume cost is 40% of the original price
@@ -119,11 +135,17 @@ class MLService:
             ],
         )
 
-        # 5. Run the prediction
-        prediction = self.model.predict(features)
-
-        # prediction[0] is the result (e.g., "High Priority", "Low Priority")
-        return str(prediction[0]), net_margin, brand_encoded, category_encoded
+        # 5. Run the prediction using the requested model
+        model_id = request.model_type
+        if model_id not in self.models:
+            # Fallback to the first available model if requested is missing
+            model_id = next(iter(self.models)) if self.models else None
+        
+        if model_id and model_id in self.models:
+            prediction = self.models[model_id].predict(features)
+            return str(prediction[0]), net_margin, brand_encoded, category_encoded
+        else:
+            return "Unknown", net_margin, brand_encoded, category_encoded
 
 
 # We create a single instance of this service (a Singleton)

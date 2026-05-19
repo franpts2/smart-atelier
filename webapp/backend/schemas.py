@@ -16,3 +16,4 @@ class PredictionRequest(BaseModel):
     stock_quantity: int      # Whole numbers (e.g., 10)
     brand: str               # Text (e.g., "Zara")
     category: str            # Text (e.g., "Dress")
+    model_type: str = "knn"  # The AI model to use for prediction (e.g., "knn", "decision_tree")

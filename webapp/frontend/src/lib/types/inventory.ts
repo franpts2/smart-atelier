@@ -4,6 +4,7 @@ export interface InventoryItem {
 	originalPrice: number;
 	currentPrice: number;
 	stockQuantity: number;
+	model_type?: string;
 }
 
 export interface PredictionResult {
@@ -14,4 +15,5 @@ export interface PredictionResult {
 export interface InventoryMeta {
 	brands: string[];
 	categories: string[];
+	models: string[];
 }

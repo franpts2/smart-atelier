@@ -4,12 +4,14 @@
 	import FormField from "$lib/components/ui/FormField.svelte";
 	import Input from "$lib/components/ui/Input.svelte";
 	import Select from "$lib/components/ui/Select.svelte";
+	import Accordion from "$lib/components/ui/Accordion.svelte";
 	import type { InventoryItem } from "$lib/types/inventory";
 
 	// In Svelte 5, we use 'Props' to define what data this component expects from its parent.
 	interface Props {
 		brands: string[];
 		categories: string[];
+		models: string[];
 		isLoadingMeta: boolean;
 		isPredicting: boolean;
 		error?: string;
@@ -20,6 +22,7 @@
 	let {
 		brands,
 		categories,
+		models,
 		isLoadingMeta,
 		isPredicting,
 		error,
@@ -33,6 +36,12 @@
 	let originalPrice = $state(0);
 	let currentPrice = $state(0);
 	let stockQuantity = $state(0);
+	let selectedModel = $state("knn");
+
+	// Format model names for display
+	function formatModelName(name: string) {
+		return name.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+	}
 
 	/**
 	 * When the user clicks the button, we bundle all the form data 
@@ -45,6 +54,7 @@
 			originalPrice,
 			currentPrice,
 			stockQuantity,
+			model_type: selectedModel
 		});
 	}
 </script>
@@ -59,11 +69,8 @@
 				bind:value={category}
 				disabled={isLoadingMeta}
 				placeholder="Select Category"
-			>
-				{#each categories as cat}
-					<option value={cat}>{cat}</option>
-				{/each}
-			</Select>
+				options={categories}
+			/>
 		</FormField>
 
 		<!-- Dropdown for Brand -->
@@ -73,11 +80,8 @@
 				bind:value={brand}
 				disabled={isLoadingMeta}
 				placeholder="Select Brand"
-			>
-				{#each brands as b}
-					<option value={b}>{b}</option>
-				{/each}
-			</Select>
+				options={brands}
+			/>
 		</FormField>
 
 		<!-- Numerical Inputs -->
@@ -101,6 +105,21 @@
 		<FormField label="Current Stock Level" id="stock">
 			<Input id="stock" type="number" bind:value={stockQuantity} />
 		</FormField>
+
+		<!-- Advanced Section -->
+		<Accordion title="Advanced Options">
+			<FormField label="AI Model" id="model-select" class="px-2">
+				<Select 
+					id="model-select" 
+					bind:value={selectedModel} 
+					disabled={isLoadingMeta}
+					options={models.length > 0 
+						? models.map(m => ({ value: m, label: formatModelName(m) }))
+						: [{ value: 'knn', label: 'K-Nearest Neighbors (Default)' }]
+					}
+				/>
+			</FormField>
+		</Accordion>
 
 		<!-- Show an error message if something goes wrong -->
 		{#if error}
