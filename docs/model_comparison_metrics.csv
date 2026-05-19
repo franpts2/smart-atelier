@@ -1,0 +1,9 @@
+Model,Accuracy,High->Low,Low->High,High->Low Rate,Low->High Rate
+Naive Bayes,0.5092,0,0,0.0,0.0
+SVM,0.5092,0,0,0.0,0.0
+AdaBoost,0.5092,0,0,0.0,0.0
+Neural Network,0.4885,6,0,0.0811,0.0
+Random Forest (Optimized),0.4862,5,1,0.0676,0.0071
+Decision Tree,0.4794,8,1,0.1081,0.0071
+Random Forest,0.4794,9,3,0.1216,0.0214
+k-NN,0.4564,19,0,0.2568,0.0
