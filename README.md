@@ -1,6 +1,6 @@
 # Smart Atelier
 
-**Smart Atelier** is an AI-powered consulting tool designed for modern fashion boutiques. It uses Machine Learning (K-Nearest Neighbors) to analyze inventory data and provide strategic recommendations on stock levels, pricing, and product priority.
+**Smart Atelier** is an AI-powered consulting tool designed for modern fashion boutiques. It uses Machine Learning (K-Nearest Neighbors, Decision Trees, and Naive Bayes) to analyze inventory data and provide strategic recommendations on stock levels, pricing, and product priority.
 
 ---
 
@@ -17,7 +17,7 @@ This project is a complete "Data to App" pipeline. Here is how it flows:
 ## Project Structure
 
 -   **`data/`**: The library of our project. Contains `raw/` data and the `processed/` files used for training.
--   **`models/`**: The brain factory. Contains the scripts to train the AI (`knn_model.py`) and the saved `artifacts/` (the actual "brains" our web app uses).
+-   **`models/`**: The brain factory. Contains the scripts to train the AI (e.g., `knn_model.py`, `decision_tree_model.py`, `naive_bayes_model.py`) and the saved `artifacts/` (the actual "brains" our web app uses).
 -   **`src/`**: The workshop. Contains utility scripts for data preparation and scaling metrics.
 -   **`webapp/`**: The storefront.
     -   `backend/`: A FastAPI server that handles the AI logic.
@@ -38,22 +38,21 @@ You can install all necessary Python packages using pip:
 ```bash
 pip install pandas scikit-learn joblib fastapi uvicorn pydantic
 ```
--   `pandas` & `scikit-learn`: For data processing and the KNN model.
+-   `pandas` & `scikit-learn`: For data processing and the ML models.
 -   `joblib`: For saving and loading the AI model files.
 -   `fastapi` & `uvicorn`: For running the web server.
 -   `pydantic`: For data validation.
-
-### 3. Frontend Packages
-These will be installed automatically when you run `npm install` inside the `webapp/frontend` folder.
 
 ---
 
 ## Quick Start
 
-### 1. (Optional) Train the Model
+### 1. (Optional) Train the Models
 If you want to re-run the AI training:
 ```bash
 python3 models/knn_model.py
+python3 models/decision_tree_model.py
+python3 models/naive_bayes_model.py
 ```
 
 ### 2. Run the Full Application
