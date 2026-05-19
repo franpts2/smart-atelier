@@ -1,38 +1,14 @@
-import pandas as pd
-import os
-import joblib
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, accuracy_score
-
+from utils import load_processed_data, prepare_features, evaluate_model, save_artifact
 
 def run_knn_inventory(k=15, save_model=True):
-
-    # load processed data
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    train_path = os.path.join(base_dir, "data", "processed", "train.csv")
-    test_path = os.path.join(base_dir, "data", "processed", "test.csv")
-
-    if not os.path.exists(train_path) or not os.path.exists(test_path):
-        print("Processed data not found. Please run src/data_preparation.py first.")
+    try:
+        train_df, test_df = load_processed_data()
+    except FileNotFoundError as e:
+        print(e)
         return
 
-    train_df = pd.read_csv(train_path)
-    test_df = pd.read_csv(test_path)
-
-    features = [
-        "original_price",
-        "current_price",
-        "Net_Margin",
-        "brand_encoded",
-        "category_encoded",
-        "stock_quantity",
-    ]
-    target = "stocking_priority"
-
-    X_train = train_df[features]
-    y_train = train_df[target]
-    X_test = test_df[features]
-    y_test = test_df[target]
+    X_train, y_train, X_test, y_test = prepare_features(train_df, test_df)
 
     # k-NN
     knn = KNeighborsClassifier(n_neighbors=k)
@@ -40,25 +16,16 @@ def run_knn_inventory(k=15, save_model=True):
     # train model
     knn.fit(X_train, y_train)
 
-    # predict priorities
+    # predict
     y_pred = knn.predict(X_test)
 
     # evaluation
-    accuracy = accuracy_score(y_test, y_pred)
-    print(f"--- k-NN Inventory Grouping (k={k}) ---\n")
-    print(f"Overall Accuracy: {accuracy:.4f}\n")
-    print("Classification Report:")
-    print(classification_report(y_test, y_pred))
+    evaluate_model(y_test, y_pred, f"k-NN (k={k})")
 
     if save_model:
-        artifacts_dir = os.path.join(base_dir, "models", "artifacts")
-        os.makedirs(artifacts_dir, exist_ok=True)
-        model_path = os.path.join(artifacts_dir, "knn_model.joblib")
-        joblib.dump(knn, model_path)
-        print(f"Model saved to: {model_path}")
+        save_artifact(knn, "knn_model.joblib")
 
     return knn
-
 
 if __name__ == "__main__":
     run_knn_inventory()
