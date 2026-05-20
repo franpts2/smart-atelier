@@ -4,6 +4,7 @@
 	import RulesetToggle from '$lib/components/ui/RulesetToggle.svelte';
 	import PriorityDistributionChart from '$lib/components/analytics/PriorityDistributionChart.svelte';
 	import ModelComparisonChart from '$lib/components/analytics/ModelComparisonChart.svelte';
+	import ModelMetricsTable from '$lib/components/analytics/ModelMetricsTable.svelte';
 	import { fetchDataDistribution, fetchModelComparison } from '$lib/services/api';
 	import type { DualRulesetDistribution, DualRulesetComparison, DistributionItem, ModelMetric } from '$lib/types/analytics';
 	import AlertIcon from '$lib/components/icons/AlertIcon.svelte';
@@ -131,30 +132,7 @@
 			</p>
 			<ModelComparisonChart data={activeModels} />
 
-			<div class="overflow-x-auto mt-8">
-				<table class="w-full text-sm">
-					<thead>
-						<tr class="border-b border-border text-text-muted">
-							<th class="text-left py-3 pr-4 font-semibold">Model</th>
-							<th class="text-right py-3 px-2 font-semibold">Accuracy</th>
-							<th class="text-right py-3 px-2 font-semibold">Precision</th>
-							<th class="text-right py-3 px-2 font-semibold">Recall</th>
-							<th class="text-right py-3 px-2 font-semibold">F1 Score</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each activeModels as model}
-							<tr class="border-b border-border hover:bg-surface-2 transition-colors">
-								<td class="py-3 pr-4 font-semibold text-text">{model.name}</td>
-								<td class="text-right py-3 px-2 tabular-nums font-bold">{(model.accuracy * 100).toFixed(1)}%</td>
-								<td class="text-right py-3 px-2 tabular-nums text-text-muted">{(model.precision * 100).toFixed(1)}%</td>
-								<td class="text-right py-3 px-2 tabular-nums text-text-muted">{(model.recall * 100).toFixed(1)}%</td>
-								<td class="text-right py-3 px-2 tabular-nums text-accent font-semibold">{(model.f1_score * 100).toFixed(1)}%</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</div>
+			<ModelMetricsTable models={activeModels} />
 		</Card>
 	{/if}
 </div>
