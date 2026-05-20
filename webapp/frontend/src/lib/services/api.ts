@@ -1,4 +1,5 @@
 import type { InventoryItem, PredictionResult, InventoryMeta } from '../types/inventory';
+import type { DistributionItem, ModelMetric } from '../types/analytics';
 
 // This is the address of our Python (FastAPI) backend.
 // In a real project, this would change when you put the website online.
@@ -16,6 +17,19 @@ export async function fetchInventoryMeta(): Promise<InventoryMeta> {
 	if (!res.ok) throw new Error('Failed to fetch metadata from server');
 	
 	// Convert the raw response into a JSON object we can use in Svelte.
+	return res.json();
+}
+
+export async function fetchDataDistribution(): Promise<DistributionItem[]> {
+	const res = await fetch(`${API_BASE_URL}/data-distribution`);
+	if (!res.ok) throw new Error('Failed to fetch data distribution');
+	const data: Record<string, number> = await res.json();
+	return Object.entries(data).map(([label, count]) => ({ label, count }));
+}
+
+export async function fetchModelComparison(): Promise<ModelMetric[]> {
+	const res = await fetch(`${API_BASE_URL}/model-comparison`);
+	if (!res.ok) throw new Error('Failed to fetch model comparison');
 	return res.json();
 }
 

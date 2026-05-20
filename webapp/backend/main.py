@@ -32,6 +32,16 @@ app.add_middleware(
 
 # This is a 'GET' route. It's used to fetch data.
 # We use it to get the list of available brands and categories for the frontend dropdowns.
+@app.get("/data-distribution")
+async def get_data_distribution():
+    return ml_service.get_data_distribution()
+
+
+@app.get("/model-comparison")
+async def get_model_comparison():
+    return ml_service.get_model_comparison()
+
+
 @app.get("/meta")
 async def get_meta():
     if ml_service.brand_map is None or ml_service.category_map is None:

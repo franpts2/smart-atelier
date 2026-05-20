@@ -196,6 +196,63 @@ class MLService:
             return "Unknown", net_margin, brand_encoded, category_encoded
 
 
+    def get_data_distribution(self):
+        train_path = os.path.join(root_dir, "data", "processed", "train.csv")
+        if not os.path.exists(train_path):
+            return {"error": "Training data not found"}
+        df = pd.read_csv(train_path)
+        counts = df["stocking_priority"].value_counts()
+        return {str(k): int(v) for k, v in counts.items()}
+
+    def get_model_comparison(self):
+        test_path = os.path.join(root_dir, "data", "processed", "test.csv")
+        if not os.path.exists(test_path):
+            return {"error": "Test data not found"}
+
+        from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+
+        test_df = pd.read_csv(test_path)
+        features = ["original_price", "current_price", "Net_Margin", "brand_encoded", "category_encoded", "stock_quantity"]
+        target = "stocking_priority"
+
+        X_test = test_df[features]
+        y_test = test_df[target]
+
+        num_cols = ["original_price", "current_price", "Net_Margin"]
+        X_test_num = self.scaler.transform(X_test[num_cols])
+        X_test_scaled = X_test.copy()
+        for i, col in enumerate(num_cols):
+            X_test_scaled[col] = X_test_num[:, i]
+
+        model_names = {
+            "knn": "KNN",
+            "decision_tree": "Decision Tree",
+            "naive_bayes": "Naive Bayes",
+            "svm": "SVM",
+            "adaboost": "AdaBoost",
+            "neural_network": "Neural Network",
+        }
+
+        results = []
+        for model_id, model_name in model_names.items():
+            if model_id not in self.models:
+                continue
+            model = self.models[model_id]
+            y_pred = model.predict(X_test_scaled)
+            acc = accuracy_score(y_test, y_pred)
+            prec, rec, f1, _ = precision_recall_fscore_support(y_test, y_pred, average="weighted", zero_division=0)
+            results.append({
+                "id": model_id,
+                "name": model_name,
+                "accuracy": round(acc, 4),
+                "precision": round(prec, 4),
+                "recall": round(rec, 4),
+                "f1_score": round(f1, 4),
+            })
+
+        return results
+
+
 # We create a single instance of this service (a Singleton)
 # so the whole app can use the same loaded model.
 ml_service = MLService()
