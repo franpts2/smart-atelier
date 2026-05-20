@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Card from '$lib/components/ui/Card.svelte';
+	import RulesetToggle from '$lib/components/ui/RulesetToggle.svelte';
 	import PriorityDistributionChart from '$lib/components/analytics/PriorityDistributionChart.svelte';
 	import ModelComparisonChart from '$lib/components/analytics/ModelComparisonChart.svelte';
 	import { fetchDataDistribution, fetchModelComparison } from '$lib/services/api';
 	import type { DualRulesetDistribution, DualRulesetComparison, DistributionItem, ModelMetric } from '$lib/types/analytics';
+	import AlertIcon from '$lib/components/icons/AlertIcon.svelte';
+	import ShieldCheckIcon from '$lib/components/icons/ShieldCheckIcon.svelte';
+	import FlaskIcon from '$lib/components/icons/FlaskIcon.svelte';
 
 	let dualDistribution = $state<DualRulesetDistribution | null>(null);
 	let dualModels = $state<DualRulesetComparison | null>(null);
@@ -44,29 +48,7 @@
 			<p class="text-text-muted text-sm">Compare Standard and Advanced stocking rule performance and training set statistics</p>
 		</div>
 		
-		<!-- Premium Segmented Control Ruleset Selector -->
-		<div class="flex p-1 bg-surface-2 border border-border rounded-xl self-start md:self-auto shadow-inner">
-			<button
-				type="button"
-				class="px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 {selectedRuleset === 'standard' ? 'bg-accent text-white shadow-md' : 'text-text-muted hover:text-text'}"
-				onclick={() => selectedRuleset = 'standard'}
-			>
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-				</svg>
-				Standard Ruleset
-			</button>
-			<button
-				type="button"
-				class="px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 {selectedRuleset === 'advanced' ? 'bg-accent text-white shadow-md' : 'text-text-muted hover:text-text'}"
-				onclick={() => selectedRuleset = 'advanced'}
-			>
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-				</svg>
-				Advanced Ruleset
-			</button>
-		</div>
+		<RulesetToggle bind:value={selectedRuleset} />
 	</div>
 
 	{#if loading}
@@ -76,9 +58,7 @@
 		</div>
 	{:else if error}
 		<div class="p-6 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center gap-3">
-			<svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-			</svg>
+			<AlertIcon class="w-6 h-6 shrink-0" />
 			<p class="font-semibold">{error}</p>
 		</div>
 	{:else}
@@ -89,13 +69,9 @@
 			
 			<div class="p-3.5 rounded-xl bg-accent/10 text-accent shrink-0">
 				{#if selectedRuleset === 'standard'}
-					<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-					</svg>
+					<ShieldCheckIcon class="w-7 h-7" />
 				{:else}
-					<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 9.172V5L8 4z" />
-					</svg>
+					<FlaskIcon class="w-7 h-7" />
 				{/if}
 			</div>
 			
@@ -109,7 +85,7 @@
 				</h2>
 				<p class="text-sm text-text-muted leading-relaxed">
 					{#if selectedRuleset === 'standard'}
-						Classified strictly using client ratings and returns: <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Rating &gt; 4.0</code> (No returns) triggers **High Stock**, <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Rating &lt; 2.0</code> (With returns) triggers **Low Stock**, otherwise **Maintain**.
+						Classified strictly using client ratings and returns: <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Rating &gt; 4.0</code> (No returns) triggers <strong>High Stock</strong>, <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Rating &lt; 2.0</code> (With returns) triggers <strong>Low Stock</strong>, otherwise <strong>Maintain</strong>.
 						This ruleset is easy to predict but prone to stockouts on items that sell fast regardless of rating, and overstocking on items that are highly rated but rarely purchased.
 					{:else}
 						Classified using inventory turnover velocity and profit margins: combines <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Net Margin</code>, <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Units Sold</code> (last 30 days), and customer rating dynamics.

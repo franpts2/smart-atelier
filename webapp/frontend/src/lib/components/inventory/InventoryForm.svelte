@@ -5,6 +5,7 @@
 	import Input from "$lib/components/ui/Input.svelte";
 	import Select from "$lib/components/ui/Select.svelte";
 	import Accordion from "$lib/components/ui/Accordion.svelte";
+	import RulesetToggle from "$lib/components/ui/RulesetToggle.svelte";
 	import type { InventoryItem } from "$lib/types/inventory";
 
 	// In Svelte 5, we use 'Props' to define what data this component expects from its parent.
@@ -38,7 +39,7 @@
 	let stockQuantity = $state(0);
 	let selectedModel = $state("knn");
 	let unitsSold = $state(15);
-	let ruleType = $state("original");
+	let ruleType = $state<'standard' | 'advanced'>("standard");
 
 	// Format model names for display
 	function formatModelName(name: string) {
@@ -131,24 +132,9 @@
 			</FormField>
 
 			<FormField label="Stocking Ruleset / Decision Logic" id="ruleset-select" class="px-2 mt-4">
-				<div class="grid grid-cols-2 gap-2 mt-1">
-					<button
-						type="button"
-						class="py-2.5 px-3 rounded-lg border text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 {ruleType === 'original' ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' : 'bg-surface-2 text-text-muted border-border hover:bg-surface-3'}"
-						onclick={() => ruleType = 'original'}
-					>
-						Standard Rules
-					</button>
-					<button
-						type="button"
-						class="py-2.5 px-3 rounded-lg border text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 {ruleType === 'advanced' ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20' : 'bg-surface-2 text-text-muted border-border hover:bg-surface-3'}"
-						onclick={() => ruleType = 'advanced'}
-					>
-						Advanced Rules
-					</button>
-				</div>
+				<RulesetToggle bind:value={ruleType} class="w-full flex-row" />
 				<p class="text-xs text-text-muted mt-2 px-1 leading-relaxed">
-					{ruleType === 'original' 
+					{ruleType === 'standard' 
 						? 'Standard: Classifies strictly based on customer rating (>4.0) and return history.' 
 						: 'Advanced: Considers sales velocity (units sold), profit margins, and stock-to-sales ratios.'}
 				</p>
