@@ -5,6 +5,7 @@
 	import PriorityDistributionChart from '$lib/components/analytics/PriorityDistributionChart.svelte';
 	import ModelComparisonChart from '$lib/components/analytics/ModelComparisonChart.svelte';
 	import ModelMetricsTable from '$lib/components/analytics/ModelMetricsTable.svelte';
+	import ProgressBar from '$lib/components/ui/ProgressBar.svelte';
 	import { fetchDataDistribution, fetchModelComparison } from '$lib/services/api';
 	import type { DualRulesetDistribution, DualRulesetComparison, DistributionItem, ModelMetric } from '$lib/types/analytics';
 	import AlertIcon from '$lib/components/icons/AlertIcon.svelte';
@@ -105,21 +106,16 @@
 				<PriorityDistributionChart data={activeDistribution} />
 			</Card>
 
-			<Card title="Total Samples">
-				<p class="text-sm text-text-muted mb-4">Breakdown of priority counts under the active ruleset</p>
-				<div class="space-y-4">
+			<Card title="Total Samples" class="h-full flex flex-col">
+				<p class="text-sm text-text-muted">Breakdown of priority counts under the active ruleset</p>
+				<div class="flex-1 flex flex-col justify-center space-y-6">
 					{#each activeDistribution as item}
-						<div class="flex items-center justify-between">
-							<span class="font-medium text-text">{item.label}</span>
-							<span class="text-text-muted text-sm tabular-nums">{item.count} samples</span>
-						</div>
-						<div class="w-full h-2.5 bg-surface-2 rounded-full overflow-hidden">
-							<div
-								class="h-full rounded-full transition-all duration-500"
-								style="width: {(item.count / Math.max(...activeDistribution.map(d => d.count))) * 100}%;
-									background: {['#6C4060', '#7B9DBF', '#0F172A'][activeDistribution.indexOf(item)]}"
-							></div>
-						</div>
+						<ProgressBar 
+							label={item.label} 
+							value={item.count} 
+							maxValue={Math.max(...activeDistribution.map(d => d.count))}
+							color={['#6C4060', '#7B9DBF', '#0F172A'][activeDistribution.indexOf(item)]}
+						/>
 					{/each}
 				</div>
 			</Card>

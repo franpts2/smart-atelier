@@ -12,7 +12,7 @@
 
 <div class="bg-surface-0 p-8 rounded-lg border border-border shadow-sm {className}">
 	{#if title}
-		<h2 class="text-xl mb-6">{title}</h2>
+		<h2 class="text-xl mb-2">{title}</h2>
 	{/if}
 	{@render children()}
 </div>
