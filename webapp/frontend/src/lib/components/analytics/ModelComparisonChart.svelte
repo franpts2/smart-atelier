@@ -16,6 +16,17 @@
 
 	const metricColors = ['#6C4060', '#7B9DBF', '#0F172A', '#64748B'];
 
+	$effect(() => {
+		if (chart && data) {
+			chart.data.labels = data.map((d) => d.name);
+			chart.data.datasets[0].data = data.map((d) => d.accuracy);
+			chart.data.datasets[1].data = data.map((d) => d.precision);
+			chart.data.datasets[2].data = data.map((d) => d.recall);
+			chart.data.datasets[3].data = data.map((d) => d.f1_score);
+			chart.update();
+		}
+	});
+
 	function buildConfig() {
 		return {
 			type: 'bar' as const,

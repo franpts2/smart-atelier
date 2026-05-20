@@ -16,6 +16,15 @@
 
 	const colors = ['#6C4060', '#7B9DBF', '#0F172A'];
 
+	$effect(() => {
+		if (chart && data) {
+			chart.data.labels = data.map((d) => d.label);
+			chart.data.datasets[0].data = data.map((d) => d.count);
+			chart.data.datasets[0].backgroundColor = colors.slice(0, data.length);
+			chart.update();
+		}
+	});
+
 	function buildConfig() {
 		return {
 			type: 'doughnut' as const,

@@ -201,8 +201,19 @@ class MLService:
         if not os.path.exists(train_path):
             return {"error": "Training data not found"}
         df = pd.read_csv(train_path)
-        counts = df["stocking_priority"].value_counts()
-        return {str(k): int(v) for k, v in counts.items()}
+        
+        # Standard ruleset priority distribution
+        std_counts = df["stocking_priority"].value_counts()
+        standard_dist = {str(k): int(v) for k, v in std_counts.items()}
+        
+        # Advanced ruleset priority distribution
+        adv_counts = df["stocking_priority_advanced"].value_counts()
+        advanced_dist = {str(k): int(v) for k, v in adv_counts.items()}
+        
+        return {
+            "standard": standard_dist,
+            "advanced": advanced_dist
+        }
 
     def get_model_comparison(self):
         test_path = os.path.join(root_dir, "data", "processed", "test.csv")
@@ -212,17 +223,32 @@ class MLService:
         from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
         test_df = pd.read_csv(test_path)
-        features = ["original_price", "current_price", "Net_Margin", "brand_encoded", "category_encoded", "stock_quantity"]
-        target = "stocking_priority"
+        
+        # 1. Standard features and targets
+        features_std = ["original_price", "current_price", "Net_Margin", "brand_encoded", "category_encoded", "stock_quantity"]
+        target_std = "stocking_priority"
 
-        X_test = test_df[features]
-        y_test = test_df[target]
+        X_test_std = test_df[features_std]
+        y_test_std = test_df[target_std]
 
-        num_cols = ["original_price", "current_price", "Net_Margin"]
-        X_test_num = self.scaler.transform(X_test[num_cols])
-        X_test_scaled = X_test.copy()
-        for i, col in enumerate(num_cols):
-            X_test_scaled[col] = X_test_num[:, i]
+        num_cols_std = ["original_price", "current_price", "Net_Margin"]
+        X_test_num_std = self.scaler.transform(X_test_std[num_cols_std])
+        X_test_scaled_std = X_test_std.copy()
+        for i, col in enumerate(num_cols_std):
+            X_test_scaled_std[col] = X_test_num_std[:, i]
+
+        # 2. Advanced features and targets
+        features_adv = ["original_price", "current_price", "Net_Margin", "brand_encoded", "category_encoded", "stock_quantity", "units_sold"]
+        target_adv = "stocking_priority_advanced"
+
+        X_test_adv = test_df[features_adv]
+        y_test_adv = test_df[target_adv]
+
+        num_cols_adv = ["original_price", "current_price", "Net_Margin", "units_sold"]
+        X_test_num_adv = self.scaler_advanced.transform(X_test_adv[num_cols_adv])
+        X_test_scaled_adv = X_test_adv.copy()
+        for i, col in enumerate(num_cols_adv):
+            X_test_scaled_adv[col] = X_test_num_adv[:, i]
 
         model_names = {
             "knn": "KNN",
@@ -233,24 +259,49 @@ class MLService:
             "neural_network": "Neural Network",
         }
 
-        results = []
-        for model_id, model_name in model_names.items():
-            if model_id not in self.models:
-                continue
-            model = self.models[model_id]
-            y_pred = model.predict(X_test_scaled)
-            acc = accuracy_score(y_test, y_pred)
-            prec, rec, f1, _ = precision_recall_fscore_support(y_test, y_pred, average="weighted", zero_division=0)
-            results.append({
-                "id": model_id,
-                "name": model_name,
-                "accuracy": round(acc, 4),
-                "precision": round(prec, 4),
-                "recall": round(rec, 4),
-                "f1_score": round(f1, 4),
-            })
+        standard_results = []
+        advanced_results = []
 
-        return results
+        for model_id, model_name in model_names.items():
+            # Standard model evaluation
+            if model_id in self.models:
+                model_std = self.models[model_id]
+                y_pred_std = model_std.predict(X_test_scaled_std)
+                acc_std = accuracy_score(y_test_std, y_pred_std)
+                prec_std, rec_std, f1_std, _ = precision_recall_fscore_support(
+                    y_test_std, y_pred_std, average="weighted", zero_division=0
+                )
+                standard_results.append({
+                    "id": model_id,
+                    "name": model_name,
+                    "accuracy": round(acc_std, 4),
+                    "precision": round(prec_std, 4),
+                    "recall": round(rec_std, 4),
+                    "f1_score": round(f1_std, 4),
+                })
+
+            # Advanced model evaluation
+            model_adv_id = f"{model_id}_advanced"
+            if model_adv_id in self.models:
+                model_adv = self.models[model_adv_id]
+                y_pred_adv = model_adv.predict(X_test_scaled_adv)
+                acc_adv = accuracy_score(y_test_adv, y_pred_adv)
+                prec_adv, rec_adv, f1_adv, _ = precision_recall_fscore_support(
+                    y_test_adv, y_pred_adv, average="weighted", zero_division=0
+                )
+                advanced_results.append({
+                    "id": model_id,
+                    "name": model_name,
+                    "accuracy": round(acc_adv, 4),
+                    "precision": round(prec_adv, 4),
+                    "recall": round(rec_adv, 4),
+                    "f1_score": round(f1_adv, 4),
+                })
+
+        return {
+            "standard": standard_results,
+            "advanced": advanced_results
+        }
 
 
 # We create a single instance of this service (a Singleton)

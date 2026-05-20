@@ -1,5 +1,5 @@
 import type { InventoryItem, PredictionResult, InventoryMeta } from '../types/inventory';
-import type { DistributionItem, ModelMetric } from '../types/analytics';
+import type { DistributionItem, ModelMetric, DualRulesetDistribution, DualRulesetComparison } from '../types/analytics';
 
 // This is the address of our Python (FastAPI) backend.
 // In a real project, this would change when you put the website online.
@@ -20,17 +20,61 @@ export async function fetchInventoryMeta(): Promise<InventoryMeta> {
 	return res.json();
 }
 
-export async function fetchDataDistribution(): Promise<DistributionItem[]> {
+export async function fetchDataDistribution(): Promise<DualRulesetDistribution> {
 	const res = await fetch(`${API_BASE_URL}/data-distribution`);
 	if (!res.ok) throw new Error('Failed to fetch data distribution');
-	const data: Record<string, number> = await res.json();
-	return Object.entries(data).map(([label, count]) => ({ label, count }));
+	const data: any = await res.json();
+	
+	if (data && data.error) {
+		throw new Error(data.error);
+	}
+	
+	const mapToItems = (record: Record<string, number> | undefined): DistributionItem[] => {
+		if (!record) return [];
+		const order = ['High Stock', 'Maintain', 'Low Stock'];
+		const entries = Object.entries(record).map(([label, count]) => ({ label, count }));
+		return entries.sort((a, b) => {
+			const indexA = order.indexOf(a.label);
+			const indexB = order.indexOf(b.label);
+			const valA = indexA !== -1 ? indexA : 999;
+			const valB = indexB !== -1 ? indexB : 999;
+			return valA - valB;
+		});
+	};
+
+	// Graceful fallback for legacy flat format
+	if (data && !data.standard && !data.advanced) {
+		const legacyMapped = mapToItems(data);
+		return {
+			standard: legacyMapped,
+			advanced: legacyMapped
+		};
+	}
+
+	return {
+		standard: mapToItems(data.standard),
+		advanced: mapToItems(data.advanced)
+	};
 }
 
-export async function fetchModelComparison(): Promise<ModelMetric[]> {
+export async function fetchModelComparison(): Promise<DualRulesetComparison> {
 	const res = await fetch(`${API_BASE_URL}/model-comparison`);
 	if (!res.ok) throw new Error('Failed to fetch model comparison');
-	return res.json();
+	const data: any = await res.json();
+	
+	if (data && data.error) {
+		throw new Error(data.error);
+	}
+	
+	// Graceful fallback for legacy array format
+	if (Array.isArray(data)) {
+		return {
+			standard: data,
+			advanced: data
+		};
+	}
+	
+	return data;
 }
 
 /**
