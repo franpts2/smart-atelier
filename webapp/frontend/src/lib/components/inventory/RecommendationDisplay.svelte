@@ -2,6 +2,7 @@
 	import Card from "$lib/components/ui/Card.svelte";
 	import Stat from "$lib/components/ui/Stat.svelte";
 	import BarChartIcon from "$lib/components/icons/BarChartIcon.svelte";
+	import { PRIORITY_LABELS } from "$lib/constants";
 	import type { PredictionResult } from "$lib/types/inventory";
 
 	interface Props {
@@ -14,17 +15,17 @@
 		switch (priority) {
 			case "High Stock":
 				return {
-					text: "🌟 Top Performer",
+					text: `🌟 ${PRIORITY_LABELS["High Stock"]}`,
 					class: "bg-accent text-surface-0 border-accent",
 				};
 			case "Low Stock":
 				return {
-					text: "⚠️ Risk / Clearance",
+					text: `⚠️ ${PRIORITY_LABELS["Low Stock"]}`,
 					class: "bg-surface-2 text-text-muted border-border",
 				};
 			default:
 				return {
-					text: "✅ Stable Asset",
+					text: `✅ ${PRIORITY_LABELS["Maintain"]}`,
 					class: "border-accent text-accent bg-surface-0",
 				};
 		}

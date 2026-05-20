@@ -6,11 +6,13 @@
 	import ModelComparisonChart from '$lib/components/analytics/ModelComparisonChart.svelte';
 	import ModelMetricsTable from '$lib/components/analytics/ModelMetricsTable.svelte';
 	import ProgressBar from '$lib/components/ui/ProgressBar.svelte';
+	import PageHeader from '$lib/components/ui/PageHeader.svelte';
+	import LoadingState from '$lib/components/ui/LoadingState.svelte';
+	import Alert from '$lib/components/ui/Alert.svelte';
+	import RulesetProfile from '$lib/components/inventory/RulesetProfile.svelte';
 	import { fetchDataDistribution, fetchModelComparison } from '$lib/services/api';
+	import { THEME_COLORS } from '$lib/constants';
 	import type { DualRulesetDistribution, DualRulesetComparison, DistributionItem, ModelMetric } from '$lib/types/analytics';
-	import AlertIcon from '$lib/components/icons/AlertIcon.svelte';
-	import ShieldCheckIcon from '$lib/components/icons/ShieldCheckIcon.svelte';
-	import FlaskIcon from '$lib/components/icons/FlaskIcon.svelte';
 
 	let dualDistribution = $state<DualRulesetDistribution | null>(null);
 	let dualModels = $state<DualRulesetComparison | null>(null);
@@ -43,58 +45,21 @@
 </script>
 
 <div class="max-w-6xl mx-auto py-12 px-4">
-	<!-- Hero header with ruleset segmented control -->
-	<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8 bg-surface-1 p-6 rounded-2xl border border-border shadow-sm">
-		<div>
-			<h1 class="text-3xl mb-1 font-bold">Analytics Dashboard</h1>
-			<p class="text-text-muted text-sm">Compare Standard and Advanced stocking rule performance and training set statistics</p>
-		</div>
-		
+	<PageHeader 
+		title="Analytics Dashboard" 
+		description="Compare Standard and Advanced stocking rule performance and training set statistics"
+	>
 		<RulesetToggle bind:value={selectedRuleset} />
-	</div>
+	</PageHeader>
 
 	{#if loading}
-		<div class="flex flex-col items-center justify-center py-20">
-			<div class="w-10 h-10 border-4 border-accent border-t-transparent rounded-full animate-spin mb-4"></div>
-			<p class="text-text-muted text-sm font-medium">Loading analytics datasets and evaluating models...</p>
-		</div>
+		<LoadingState message="Loading analytics datasets and evaluating models..." />
 	{:else if error}
-		<div class="p-6 rounded-2xl bg-red-50 border border-red-200 text-red-600 flex items-center gap-3">
-			<AlertIcon class="w-6 h-6 shrink-0" />
-			<p class="font-semibold">{error}</p>
-		</div>
+		<Alert variant="error">{error}</Alert>
 	{:else}
 		<!-- Pedagogical Profile Card -->
-		<div class="mb-10 p-6 rounded-2xl bg-surface-1 border border-border shadow-sm relative overflow-hidden flex flex-col md:flex-row gap-6 items-start md:items-center">
-			<!-- Subtle background glow -->
-			<div class="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-accent/5 blur-3xl pointer-events-none"></div>
-			
-			<div class="p-3.5 rounded-xl bg-accent/10 text-accent shrink-0">
-				{#if selectedRuleset === 'standard'}
-					<ShieldCheckIcon class="w-7 h-7" />
-				{:else}
-					<FlaskIcon class="w-7 h-7" />
-				{/if}
-			</div>
-			
-			<div class="flex-1">
-				<h2 class="text-lg font-bold mb-1 text-text">
-					{#if selectedRuleset === 'standard'}
-						Standard Ruleset Profile (Ratings-Based)
-					{:else}
-						Advanced Ruleset Profile (Velocity & Profit-Aware)
-					{/if}
-				</h2>
-				<p class="text-sm text-text-muted leading-relaxed">
-					{#if selectedRuleset === 'standard'}
-						Classified strictly using client ratings and returns: <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Rating &gt; 4.0</code> (No returns) triggers <strong>High Stock</strong>, <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Rating &lt; 2.0</code> (With returns) triggers <strong>Low Stock</strong>, otherwise <strong>Maintain</strong>.
-						This ruleset is easy to predict but prone to stockouts on items that sell fast regardless of rating, and overstocking on items that are highly rated but rarely purchased.
-					{:else}
-						Classified using inventory turnover velocity and profit margins: combines <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Net Margin</code>, <code class="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-semibold text-xs border border-border">Units Sold</code> (last 30 days), and customer rating dynamics.
-						This ruleset prevents capital tying in slow-moving stock, while boosting replenishment recommendations for highly profitable, high-throughput items.
-					{/if}
-				</p>
-			</div>
+		<div class="mb-10">
+			<RulesetProfile type={selectedRuleset} />
 		</div>
 
 		<!-- Data distribution section -->
@@ -114,7 +79,7 @@
 							label={item.label} 
 							value={item.count} 
 							maxValue={Math.max(...activeDistribution.map(d => d.count))}
-							color={['#6C4060', '#7B9DBF', '#0F172A'][activeDistribution.indexOf(item)]}
+							color={THEME_COLORS[activeDistribution.indexOf(item)]}
 						/>
 					{/each}
 				</div>

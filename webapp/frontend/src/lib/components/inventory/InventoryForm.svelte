@@ -6,6 +6,7 @@
 	import Select from "$lib/components/ui/Select.svelte";
 	import Accordion from "$lib/components/ui/Accordion.svelte";
 	import RulesetToggle from "$lib/components/ui/RulesetToggle.svelte";
+	import RulesetProfile from "$lib/components/inventory/RulesetProfile.svelte";
 	import type { InventoryItem } from "$lib/types/inventory";
 
 	// In Svelte 5, we use 'Props' to define what data this component expects from its parent.
@@ -133,11 +134,7 @@
 
 			<FormField label="Stocking Ruleset / Decision Logic" id="ruleset-select" class="px-2 mt-4">
 				<RulesetToggle bind:value={ruleType} class="w-full flex-row" />
-				<p class="text-xs text-text-muted mt-2 px-1 leading-relaxed">
-					{ruleType === 'standard' 
-						? 'Standard: Classifies strictly based on customer rating (>4.0) and return history.' 
-						: 'Advanced: Considers sales velocity (units sold), profit margins, and stock-to-sales ratios.'}
-				</p>
+				<RulesetProfile type={ruleType} variant="compact" />
 			</FormField>
 		</Accordion>
 
