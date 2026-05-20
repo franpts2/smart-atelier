@@ -33,7 +33,9 @@ export async function predictStock(item: InventoryItem): Promise<PredictionResul
 			original_price: item.originalPrice,
 			current_price: item.currentPrice,
 			stock_quantity: item.stockQuantity,
-			model_type: item.model_type
+			model_type: item.model_type,
+			units_sold: item.unitsSold,
+			rule_type: item.rule_type
 		})
 	});
 

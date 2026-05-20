@@ -19,6 +19,8 @@ class MLService:
         # We initialize these as None and load them later in load_artifacts()
         self.models = {}  # Dictionary to store multiple models {model_id: model_object}
         self.scaler = None  # Used to scale numerical data (normalization)
+        self.scaler_advanced = None # Scaler including units_sold
+        self.units_sold_map = {} # Mapping of (category, brand) -> units_sold
         self.brand_map = None  # Dictionary to convert brand names to numbers
         self.category_map = None  # Dictionary to convert category names to numbers
 
@@ -34,6 +36,8 @@ class MLService:
             
             # Load common artifacts
             self.scaler = joblib.load(os.path.join(artifacts_dir, "scaler.joblib"))
+            self.scaler_advanced = joblib.load(os.path.join(artifacts_dir, "scaler_advanced.joblib"))
+            self.units_sold_map = joblib.load(os.path.join(artifacts_dir, "units_sold_map.joblib"))
             self.brand_map = joblib.load(
                 os.path.join(artifacts_dir, "brand_map.joblib")
             )
@@ -103,40 +107,84 @@ class MLService:
         if brand_encoded is None or category_encoded is None:
             return None, net_margin, brand_encoded, category_encoded
 
-        # 3. Scale numerical features
-        # Models work better when numbers are in a similar range (e.g., 0 to 1).
-        # We use the 'scaler' we saved during training to do this.
-        numerical_features = pd.DataFrame(
-            [[request.original_price, request.current_price, net_margin]],
-            columns=["original_price", "current_price", "Net_Margin"],
-        )
-        scaled_numerical = self.scaler.transform(numerical_features)
+        # 3. Determine if using advanced rule/model
+        is_advanced = (request.rule_type == "advanced")
+        
+        # Determine units sold:
+        # If the user supplied it, use it.
+        # Otherwise, look it up in the units_sold_map.
+        # If not found in map, default to 10.
+        units_sold_raw = request.units_sold
+        if units_sold_raw is None or units_sold_raw <= 0:
+            units_sold_raw = self.units_sold_map.get((request.category, request.brand), 10)
 
-        # 4. Prepare the final feature list for the model
-        # The order of columns must be EXACTLY the same as during training.
-        features = pd.DataFrame(
-            [
+        # 4. Scale numerical features
+        if is_advanced:
+            # Features: [original_price, current_price, Net_Margin, units_sold]
+            numerical_features = pd.DataFrame(
+                [[request.original_price, request.current_price, net_margin, units_sold_raw]],
+                columns=["original_price", "current_price", "Net_Margin", "units_sold"],
+            )
+            scaled_numerical = self.scaler_advanced.transform(numerical_features)
+            
+            # Prepare the final feature list for advanced model
+            features = pd.DataFrame(
                 [
-                    scaled_numerical[0][0],  # scaled original_price
-                    scaled_numerical[0][1],  # scaled current_price
-                    scaled_numerical[0][2],  # scaled Net_Margin
-                    brand_encoded,
-                    category_encoded,
-                    request.stock_quantity,
-                ]
-            ],
-            columns=[
-                "original_price",
-                "current_price",
-                "Net_Margin",
-                "brand_encoded",
-                "category_encoded",
-                "stock_quantity",
-            ],
-        )
+                    [
+                        scaled_numerical[0][0],  # scaled original_price
+                        scaled_numerical[0][1],  # scaled current_price
+                        scaled_numerical[0][2],  # scaled Net_Margin
+                        brand_encoded,
+                        category_encoded,
+                        request.stock_quantity,
+                        scaled_numerical[0][3],  # scaled units_sold
+                    ]
+                ],
+                columns=[
+                    "original_price",
+                    "current_price",
+                    "Net_Margin",
+                    "brand_encoded",
+                    "category_encoded",
+                    "stock_quantity",
+                    "units_sold",
+                ],
+            )
+        else:
+            # Standard features: [original_price, current_price, Net_Margin]
+            numerical_features = pd.DataFrame(
+                [[request.original_price, request.current_price, net_margin]],
+                columns=["original_price", "current_price", "Net_Margin"],
+            )
+            scaled_numerical = self.scaler.transform(numerical_features)
+            
+            # Prepare the final feature list for standard model
+            features = pd.DataFrame(
+                [
+                    [
+                        scaled_numerical[0][0],  # scaled original_price
+                        scaled_numerical[0][1],  # scaled current_price
+                        scaled_numerical[0][2],  # scaled Net_Margin
+                        brand_encoded,
+                        category_encoded,
+                        request.stock_quantity,
+                    ]
+                ],
+                columns=[
+                    "original_price",
+                    "current_price",
+                    "Net_Margin",
+                    "brand_encoded",
+                    "category_encoded",
+                    "stock_quantity",
+                ],
+            )
 
         # 5. Run the prediction using the requested model
         model_id = request.model_type
+        if is_advanced:
+            model_id = f"{model_id}_advanced"
+            
         if model_id not in self.models:
             # Fallback to the first available model if requested is missing
             model_id = next(iter(self.models)) if self.models else None

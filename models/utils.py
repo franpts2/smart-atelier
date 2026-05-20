@@ -41,6 +41,8 @@ def prepare_features(train_df, test_df, target_col='stocking_priority'):
         "category_encoded",
         "stock_quantity",
     ]
+    if target_col == "stocking_priority_advanced":
+        features.append("units_sold")
 
     X_train = train_df[features]
     y_train = train_df[target_col]

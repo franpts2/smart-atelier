@@ -5,6 +5,8 @@ export interface InventoryItem {
 	currentPrice: number;
 	stockQuantity: number;
 	model_type?: string;
+	unitsSold?: number;
+	rule_type?: string;
 }
 
 export interface PredictionResult {

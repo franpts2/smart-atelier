@@ -37,6 +37,8 @@
 	let currentPrice = $state(0);
 	let stockQuantity = $state(0);
 	let selectedModel = $state("knn");
+	let unitsSold = $state(15);
+	let ruleType = $state("original");
 
 	// Format model names for display
 	function formatModelName(name: string) {
@@ -54,7 +56,9 @@
 			originalPrice,
 			currentPrice,
 			stockQuantity,
-			model_type: selectedModel
+			model_type: selectedModel,
+			unitsSold,
+			rule_type: ruleType
 		});
 	}
 </script>
@@ -102,9 +106,15 @@
 			</FormField>
 		</div>
 
-		<FormField label="Current Stock Level" id="stock">
-			<Input id="stock" type="number" bind:value={stockQuantity} />
-		</FormField>
+		<!-- Stock and Sales Inputs -->
+		<div class="grid grid-cols-2 gap-4">
+			<FormField label="Current Stock Level" id="stock">
+				<Input id="stock" type="number" bind:value={stockQuantity} />
+			</FormField>
+			<FormField label="Units Sold (Last 30 Days)" id="units-sold">
+				<Input id="units-sold" type="number" bind:value={unitsSold} />
+			</FormField>
+		</div>
 
 		<!-- Advanced Section -->
 		<Accordion title="Advanced Options">
@@ -118,6 +128,30 @@
 						: [{ value: 'knn', label: 'K-Nearest Neighbors (Default)' }]
 					}
 				/>
+			</FormField>
+
+			<FormField label="Stocking Ruleset / Decision Logic" id="ruleset-select" class="px-2 mt-4">
+				<div class="grid grid-cols-2 gap-2 mt-1">
+					<button
+						type="button"
+						class="py-2.5 px-3 rounded-lg border text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 {ruleType === 'original' ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' : 'bg-surface-2 text-text-muted border-border hover:bg-surface-3'}"
+						onclick={() => ruleType = 'original'}
+					>
+						Standard Rules
+					</button>
+					<button
+						type="button"
+						class="py-2.5 px-3 rounded-lg border text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 {ruleType === 'advanced' ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20' : 'bg-surface-2 text-text-muted border-border hover:bg-surface-3'}"
+						onclick={() => ruleType = 'advanced'}
+					>
+						Advanced Rules
+					</button>
+				</div>
+				<p class="text-xs text-text-muted mt-2 px-1 leading-relaxed">
+					{ruleType === 'original' 
+						? 'Standard: Classifies strictly based on customer rating (>4.0) and return history.' 
+						: 'Advanced: Considers sales velocity (units sold), profit margins, and stock-to-sales ratios.'}
+				</p>
 			</FormField>
 		</Accordion>
 
