@@ -5,6 +5,8 @@
 	import Input from "$lib/components/ui/Input.svelte";
 	import Select from "$lib/components/ui/Select.svelte";
 	import Accordion from "$lib/components/ui/Accordion.svelte";
+	import RulesetToggle from "$lib/components/ui/RulesetToggle.svelte";
+	import RulesetProfile from "$lib/components/inventory/RulesetProfile.svelte";
 	import type { InventoryItem } from "$lib/types/inventory";
 
 	// In Svelte 5, we use 'Props' to define what data this component expects from its parent.
@@ -37,6 +39,8 @@
 	let currentPrice = $state(0);
 	let stockQuantity = $state(0);
 	let selectedModel = $state("knn");
+	let unitsSold = $state(15);
+	let ruleType = $state<'standard' | 'advanced'>("standard");
 
 	// Format model names for display
 	function formatModelName(name: string) {
@@ -54,7 +58,9 @@
 			originalPrice,
 			currentPrice,
 			stockQuantity,
-			model_type: selectedModel
+			model_type: selectedModel,
+			unitsSold,
+			rule_type: ruleType
 		});
 	}
 </script>
@@ -102,9 +108,15 @@
 			</FormField>
 		</div>
 
-		<FormField label="Current Stock Level" id="stock">
-			<Input id="stock" type="number" bind:value={stockQuantity} />
-		</FormField>
+		<!-- Stock and Sales Inputs -->
+		<div class="grid grid-cols-2 gap-4">
+			<FormField label="Current Stock Level" id="stock">
+				<Input id="stock" type="number" bind:value={stockQuantity} />
+			</FormField>
+			<FormField label="Units Sold (Last 30 Days)" id="units-sold">
+				<Input id="units-sold" type="number" bind:value={unitsSold} />
+			</FormField>
+		</div>
 
 		<!-- Advanced Section -->
 		<Accordion title="Advanced Options">
@@ -118,6 +130,11 @@
 						: [{ value: 'knn', label: 'K-Nearest Neighbors (Default)' }]
 					}
 				/>
+			</FormField>
+
+			<FormField label="Stocking Ruleset / Decision Logic" id="ruleset-select" class="px-2 mt-4">
+				<RulesetToggle bind:value={ruleType} class="w-full flex-row" />
+				<RulesetProfile type={ruleType} variant="compact" />
 			</FormField>
 		</Accordion>
 

@@ -11,3 +11,13 @@ export interface ModelMetric {
     recall: number;
     f1_score: number;
 }
+
+export interface DualRulesetDistribution {
+    standard: DistributionItem[];
+    advanced: DistributionItem[];
+}
+
+export interface DualRulesetComparison {
+    standard: ModelMetric[];
+    advanced: ModelMetric[];
+}

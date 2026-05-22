@@ -29,26 +29,43 @@ df["purchase_date"] = pd.to_datetime(df["purchase_date"])
 df["purchase_month"] = df["purchase_date"].dt.month
 df["purchase_quarter"] = df["purchase_date"].dt.quarter
 
-# === stocking priority ===
+# Assuming theoretical cost is 40% of original price
+df["Net_Margin"] = df["current_price"] - (df["original_price"] * 0.40)
 
-# logical conditions for inventory tiers
-conditions = [
+# Group by category and brand to count units sold (sales frequency)
+units_sold_df = df.groupby(["category", "brand"]).size().reset_index(name="units_sold")
+df = df.merge(units_sold_df, on=["category", "brand"], how="left")
+
+# Save units_sold_map to artifacts
+artifacts_dir = os.path.join(base_dir, "models", "artifacts")
+os.makedirs(artifacts_dir, exist_ok=True)
+units_sold_map = {
+    (row["category"], row["brand"]): int(row["units_sold"])
+    for _, row in units_sold_df.iterrows()
+}
+joblib.dump(units_sold_map, os.path.join(artifacts_dir, "units_sold_map.joblib"))
+
+# === stocking priority ===
+conditions_std = [
     (df["customer_rating"] > 4.0) & (df["is_returned"] == False),  # high priority
     (df["customer_rating"] < 2.0) | (df["is_returned"] == True),  # low priority
 ]
-
 choices = ["High Stock", "Low Stock"]
-df["stocking_priority"] = np.select(conditions, choices, default="Maintain")
+df["stocking_priority"] = np.select(conditions_std, choices, default="Maintain")
+
+# Advanced stocking priority rules
+conditions_adv = [
+    (df["units_sold"] >= 15) & (df["customer_rating"] >= 3.8) & (df["is_returned"] == False) & (df["Net_Margin"] > 0) & (df["stock_quantity"] < df["units_sold"] * 1.5),
+    (df["is_returned"] == True) | (df["customer_rating"] < 2.5) | (df["units_sold"] < 5) | (df["Net_Margin"] <= 0) | (df["stock_quantity"] > df["units_sold"] * 3.0),
+]
+df["stocking_priority_advanced"] = np.select(conditions_adv, choices, default="Maintain")
 
 # === final data preparation ===
 
 # remove product_id, return_reason
-# return_reason is removed because it happens after a return
-# so it cannot be used to predict stocking priority
 df_cleaned = df.drop(columns=["product_id", "return_reason"])
 
 # === create reproducible train/test split ===
-# use stratified split on `stocking_priority` if present to keep class balance
 split_kwargs = dict(test_size=0.2, random_state=42, shuffle=True)
 stratify_col = None
 if (
@@ -63,18 +80,6 @@ train_df = train_df.copy()
 test_df = test_df.copy()
 
 
-# === calculate Net_Margin ===
-
-# Assuming theoretical cost is 40% of original price
-for data in [train_df, test_df]:
-    theoretical_cost = (
-        data["original_price"] * 0.40
-        if "original_price" in data.columns
-        else data["current_price"] * 0.50
-    )
-    data["Net_Margin"] = data["current_price"] - theoretical_cost
-
-
 # === Encode Brands & Categories ===
 
 # Create consistent mappings from the full cleaned dataset
@@ -86,8 +91,6 @@ category_map = {
 }
 
 # Save mappings for backend use
-artifacts_dir = os.path.join(base_dir, "models", "artifacts")
-os.makedirs(artifacts_dir, exist_ok=True)
 joblib.dump(brand_map, os.path.join(artifacts_dir, "brand_map.joblib"))
 joblib.dump(category_map, os.path.join(artifacts_dir, "category_map.joblib"))
 
@@ -97,21 +100,31 @@ for data in [train_df, test_df]:
     if "category" in data.columns:
         data["category_encoded"] = data["category"].astype(str).map(category_map)
 
-# === scale price columns ===
-# apply StandardScaler to price columns so distance-based models aren't biased
-scale_cols = ["original_price", "current_price", "Net_Margin"]
+# === scale columns ===
+scale_cols_std = ["original_price", "current_price", "Net_Margin"]
+scale_cols_adv = ["original_price", "current_price", "Net_Margin", "units_sold"]
 
-scaler = StandardScaler()
+scaler_std = StandardScaler()
+scaler_adv = StandardScaler()
 
-train_df[scale_cols] = scaler.fit_transform(train_df[scale_cols])
-test_df[scale_cols] = scaler.transform(test_df[scale_cols])
+# Fit on training data
+scaler_std.fit(train_df[scale_cols_std])
+scaler_adv.fit(train_df[scale_cols_adv])
 
-# Save scaler for backend use
-joblib.dump(scaler, os.path.join(artifacts_dir, "scaler.joblib"))
+# Apply scaling to datasets
+train_df[scale_cols_std] = scaler_std.transform(train_df[scale_cols_std])
+test_df[scale_cols_std] = scaler_std.transform(test_df[scale_cols_std])
+
+train_df["units_sold"] = scaler_adv.transform(train_df[scale_cols_adv])[:, 3]
+test_df["units_sold"] = scaler_adv.transform(test_df[scale_cols_adv])[:, 3]
+
+# Save scalers for backend use
+joblib.dump(scaler_std, os.path.join(artifacts_dir, "scaler.joblib"))
+joblib.dump(scaler_adv, os.path.join(artifacts_dir, "scaler_advanced.joblib"))
 
 # round the price columns to 3 decimal places
-train_df[scale_cols] = train_df[scale_cols].round(3)
-test_df[scale_cols] = test_df[scale_cols].round(3)
+train_df[scale_cols_adv] = train_df[scale_cols_adv].round(3)
+test_df[scale_cols_adv] = test_df[scale_cols_adv].round(3)
 
 
 train_path = os.path.join(base_dir, "data", "processed", "train.csv")
@@ -124,3 +137,4 @@ print(
     f"Saved train/test split to {train_path} and {test_path} (test_size=0.2, random_state=42)"
 )
 print(f"Saved artifacts to {artifacts_dir}")
+

@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import InventoryHeader from "$lib/components/inventory/InventoryHeader.svelte";
 	import InventoryForm from "$lib/components/inventory/InventoryForm.svelte";
 	import RecommendationDisplay from "$lib/components/inventory/RecommendationDisplay.svelte";
+	import PageHeader from "$lib/components/ui/PageHeader.svelte";
+	import LoadingState from "$lib/components/ui/LoadingState.svelte";
+	import Alert from "$lib/components/ui/Alert.svelte";
 	import { fetchInventoryMeta, predictStock } from "$lib/services/api";
 	import type { InventoryItem, PredictionResult } from "$lib/types/inventory";
 
@@ -52,19 +54,29 @@
 </script>
 
 <div class="max-w-4xl mx-auto py-12 px-4">
-	<InventoryHeader />
+	<PageHeader 
+		title="Stock Optimization Tool" 
+		description="Analyze your collection items to determine optimal stock levels and profitability."
+		center
+	/>
 
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-		<InventoryForm
-			{brands}
-			{categories}
-			{models}
-			{isLoadingMeta}
-			{isPredicting}
-			{error}
-			onPredict={handlePredict}
-		/>
+	{#if isLoadingMeta}
+		<LoadingState message="Connecting to AI services..." />
+	{:else if error && !brands.length}
+		<Alert variant="error">{error}</Alert>
+	{:else}
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+			<InventoryForm
+				{brands}
+				{categories}
+				{models}
+				{isLoadingMeta}
+				{isPredicting}
+				{error}
+				onPredict={handlePredict}
+			/>
 
-		<RecommendationDisplay {prediction} />
-	</div>
+			<RecommendationDisplay {prediction} />
+		</div>
+	{/if}
 </div>

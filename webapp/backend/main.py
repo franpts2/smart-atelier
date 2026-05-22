@@ -46,10 +46,14 @@ async def get_model_comparison():
 async def get_meta():
     if ml_service.brand_map is None or ml_service.category_map is None:
         raise HTTPException(status_code=500, detail="Metadata not loaded")
+    
+    # Filter out advanced models from the metadata list so the frontend select dropdown stays clean
+    clean_model_keys = [m for m in ml_service.models.keys() if not m.endswith("_advanced")]
+    
     return {
         "brands": list(ml_service.brand_map.keys()),
         "categories": list(ml_service.category_map.keys()),
-        "models": list(ml_service.models.keys())
+        "models": clean_model_keys
     }
 
 # This is a 'POST' route. It's used when we want to send data to the server.

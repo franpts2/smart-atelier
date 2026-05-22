@@ -2,6 +2,7 @@
 	import { onDestroy } from 'svelte';
 	import { Chart, registerables } from 'chart.js';
 	import type { DistributionItem } from '$lib/types/analytics';
+	import { THEME_COLORS } from '$lib/constants';
 
 	Chart.register(...registerables);
 
@@ -14,7 +15,14 @@
 	let chart: Chart | null = null;
 	let observer: ResizeObserver | null = null;
 
-	const colors = ['#6C4060', '#7B9DBF', '#0F172A'];
+	$effect(() => {
+		if (chart && data) {
+			chart.data.labels = data.map((d) => d.label);
+			chart.data.datasets[0].data = data.map((d) => d.count);
+			chart.data.datasets[0].backgroundColor = THEME_COLORS.slice(0, data.length);
+			chart.update();
+		}
+	});
 
 	function buildConfig() {
 		return {
@@ -23,7 +31,7 @@
 				labels: data.map((d) => d.label),
 				datasets: [{
 					data: data.map((d) => d.count),
-					backgroundColor: colors.slice(0, data.length),
+					backgroundColor: THEME_COLORS.slice(0, data.length),
 					borderWidth: 0
 				}]
 			},

@@ -2,6 +2,7 @@
 	import { onDestroy } from 'svelte';
 	import { Chart, registerables } from 'chart.js';
 	import type { ModelMetric } from '$lib/types/analytics';
+	import { THEME_COLORS } from '$lib/constants';
 
 	Chart.register(...registerables);
 
@@ -14,7 +15,16 @@
 	let chart: Chart | null = null;
 	let observer: ResizeObserver | null = null;
 
-	const metricColors = ['#6C4060', '#7B9DBF', '#0F172A', '#64748B'];
+	$effect(() => {
+		if (chart && data) {
+			chart.data.labels = data.map((d) => d.name);
+			chart.data.datasets[0].data = data.map((d) => d.accuracy);
+			chart.data.datasets[1].data = data.map((d) => d.precision);
+			chart.data.datasets[2].data = data.map((d) => d.recall);
+			chart.data.datasets[3].data = data.map((d) => d.f1_score);
+			chart.update();
+		}
+	});
 
 	function buildConfig() {
 		return {
@@ -25,25 +35,25 @@
 					{
 						label: 'Accuracy',
 						data: data.map((d) => d.accuracy),
-						backgroundColor: metricColors[0],
+						backgroundColor: THEME_COLORS[0],
 						borderRadius: 4
 					},
 					{
 						label: 'Precision',
 						data: data.map((d) => d.precision),
-						backgroundColor: metricColors[1],
+						backgroundColor: THEME_COLORS[1],
 						borderRadius: 4
 					},
 					{
 						label: 'Recall',
 						data: data.map((d) => d.recall),
-						backgroundColor: metricColors[2],
+						backgroundColor: THEME_COLORS[2],
 						borderRadius: 4
 					},
 					{
 						label: 'F1 Score',
 						data: data.map((d) => d.f1_score),
-						backgroundColor: metricColors[3],
+						backgroundColor: THEME_COLORS[3],
 						borderRadius: 4
 					}
 				]
