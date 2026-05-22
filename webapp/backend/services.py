@@ -256,6 +256,8 @@ class MLService:
             "naive_bayes": "Naive Bayes",
             "svm": "SVM",
             "adaboost": "AdaBoost",
+            "random_forest": "Random Forest",
+            "random_forest_optimized": "Random Forest Optimized",
             "neural_network": "Neural Network",
         }
 

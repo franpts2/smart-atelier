@@ -4,7 +4,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 
 # Add parent directory to path so we can import from models
@@ -36,6 +36,16 @@ models_config = [
         "name": "adaboost",
         "label": "AdaBoost",
         "clf": lambda: AdaBoostClassifier(n_estimators=50, random_state=42)
+    },
+    {
+        "name": "random_forest",
+        "label": "Random Forest",
+        "clf": lambda: RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42)
+    },
+    {
+        "name": "random_forest_optimized",
+        "label": "Random Forest Optimized",
+        "clf": lambda: RandomForestClassifier(n_estimators=150, max_depth=20, min_samples_split=5, random_state=42)
     },
     {
         "name": "neural_network",
