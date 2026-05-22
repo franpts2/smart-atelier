@@ -49,7 +49,7 @@
 		title="Analytics Dashboard" 
 		description="Compare Standard and Advanced stocking rule performance and training set statistics"
 	>
-		<RulesetToggle bind:value={selectedRuleset} />
+		<RulesetToggle bind:value={selectedRuleset}/>
 	</PageHeader>
 
 	{#if loading}

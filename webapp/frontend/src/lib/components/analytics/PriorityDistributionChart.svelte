@@ -38,6 +38,9 @@
 			options: {
 				responsive: true,
 				maintainAspectRatio: false,
+				onHover: (event: any, chartElement: any) => {
+					event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+				},
 				plugins: {
 					legend: {
 						position: 'bottom' as const,

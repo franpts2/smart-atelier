@@ -133,7 +133,7 @@
 			</FormField>
 
 			<FormField label="Stocking Ruleset / Decision Logic" id="ruleset-select" class="px-2 mt-4">
-				<RulesetToggle bind:value={ruleType} class="w-full flex-row" />
+				<RulesetToggle bind:value={ruleType} class="w-full flex-row" showIcons={false} />
 				<RulesetProfile type={ruleType} variant="compact" />
 			</FormField>
 		</Accordion>

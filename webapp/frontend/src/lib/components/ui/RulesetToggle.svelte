@@ -4,15 +4,18 @@
 	import LightningIcon from '$lib/components/icons/LightningIcon.svelte';
 
 	interface Props {
-		// Value representing the selected ruleset (uses two-way Svelte 5 binding)
 		value: 'standard' | 'advanced';
-		// Optional callback to listen to selection changes
 		onchange?: (val: 'standard' | 'advanced') => void;
-		// Optional class name for the wrapper
+		showIcons?: boolean;
 		class?: string;
 	}
 
-	let { value = $bindable(), onchange, class: className = '' }: Props = $props();
+	let { 
+		value = $bindable(), 
+		onchange, 
+		showIcons = true,
+		class: className = '' 
+	}: Props = $props();
 
 	function select(newValue: 'standard' | 'advanced') {
 		value = newValue;
@@ -29,14 +32,18 @@
 
 	<ToggleButton active={value === 'standard'} onclick={() => select('standard')}>
 		{#snippet icon()}
-			<ClipboardIcon class="w-4 h-4" strokeWidth={2.5} />
+			{#if showIcons}
+				<ClipboardIcon class="w-4 h-4" strokeWidth={2.5} />
+			{/if}
 		{/snippet}
 		Standard Rules
 	</ToggleButton>
 
 	<ToggleButton active={value === 'advanced'} onclick={() => select('advanced')}>
 		{#snippet icon()}
-			<LightningIcon class="w-4 h-4" strokeWidth={2.5} />
+			{#if showIcons}
+				<LightningIcon class="w-4 h-4" strokeWidth={2.5} />
+			{/if}
 		{/snippet}
 		Advanced Rules
 	</ToggleButton>

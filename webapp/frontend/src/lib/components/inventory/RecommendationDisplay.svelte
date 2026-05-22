@@ -15,18 +15,18 @@
 		switch (priority) {
 			case "High Stock":
 				return {
-					text: `🌟 ${PRIORITY_LABELS["High Stock"]}`,
-					class: "bg-accent text-surface-0 border-accent",
+					text: `${PRIORITY_LABELS["High Stock"]}`,
+					style: "background-color: #38761d; color: white; border-color: #38761d;",
 				};
 			case "Low Stock":
 				return {
-					text: `⚠️ ${PRIORITY_LABELS["Low Stock"]}`,
-					class: "bg-surface-2 text-text-muted border-border",
+					text: `${PRIORITY_LABELS["Low Stock"]}`,
+					style: "background-color: #990000; color: white; border-color: #990000;",
 				};
 			default:
 				return {
-					text: `✅ ${PRIORITY_LABELS["Maintain"]}`,
-					class: "border-accent text-accent bg-surface-0",
+					text: `${PRIORITY_LABELS["Maintain"]}`,
+					style: "border-color: #0F172A; color: #0F172A; background-color: transparent;",
 				};
 		}
 	}
@@ -41,7 +41,8 @@
 		>
 			<div class="flex flex-col items-center text-center space-y-6">
 				<div
-					class="py-3 px-6 rounded-full border {label.class} text-lg font-bold"
+					class="py-3 px-6 rounded-full border text-lg font-bold"
+					style={label.style}
 				>
 					{label.text}
 				</div>

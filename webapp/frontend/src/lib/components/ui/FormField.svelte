@@ -12,6 +12,6 @@
 </script>
 
 <div class="flex flex-col gap-1 {className}">
-	<label for={id} class="text-sm font-semibold text-text-main">{label}</label>
+	<label for={id} class="text-xs font-semibold text-text-main">{label}</label>
 	{@render children()}
 </div>
