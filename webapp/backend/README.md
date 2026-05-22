@@ -53,13 +53,3 @@ We use several modern Python libraries to make this work:
     -   Scales the numbers so they are in a consistent range.
 5.  **Prediction**: The processed data is fed into the KNN model, which returns a prediction (e.g., "High Priority").
 6.  **Response**: The backend sends this prediction back to the frontend as a JSON response.
-
----
-<!-- TODO: remove this section? -->
-## Tips
-
--   **Documentation**: FastAPI automatically generates interactive documentation for you! Go to `http://localhost:8000/docs` while the server is running to try out the API.
-
-- To see something relevant in http://localhost:8000 you need to go to the endpoints defined:
-    - http://localhost:8000/meta
-    - http://localhost:8000/predict

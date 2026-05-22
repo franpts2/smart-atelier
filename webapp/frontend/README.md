@@ -71,11 +71,3 @@ In Svelte, we keep everything related to a component in **one file**. It usually
 The frontend talks to the backend using the `src/lib/services/api.ts` file. 
 - When you fill out the form in the `inventory` page, it sends that data to our Python server (`http://localhost:8000/predict`).
 - The server sends back the prediction, and Svelte automatically updates the UI to show the result.
-
----
-<!-- TODO: remove this section -->
-## Tips
-
--   **The Console is your friend**: Right-click the website, choose "Inspect", and go to the "Console" tab. Any errors or `console.log` messages will show up there.
--   **Reusable Components**: If you find yourself writing the same HTML twice, turn it into a component in `src/lib/ui/`!
--   **Reactive Variables**: In Svelte, if you want a variable to trigger a UI update, just declare it with `let`. If you update it, the UI updates instantly!
