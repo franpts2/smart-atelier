@@ -82,48 +82,6 @@ The frontend will be available at `http://localhost:5173`.
 
 
 
-## Simulation & Testing Guide
-
-To verify the AI's behavior across different models and rulesets, use the following test scenarios. While different algorithms may have slight variations, these values are optimized to trigger specific recommendations.
-
-### 1. **High Stock** (Top Performer)
-*Best for: Capitalizing on high demand and healthy margins.*
-- **Category**: `Tops`
-- **Brand**: `Uniqlo`
-- **Original Price**: `$100.00`
-- **Current Price**: `$100.00` (No discount = High demand)
-- **Current Stock**: `5` (Low stock)
-- **Units Sold**: `30` (High volume)
-- **Ruleset**: `Advanced` (Uses Sales Volume)
-
-### 2. **Low Stock** (Risk / Clearance)
-*Best for: Identifying dead stock and high-risk assets.*
-- **Category**: `Outerwear`
-- **Brand**: `Zara`
-- **Original Price**: `$250.00`
-- **Current Price**: `$60.00` (Heavy markdown = Low margin)
-- **Current Stock**: `150` (Overstocked)
-- **Units Sold**: `2` (Stagnant sales)
-- **Ruleset**: `Advanced`
-
-### 3. **Maintain** (Stable Asset)
-*Best for: Consistent performance without immediate action.*
-- **Category**: `Bottoms`
-- **Brand**: `Mango`
-- **Original Price**: `$60.00`
-- **Current Price**: `$55.00` (Balanced margin)
-- **Current Stock**: `40`
-- **Units Sold**: `12`
-- **Ruleset**: `Standard` or `Advanced`
-
-<br>
-
-> **Note on Algorithms**: 
-> - **Random Forest Optimized** and **Neural Network** are generally the most sensitive to these inputs.
-> - **Naive Bayes** and **SVM** may default to "Maintain" more often due to the underlying distribution of the artificial training data.
-
-
-
 ## (Optional) Training Models
 If you wish to retrain all models (standard and advanced versions):
 ```bash
