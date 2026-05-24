@@ -2,12 +2,12 @@
 
 **Smart Atelier** is an AI-powered stock optimization tool designed for modern fashion boutiques. It utilizes various Machine Learning models (KNN, Random Forest, SVM, etc.) to analyze inventory data and provide strategic recommendations on stock levels and product priority.
 
----
+
 
 ## Project Goal
 This project is a Proof of Concept (POC) that addresses the challenge of inventory management in the fashion industry. It transforms raw sales and inventory data into actionable insights through a modern web interface.
 
----
+
 
 ## Project Structure
 
@@ -18,7 +18,7 @@ This project is a Proof of Concept (POC) that addresses the challenge of invento
     -   `backend/`: FastAPI server handling AI logic and data serving.
     -   `frontend/`: SvelteKit interface for analysis and prediction.
 
----
+
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Ensure you have the following installed:
 - **Python 3.9+**
 - **Node.js (v18+)** and **npm**
 
----
+
 
 ## Installation & Setup
 
@@ -44,7 +44,7 @@ cd webapp/frontend
 npm install
 ```
 
----
+
 
 ## Running the Application
 
@@ -64,7 +64,7 @@ npm run dev
 ```
 The frontend will be available at `http://localhost:5173`.
 
----
+
 
 ## How to Use
 
@@ -80,7 +80,7 @@ The frontend will be available at `http://localhost:5173`.
 - Compare the performance of all integrated models (Accuracy, Precision, Recall, F1-Score) through interactive charts.
 - Hover over chart elements to see detailed metrics.
 
----
+
 
 ## Simulation & Testing Guide
 
@@ -122,7 +122,7 @@ To verify the AI's behavior across different models and rulesets, use the follow
 > - **Random Forest Optimized** and **Neural Network** are generally the most sensitive to these inputs.
 > - **Naive Bayes** and **SVM** may default to "Maintain" more often due to the underlying distribution of the artificial training data.
 
----
+
 
 ## (Optional) Training Models
 If you wish to retrain all models (standard and advanced versions):
