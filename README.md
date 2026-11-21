@@ -1,13 +1,17 @@
 # Smart Atelier
 
-**Smart Atelier** is an AI-powered stock optimization tool designed for modern fashion boutiques. It utilizes various Machine Learning models (KNN, Random Forest, SVM, etc.) to analyze inventory data and provide strategic recommendations on stock levels and product priority.
+AI-powered stock optimization for fashion boutiques, using machine learning to recommend stock levels and product priority.
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue" alt="Python">
+  <img src="https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=FASTAPI&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/scikit_learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn">
+  <img src="https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=Svelte&logoColor=white" alt="SvelteKit">
+</p>
 
+## About
 
-## Project Goal
 This project is a Proof of Concept (POC) that addresses the challenge of inventory management in the fashion industry. It transforms raw sales and inventory data into actionable insights through a modern web interface.
-
-
 
 ## Project Structure
 
@@ -18,17 +22,13 @@ This project is a Proof of Concept (POC) that addresses the challenge of invento
     -   `backend/`: FastAPI server handling AI logic and data serving.
     -   `frontend/`: SvelteKit interface for analysis and prediction.
 
-
-
 ## Prerequisites
 
 Ensure you have the following installed:
 - **Python 3.9+**
 - **Node.js (v18+)** and **npm**
 
-
-
-## Installation & Setup
+## Quick Start
 
 ### 1. Backend Setup
 Navigate to the backend directory and install the required Python packages:
@@ -44,9 +44,7 @@ cd webapp/frontend
 npm install
 ```
 
-
-
-## Running the Application
+## Running the App
 
 To run the full system, you need to start both the backend and frontend servers in separate terminal windows.
 
@@ -64,9 +62,7 @@ npm run dev
 ```
 The frontend will be available at `http://localhost:5173`.
 
-
-
-## How to Use
+## Usage
 
 ### 1. Stock Optimization Tool
 - Go to the **Inventory** page.
@@ -80,11 +76,22 @@ The frontend will be available at `http://localhost:5173`.
 - Compare the performance of all integrated models (Accuracy, Precision, Recall, F1-Score) through interactive charts.
 - Hover over chart elements to see detailed metrics.
 
-
-
 ## (Optional) Training Models
+
 If you wish to retrain all models (standard and advanced versions):
 ```bash
 python3 models/train_models.py
 ```
 This will update the `.joblib` files in `models/artifacts/` which are used by the backend.
+
+## Results
+
+![Random forest feature importance](docs/random_forest_feature_importance.png)
+
+## License
+
+No license file is included. The source is public for reference; all rights reserved.
+
+---
+
+_Smart Atelier — stock decisions with evidence._
