@@ -88,6 +88,20 @@ This will update the `.joblib` files in `models/artifacts/` which are used by th
 
 ![Random forest feature importance](docs/random_forest_feature_importance.png)
 
+## Team & Course
+
+**Team**
+
+| Name | Student Number |
+| --- | --- |
+| [Francisca Portugal](https://github.com/franpts2) | 202303640 |
+| [Carolina Ferreira](https://github.com/carolina-ferreira) | 202303547 |
+| [Leonor Matias](https://github.com/le0nor) | 202303772 |
+
+**Course**
+
+Developed for **Artificial Intelligence (IA), L.EIC 2025/26** at the Faculty of Engineering of the University of Porto (FEUP).
+
 ## License
 
 No license file is included. The source is public for reference; all rights reserved.
